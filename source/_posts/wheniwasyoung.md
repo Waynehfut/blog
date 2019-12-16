@@ -3,6 +3,7 @@ title: 陈年旧事
 date: 2016-03-29 14:35:00
 tags: [日记]
 categories: 记录
+comments: true
 ---
 
 

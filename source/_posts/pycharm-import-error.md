@@ -3,6 +3,7 @@ title: 解决Pycharm中的Unresolved Reference "XXX"的问题
 date: 2019-11-25 17:36:21
 tags: [代码记录]
 categories: 代码
+comments: true
 ---
 
 在折腾Pycharm时有时候会遇到`Unresolved Reference "XXX"`的问题，
