@@ -1,0 +1,289 @@
+--- # ---------------
+# Theme color for customize
+# Notice: color value must in double quotes like "#000" or may cause error!
+# ---------------
+theme_color:
+  enable: true
+  main: "#49B1F5"
+  paginator: "#00C4B6"
+  button_hover: "#FF7242"
+  text_selection: "#00C4B6"
+  link_color: "#858585"
+  hr_color: "#A4D8FA"
+  tag_start_color: "#A4D8FA"
+  tag_end_color: "#1B9EF3"
+
+# Main menu navigation
+menu:
+  Home: /
+  Archives: /archives
+  Tags: /tags
+  Categories: /categories
+  About: https://ishuwan.com
+  # Pitt: /xxx
+
+# Favicon
+# ---------------
+favicon: /assets/img/mysite.jpg
+
+# PWA
+# See https://github.com/JLHwung/hexo-offline
+# ---------------
+pwa:
+  enable: true
+  manifest: /manifest.json
+  # If you don't want to trouble, just ignore the following things
+  # See https://realfavicongenerator.net/
+  # theme_color: "#49B1F5"
+  # apple_touch_icon: /apple-touch-icon.png
+  # favicon_32_32: /favicon-32x32.png
+  # favicon_16_16: /favicon-16x16.png
+  # mask_icon: /safari-pinned-tab.svg
+
+# Highlight theme
+# ---------------
+highlight_theme: default
+
+# code_word_wrap: true or false
+
+# Nav settings
+# see the icon_name in fontawesome website.
+# And you need to add the `fa` or `fab` prefix by your self.
+# ---------------
+social:
+  github fab: https://github.com/waynehfut
+  weibo fab: http://weibo.com/waynehfut
+  facebook fab: https://www.facebook.com/waynehfut
+  envelope far: mailto:waynehfut@gmail.com
+
+
+# Algolia search
+# ---------------
+algolia_search:
+  enable: false
+#   hits:
+#     per_page: 10
+
+# Local search
+# Please see doc for more details: https://molunerfinn.com/hexo-theme-melody-doc/#/third-party-support?id=local-search
+# ---------------
+local_search:
+  enable: true
+
+# MathJax
+# Please see doc for more details: https://molunerfinn.com/hexo-theme-melody-doc/#/third-party-support?id=mathjax
+# ---------------
+mathjax:
+  enable: false
+  cdn: https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+# KaTeX
+# ---------------
+katex:
+  enable: true
+  cdn:
+    css: https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css
+
+# Toggle fireworks (IE >= 10)
+# ---------------
+fireworks: true
+
+# Analysis
+# ---------------
+baidu_analytics:
+
+google_analytics: 'UA-116559759-1'
+
+# Tencent_analytics ID
+tencent_analytics:
+
+# stylesheets loaded in the <head>
+# ---------------
+stylesheets:
+  - /css/index.css
+  # scripts loaded in the end of the body
+  # ---------------
+scripts:
+  - /js/utils.js
+  - /js/fancybox.js
+  - /js/sidebar.js
+  - /js/copy.js
+  - /js/fireworks.js
+  - /js/transition.js
+  - /js/scroll.js
+  - /js/head.js
+
+  # cdn for third-party library
+  # ---------------
+cdn:
+  css:
+    fontawesome: https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css
+    fontawesomeV5: https://use.fontawesome.com/releases/v5.3.1/css/all.css
+  js:
+    anime: https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js
+    jquery: https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js
+    fancybox: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js
+    velocity: https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js
+    velocity-ui: https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js
+
+# Post info settings
+# ---------------
+avatar: /assets/img/mysite.jpg
+
+top_img: /assets/img/setting_sun.jpg # false or url of img
+
+post_meta:
+  date_type: created # created or updated
+  categories: true
+  tags: true
+
+# Please see doc for more details: https://molunerfinn.com/hexo-theme-melody-doc/#/additional-package-support?id=word-counting
+wordcount:
+  enable: true
+
+toc:
+  enable: true
+  # number: true
+
+post_copyright:
+  enable: true
+  license: CC BY-NC-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+# Please see doc for more details: https://molunerfinn.com/hexo-theme-melody-doc/#/theme-config?id=auto-excerpt
+auto_excerpt:
+  enable: true
+  length: 150
+
+# slide
+# For reveal.js config, see https://github.com/hakimel/reveal.js#configuration
+slide:
+  separator: ---
+  separator_vertical: --
+  charset: utf-8
+  theme: black
+  # optional
+  mouseWheel: false
+  transition: slide
+  transitionSpeed: default
+  parallaxBackgroundImage: ''
+  parallaxBackgroundSize: ''
+  parallaxBackgroundHorizontal: null
+  parallaxBackgroundVertical: null
+
+# QR_code:
+#   - itemlist:
+#       img: /assets/img/alipay.jpg
+#       text: 支付宝打赏
+#   - itemlist:
+#       img: /assets/img/wechat.jpg
+#       text: 微信打赏
+
+adv:
+  enable: true
+  info: 
+
+# Share System
+# ---------------
+addThis:
+  enable: true
+  pubid: ra-5c9099886054dcb4
+
+# sharejs:
+# enable: false
+# disabled_sites:
+
+# Comments System
+# ---------------
+disqus:
+  enable: false
+  #shortname:
+  #count:
+
+# laibili:
+# enable: false
+# uid:
+
+# gitment:
+#   enable: true
+#   owner: Waynehfut
+#   repo: waynehfut.github.io
+#   client_id: b698a9a6a0a4d1d5fa44 
+#   client_secret: 48472dac211244ab7b01182ce1f50305d69521f6
+
+gitalk: 
+  enable: true    #用来做启用判断可以不用
+  client_id: 39c2e3e275823181117f    #Github上生成的
+  client_secret: 29c71b7065cd6d7f66e389a9e089b19a4b66cea5   #同上
+  repo: ishuwan.github.io    #评论所在的github project
+  owner: ishuwan    #github用户名
+  admin: ishuwan    #可以初始化评论issue的github账户名称
+
+# gitalk:
+#   enable: false
+#   client_id:
+#   client_secret:
+#   repo:
+#   owner:
+#   admin:
+
+# valine comment system. https://valine.js.org
+# valine:
+#   enable: false # if you want use valine,please set this value is ture
+#   appId:  # leancloud application app id
+#   appKey:  # leancloud application app key
+#   notify: false # valine mail notify (true/false) https://github.com/xCss/Valine/wiki
+#   verify: false # valine verify code (true/false)
+#   pageSize: 10 # comment list page size
+#   avatar: mm # gravatar style https://valine.js.org/#/avatar
+#   lang: zh-cn # i18n: zh-cn/en
+#   placeholder: Just go go # valine comment input placeholder(like: Please leave your footprints )
+#   guest_info: nick,mail,link #valine comment header inf
+
+# Footer Settings
+# ---------------
+since: 2015
+
+footer_custom_text: 谢谢你的访问
+
+ICP:
+  enable: false
+  #text:
+
+# busuanzi count for PV / UV in site
+busuanzi:
+  # count values only if the other configs are false
+  enable: true
+  # custom uv span for the whole site
+  site_uv: true
+  site_uv_header: <i class="fa fa-user"></i>
+  site_uv_footer:
+  # custom pv span for the whole site
+  site_pv: true
+  site_pv_header: <i class="fa fa-eye"></i>
+  site_pv_footer:
+  # custom pv span for one page only
+  page_pv: true
+  page_pv_header: <i class="fa fa-file-o"></i>
+  page_pv_footer:
+
+# Sidebar Settings
+# # ---------------
+# links_title: Links
+# links: https://waynehfut.com
+# Name: url
+
+# Follow Me Button
+follow:
+  enable: true
+  url: 'https://weibo.com/waynehfut'
+  text: 'Weibo'
+
+# Ads
+# ---------------
+# Google Adsense
+# google_adsense:
+#   enable: true
+#   js: //pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
+#   client: ca-pub-9308755319739380
+#   enable_page_level_ads: true
