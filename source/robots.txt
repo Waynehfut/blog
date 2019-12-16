@@ -11,5 +11,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: https://ishuwan.com/sitemap.xml
-Sitemap: https://ishuwan.com/baidusitemap.xml
+Sitemap: https://waynehfut.com/sitemap.xml
+Sitemap: https://waynehfut.com/baidusitemap.xml

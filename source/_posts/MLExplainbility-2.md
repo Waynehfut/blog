@@ -8,7 +8,7 @@ categories: 技术
 
 > 本篇翻译自Kaggle机器学习可解释性微公开课🎓，本篇时第二课时，主讲机器学习可解释性中数据排列重要性的发现
 
-Check source at [Kaggle](https://www.kaggle.com/learn/machine-learning-explainability) by Dan Becker, translate by [iShuwan](https://ishuwan.com/)
+Check source at [Kaggle](https://www.kaggle.com/learn/machine-learning-explainability) by Dan Becker, translate by [waynehfut](https://waynehfut.com/)
 
 <!-- more -->
 

@@ -6,7 +6,7 @@ categories: 技术
 ---
 > 本篇翻译自Kaggle机器学习可解释性微公开课🎓，本篇时第四课时，主讲利用SHAP(SHapley Additive exPlanations)值用以在一次独立预测中分解模型。
 
-Check source at [Kaggle](https://www.kaggle.com/learn/machine-learning-explainability) by Dan Becker, translate by [iShuwan](https://ishuwan.com/)
+Check source at [Kaggle](https://www.kaggle.com/learn/machine-learning-explainability) by Dan Becker, translate by [waynehfut](https://waynehfut.com/)
 
 # 简介
 
@@ -45,7 +45,7 @@ SHAP值将以保证良好属性的方式执行此操作。当我们进行如下�
 
 那如何理解这些呢？
 
-当我们作出0.7的预测时(*即该队有70%概率获得最佳球员，iShuwan注*)，与此同时基线值是0.4979。特征值导致预测值的增长的由粉色区域标出，而它的视觉尺寸大小衡量了特征的影响。特征导致的降低效果由蓝色区域标出。影响力最大的值是来自于`Goal Scored`为2。与此同时控球率具有降低预测结果的效果。
+当我们作出0.7的预测时(*即该队有70%概率获得最佳球员，waynehfut注*)，与此同时基线值是0.4979。特征值导致预测值的增长的由粉色区域标出，而它的视觉尺寸大小衡量了特征的影响。特征导致的降低效果由蓝色区域标出。影响力最大的值是来自于`Goal Scored`为2。与此同时控球率具有降低预测结果的效果。
 
 如果从粉红条的长度中减去蓝条的长度，则它等于从基值到结果的距离。
 

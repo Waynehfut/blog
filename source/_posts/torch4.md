@@ -349,4 +349,4 @@ inputs, labels = inputs.to(device), labels.to(device)
 
 ## 在多个GPU上训练
 
-如果您想使用所有GPU查看更多加速的内容，请查看[Data Parallelism](https://ishuwan.com/2019/04/12/torch4/)
+如果您想使用所有GPU查看更多加速的内容，请查看[Data Parallelism](https://waynehfut.com/2019/04/12/torch4/)

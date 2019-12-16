@@ -6,7 +6,7 @@ categories: 算法
 ---
 早前接触到了回声状态网络（Echo state networks, ESN)，苦于本月在为CSC做思想斗争，没有时间总结。现查阅ESN作者实验室的博文，记以备查[^defweb]。
 
-> We would thanks Herbert Jaeger provide the main body for this article in English. please check the original article here: http://www.scholarpedia.org/article/Echo_state_network. Translate by iShuwan.
+> We would thanks Herbert Jaeger provide the main body for this article in English. please check the original article here: http://www.scholarpedia.org/article/Echo_state_network. Translate by waynehfut.
 
 # 网络定义
 

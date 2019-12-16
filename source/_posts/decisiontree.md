@@ -6,7 +6,7 @@ categories: 算法
 ---
 
 基于树的决策模型在数据决策中非常的常见。因为树形结构的特性，使得它们相对于线性模型也能有很好的映射。[决策树](#决策树)、[随机森林](#随机森林)和[提升树](#提升树)作为树形决策模型的主要代表，在稳定性和可解释性上有着深度学习所无法比拟的优势[^deepscivis]，在论文中经常看到这些方法与深度学习方法的结合，但是苦于学艺不精，一直没有很好的理解，借以此文，聊以记录。注：部分文字部分来源于[参考链接](#参考链接)。
-> We would thanks Sadanad Singh provide the main body for this article in English. please check the original article here: https://datasciencevision.com/tree-based-models/. Translate by iShuwan.
+> We would thanks Sadanad Singh provide the main body for this article in English. please check the original article here: https://datasciencevision.com/tree-based-models/. Translate by waynehfut.
 
 # 前言
 

@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: iShuwan的博客
+title: waynehfut的博客
 subtitle: Feeling everyday
 description: 记录学习及日常
-author: WanghaoiShuwan
+author: Wanghaowaynehfut
 language: en
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://blog.ishuwan.com/
+url: https://blog.waynehfut.com/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
