@@ -1,0 +1,76 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="记录学习及日常"><title>轻量级神经网络处理框架TensorFlow Lite | 单调博客</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/font.css"><link rel="stylesheet" type="text/css" href="/css/noise.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a><a class="sidebar-nav-item" href="https://waynehfut.com">About</a></nav><div class="container post-meta"><div class="post-tags"><a class="post-tag-link" href="/tags/Android/">Android</a><a class="post-tag-link" href="/tags/TensorFlow/">TensorFlow</a><a class="post-tag-link" href="/tags/神经网络/">神经网络</a></div><div class="post-time">2018-05-03</div></div></div><div class="container post-header"><h1>轻量级神经网络处理框架TensorFlow Lite</h1></div><div class="container post-toc"><details class="toc"><summary class="toc-accordion">Outline</summary><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-介绍"><span class="toc-number">1.</span> <span class="toc-text"> 一、 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-tflite-可以做什么"><span class="toc-number">2.</span> <span class="toc-text"> 二、TFLite 可以做什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-已有的一些实作内容及实现"><span class="toc-number">3.</span> <span class="toc-text"> 三、已有的一些实作内容及实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-如何使用-tflite"><span class="toc-number">4.</span> <span class="toc-text"> 四、如何使用 TFLite</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-演示效果"><span class="toc-number">5.</span> <span class="toc-text"> 五、演示效果</span></a></li></ol></details></div><div class="container post-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>作为目前最为流行的神经网络框架，TensorFlow已经在各个神经网络的论文，实验平台等被广泛运用，caffe等安装复杂的网络框架也渐渐的被以TensorFlow为基础的Keras等取代。随着时间的推移，2017年11月基于移动平台的TensorFlow：TensorFlow Lite正式release。</p>
+<a id="more"></a>
+<h2 id="一-介绍"><a class="markdownIt-Anchor" href="#一-介绍"></a> 一、 介绍</h2>
+<p>TensorFlow Lite(简称：TFLite)是TensorFlow(简称：TF)针对移动设备和嵌入式设备所开发的轻量级版本，使得移动设备在计算能力逐步发展的今天，有能力实现低延迟和较小计算量的设备实时计算。TFLite也可以通过<a href="https://developer.android.com/ndk/guides/neuralnetworks/index.html" target="_blank" rel="noopener">Android Neural Networks API</a>硬件层级的加速。目前Google官方已经将TFLite放在Github上：<a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/lite" target="_blank" rel="noopener">Offical repo</a>,相比之前所提出的TF mobile。TFLite的依赖和链接库都更加小，在移动端的计算加速也更容易实现，但由于现实中的手机等设备大同小异，一般都运行在CPU中。</p>
+<h2 id="二-tflite-可以做什么"><a class="markdownIt-Anchor" href="#二-tflite-可以做什么"></a> 二、TFLite 可以做什么</h2>
+<p>TFLite支持大部分的神经网络计算，包括数据量化和浮点运算，面向Android和IOS两种主流移动OS都提供了支持。利用protobuf库既可实现大部分神经网络需要的操作。<br>
+可以实现的算法主要面向CNN、RNN和LSTM，诸如：Conv,pool,pad和relu等基本计算都有提供，对于未实现的接口，可以通过<a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/lite/nnapi_delegate.cc" target="_blank" rel="noopener">nnapi_delegate.cc</a>提供的代理进行实现。代码的整洁度比刚发布时要高很多，加新算子时请参看官方<a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/lite/g3doc/custom_operators.md" target="_blank" rel="noopener">Doc</a></p>
+<h2 id="三-已有的一些实作内容及实现"><a class="markdownIt-Anchor" href="#三-已有的一些实作内容及实现"></a> 三、已有的一些实作内容及实现</h2>
+<p>这部分我自己做的不是很多，在Google上找了一些，列如下：</p>
+<ul>
+<li>Inception V3, 基于ImageNet训练的model，比较适用于日常物体检测</li>
+<li>MobileNets，算是上个模型的缩小版，但是在降低model体积的同时，自己的精度也低了很多。</li>
+</ul>
+<p>而它的实现思想如下图所示：</p>
+<p><img src="/2018/05/03/tensorflow-lite/tflite-architecture.jpg" alt="tflite-architecture.jpg"></p>
+<p>可以看出，训练的过程仍然还是放在大型设备上的，TFLite提供的只是一个转换器，将训练好的Model文件转换为体积更小的<code>.tflite</code>文件，而TFLite在Android和IOS设备上的实施则是依赖于Interpreter提供的各种kernels加载<code>.tflite</code>中的权重，从而在系统中实现相关的计算，TFLite向上提供了model参数加载的能力，向下实现了浮点运算和数据量化运算的接口，是一个介于<code>C++</code>/<code>JAVA API</code>和<code>ANNAPI</code>/<code>CoreML</code>等系统接口之间的计算层。</p>
+<h2 id="四-如何使用-tflite"><a class="markdownIt-Anchor" href="#四-如何使用-tflite"></a> 四、如何使用 TFLite</h2>
+<p>设备限制，仅介绍下Android部分，需要的是<a href="https://bazel.build/" target="_blank" rel="noopener">bazel</a>,以及Android SDK和NDK(14b以上版本)的支持，在ndk-gradle中配置：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">android_sdk_repository (</span><br><span class="line">    name = <span class="string">"androidsdk"</span>,</span><br><span class="line">    api_level = 23,</span><br><span class="line">    build_tools_version = <span class="string">"23.0.2"</span>,</span><br><span class="line">    path = <span class="string">"/home/xxxx/android-sdk/"</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">android_ndk_repository(</span><br><span class="line">    name = <span class="string">"androidndk"</span>,</span><br><span class="line">    path = <span class="string">"/home/xxxx/android-ndk-r10e/"</span>,</span><br><span class="line">    api_level = 19,</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+<p>利用bazel编译：<br>
+<code>bazel build --cxxopt=--std=c++11 //tensorflow/contrib/lite/java/demo/app/src/main:TfLiteCameraDemo</code><br>
+[注：更换自己的App时，修改路径即可]<br>
+即可编译出示例程序，大小约22M。</p>
+<h2 id="五-演示效果"><a class="markdownIt-Anchor" href="#五-演示效果"></a> 五、演示效果</h2>
+<p>下图展示了一些示例程序的演示结果：</p>
+<p><img src="/2018/05/03/tensorflow-lite/sample.jpg" alt="sample.jpg"></p>
+<p>效率还可以</p>
+<blockquote>
+<p>题外话：近来忙于一些杂事，心态有些浮躁，论文进度也一般，在此反思。想来8号合肥GDG的Google I/O Extend，希望今年能有机会现场去听一波。</p>
+</blockquote>
+<p>参考:</p>
+<ul>
+<li><a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/docs_src/mobile/tflite/demo_android.md" target="_blank" rel="noopener">https://github.com/tensorflow/tensorflow/blob/master/tensorflow/docs_src/mobile/tflite/demo_android.md</a></li>
+<li><a href="https://www.tensorflow.org/mobile/tflite/" target="_blank" rel="noopener">https://www.tensorflow.org/mobile/tflite/</a></li>
+<li><a href="http://developers.googleblog.cn/2017/12/tensorflow-lite.html" target="_blank" rel="noopener">http://developers.googleblog.cn/2017/12/tensorflow-lite.html</a></li>
+<li><a href="https://www.tensorflowers.cn/t/277" target="_blank" rel="noopener">https://www.tensorflowers.cn/t/277</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div></div><div class="post-main post-comment"><div id="disqus_thread"></div><script type="text/javascript">
+var disqus_shortname = 'waynehfut';
+var disqus_identifier = '2018/05/03/tensorflow-lite/';
+var disqus_title = '轻量级神经网络处理框架TensorFlow Lite';
+var disqus_url = 'https://blog.waynehfut.com/2018/05/03/tensorflow-lite/';
+(function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">Blog comments powered by <span class="logo-disqus">Disqus</span></a></div></article><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+  $(".fancybox").fancybox();
+});
+</script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+e.src='//www.google-analytics.com/analytics.js';
+r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+ga('create','UA-116559759-1');ga('send','pageview');</script></body></html>

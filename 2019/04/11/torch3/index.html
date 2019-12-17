@@ -1,0 +1,146 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="记录学习及日常"><title>PyTorch入门三-神经网络 | 单调博客</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/font.css"><link rel="stylesheet" type="text/css" href="/css/noise.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a><a class="sidebar-nav-item" href="https://waynehfut.com">About</a></nav><div class="container post-meta"><div class="post-tags"><a class="post-tag-link" href="/tags/PyTorch/">PyTorch</a><a class="post-tag-link" href="/tags/深度学习/">深度学习</a></div><div class="post-time">2019-04-11</div></div></div><div class="container post-header"><h1>PyTorch入门三-神经网络</h1></div><div class="container post-toc"><details class="toc"><summary class="toc-accordion">Outline</summary><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#torch中的nerual-networks"><span class="toc-number">1.</span> <span class="toc-text"> Torch中的Nerual Networks</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义一个网络"><span class="toc-number">1.1.</span> <span class="toc-text"> 定义一个网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 小结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#截至目前已学习"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 截至目前已学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#还存在"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 还存在</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#损失函数"><span class="toc-number">1.2.</span> <span class="toc-text"> 损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反向传播backprop"><span class="toc-number">1.3.</span> <span class="toc-text"> 反向传播（Backprop）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#稍后阅读"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 稍后阅读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仅剩下需要学习的"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 仅剩下需要学习的</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新网络的权重"><span class="toc-number">1.4.</span> <span class="toc-text"> 更新网络的权重</span></a></li></ol></li></ol></details></div><div class="container post-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="torch中的nerual-networks"><a class="markdownIt-Anchor" href="#torch中的nerual-networks"></a> Torch中的Nerual Networks</h1>
+<p>我们可以使用<code>torch.nn</code>来构建神经网络</p>
+<p>现在你已经对<code>autograd</code>有了概览，<code>nn</code>依赖于<code>autograd</code>去定义模型并区分他们，一个<code>nn.Module</code>包括多个层，然后方法<code>forward(input)</code>返回了<code>output</code></p>
+<p>例如，对于数字图像的分类网络</p>
+<p><img src="/2019/04/11/torch3/mnist.png" alt="mnist"></p>
+<pre><code>convnet
+</code></pre>
+<p>这个是一个简单的前馈神经网络，它包含输入，传递了个神经层后，获得了最终的输出</p>
+<p>一个典型的神经网络训练过程如下：</p>
+<ul>
+<li>定义一个神经网络及其可训练的参数</li>
+<li>迭代输入数据集</li>
+<li>处理神经网络输入</li>
+<li>计算损失(输出距离正确目标的距离)</li>
+<li>反向传播方法调优网络参数</li>
+<li>更新网络参数，典型的更新规则是：<code>weight</code>=<code>weight</code>-<code>learning_rate</code>+<code>gradient</code></li>
+</ul>
+<h2 id="定义一个网络"><a class="markdownIt-Anchor" href="#定义一个网络"></a> 定义一个网络</h2>
+<p>我们可以这样定义网络：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(Net, self).__init__()</span><br><span class="line">        <span class="comment"># 1个输入通道，6个输出通道，卷积尺度为5*5</span></span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">1</span>, <span class="number">6</span>, <span class="number">5</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">6</span>, <span class="number">16</span>, <span class="number">5</span>)</span><br><span class="line">        <span class="comment"># 一个映射变换：y = Wx + b</span></span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">16</span> * <span class="number">5</span> * <span class="number">5</span>, <span class="number">120</span>)</span><br><span class="line">        self.fc2 = nn.Linear(<span class="number">120</span>, <span class="number">84</span>)</span><br><span class="line">        self.fc3 = nn.Linear(<span class="number">84</span>, <span class="number">10</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self,x)</span>:</span></span><br><span class="line">        <span class="comment"># 使用最大池化，滑动窗口尺度（2，2）</span></span><br><span class="line">        x = F.max_pool2d(F.relu(self.conv1(x)), (<span class="number">2</span>, <span class="number">2</span>))</span><br><span class="line">        <span class="comment"># 如果大小为正方形，则只需要指定一个数字</span></span><br><span class="line">        x = F.max_pool2d(F.relu(self.conv2(x)),<span class="number">2</span>)</span><br><span class="line">        x = x.view(<span class="number">-1</span>, self.num_flat_features(x))</span><br><span class="line">        x = F.relu(self.fc1(x))</span><br><span class="line">        x = F.relu(self.fc2(x))</span><br><span class="line">        x = self.fc3(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">num_flat_features</span><span class="params">(self,x)</span>:</span></span><br><span class="line">        size = x.size()[<span class="number">1</span>:]  <span class="comment"># 除批尺寸维度以外的其他所有维度</span></span><br><span class="line">        num_features = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> size:</span><br><span class="line">            num_features *= s</span><br><span class="line">        <span class="keyword">return</span> num_features</span><br><span class="line">net = Net()</span><br><span class="line">print(net)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>Net(
+  (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1))
+  (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+  (fc1): Linear(in_features=400, out_features=120, bias=True)
+  (fc2): Linear(in_features=120, out_features=84, bias=True)
+  (fc3): Linear(in_features=84, out_features=10, bias=True)
+)
+</code></pre>
+<p>刚才已经完成了<code>forward</code>函数的定义，然后<code>backward</code>函数（计算梯度的位置）将在你声明了<code>autograd</code>之后自动定义。你可以在<code>forward</code>函数中使用任意一类张量操作</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">params = list(net.parameters())</span><br><span class="line">print(len(params))</span><br><span class="line">print(params[<span class="number">0</span>].size())  <span class="comment"># conv1 的权重</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code>10
+torch.Size([6, 1, 5, 5])
+</code></pre>
+<p>接着尝试一下32x32的随机输入，注意LeNet的输入是要求32x32的，为了使用Mnist数据集，你也需要将从数据集中抽取的图片重设大小至32x32</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">input = torch.randn(<span class="number">1</span>, <span class="number">1</span>, <span class="number">32</span>, <span class="number">32</span>)</span><br><span class="line">out = net(input)</span><br><span class="line">print(out)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>tensor([[ 0.1762,  0.0182,  0.0410, -0.1050,  0.0997, -0.1558,  0.0132, -0.1638,
+          0.0705, -0.1359]], grad_fn=&lt;AddmmBackward&gt;)
+</code></pre>
+<p>使用随机梯度将所有参数和反向的梯度缓冲区归零</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net.zero_grad()</span><br><span class="line">out.backward(torch.randn(<span class="number">1</span>,<span class="number">10</span>))</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>注意<br>
+<code>torch.nn</code>仅支持mini-batchs，整个<code>torch.nn</code>包仅支持mini-batchs的采样，并不支持单个采样<br>
+例如，<code>nn.Conv2d</code>将采用一个4D的张量<code>nSamples</code>x<code>nChannels</code>x<code>Heights</code>x<code>Width</code><br>
+如果你确实需要在输入时采用一整个样例的输入，那就设置<code>input.unsqueeze(0)</code>来增加一个假的批维度</p>
+</blockquote>
+<p>在进一步处理前，在此总结一下已经有的输入</p>
+<h3 id="小结"><a class="markdownIt-Anchor" href="#小结"></a> 小结</h3>
+<ul>
+<li><code>torch.Tensor</code> - 一个多维的向量，支持类似于<code>backward()</code>的自动梯度操作，同时支持关于张量的梯度，</li>
+<li><code>nn.Module</code> - 神经网络模型，便于封装参数的实现，有助于进行GPU加速，导出加载等操作，</li>
+<li><code>nn.Parameter</code> - 一种张量，在分配到模型的时候将被自动注册的一类参数，</li>
+<li><code>autograd.Function</code> - 实现前向后向传播中自动梯度的计算操作。每一个<code>Tensor</code>操作将创建至少一个<code>Function</code>节点，该节点连接到创建<code>Tensor</code>并编码历史的函数中。</li>
+</ul>
+<h3 id="截至目前已学习"><a class="markdownIt-Anchor" href="#截至目前已学习"></a> 截至目前已学习</h3>
+<ul>
+<li>定义网络</li>
+<li>处理输入及调用反馈</li>
+</ul>
+<h3 id="还存在"><a class="markdownIt-Anchor" href="#还存在"></a> 还存在</h3>
+<ul>
+<li>计算损失</li>
+<li>更新模型的权重</li>
+</ul>
+<h2 id="损失函数"><a class="markdownIt-Anchor" href="#损失函数"></a> 损失函数</h2>
+<p>损失函数将（output和target）作为函数输入，然后计算数值以估计目前输出与目标的距离</p>
+<p>在nn包中很有多不同的损失函数，一个简单的损失函数是：nn.MSELoss，它计算了模型输出和目标的均方误差</p>
+<p>例如：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">output = net(input)</span><br><span class="line">target = torch.randn(<span class="number">10</span>) <span class="comment"># 举例虚设的目标</span></span><br><span class="line">target = target.view(<span class="number">1</span>, <span class="number">-1</span>) <span class="comment"># 转换为与输出相同的尺度，其中-1表示没有约束</span></span><br><span class="line">criterion = nn.MSELoss()</span><br><span class="line">loss = criterion(output, target)</span><br><span class="line">print(loss)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>tensor(0.9942, grad_fn=&lt;MseLossBackward&gt;)
+</code></pre>
+<p>现在，如果你遵循反向传播过程中<code>loss</code>的计算路径，使用<code>.grad_fn</code>属性将能够看到如下的计算图</p>
+<figure class="highlight xl"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">input</span>-&gt;</span> <span class="function"><span class="title">conv2d</span> -&gt;</span> <span class="function"><span class="title">relu</span> -&gt;</span> <span class="function"><span class="title">maxpool2d</span> -&gt;</span> <span class="function"><span class="title">conv2d</span> -&gt;</span> <span class="function"><span class="title">relu</span> -&gt;</span> maxpool2d</span><br><span class="line">        -&gt; <span class="function"><span class="title">view</span> -&gt;</span> <span class="function"><span class="title">linear</span> -&gt;</span> <span class="function"><span class="title">relu</span> -&gt;</span> <span class="function"><span class="title">linear</span> -&gt;</span> <span class="function"><span class="title">relu</span> -&gt;</span> linear</span><br><span class="line">        -&gt; MSELoss</span><br><span class="line">        -&gt; loss</span><br></pre></td></tr></tbody></table></figure>
+<p>至此，我们将调用<code>loss.backward()</code>，之后整个计算图都是关于损失的微分，然后图中所有的张量中<code>requires_grad=True</code>的部分都将累加运算过程中的梯度至<code>.grad</code>中</p>
+<p>具体而言，我们遵照下面的步骤来反向计算</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(loss.grad_fn) <span class="comment">#MSELoss</span></span><br><span class="line">print(loss.grad_fn.next_functions[<span class="number">0</span>][<span class="number">0</span>])<span class="comment">#Linear</span></span><br><span class="line">print(loss.grad_fn.next_functions[<span class="number">0</span>][<span class="number">0</span>].next_functions[<span class="number">0</span>][<span class="number">0</span>]) <span class="comment">#ReLU</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code>&lt;MseLossBackward object at 0x000001D1DBFDBEF0&gt;
+&lt;AddmmBackward object at 0x000001D1DBFDB4E0&gt;
+&lt;AccumulateGrad object at 0x000001D1DBFDBEF0&gt;
+</code></pre>
+<h2 id="反向传播backprop"><a class="markdownIt-Anchor" href="#反向传播backprop"></a> 反向传播（Backprop）</h2>
+<p>要反向传播误差值，我们需要计算<code>loss.backward()</code>。你需要清空现有的梯度，否则传播过程会在原有梯度上累计</p>
+<p>现在你可以调用<code>loss.backward()</code>，然后看一下conv1的偏置梯度之后进行反向传播</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">net.zero_grad()</span><br><span class="line">print(<span class="string">'conv1.bias.grad before backward'</span>)</span><br><span class="line">print(net.conv1.bias.grad)</span><br><span class="line"></span><br><span class="line">loss.backward()</span><br><span class="line"></span><br><span class="line">print(<span class="string">'conv1.bias.grad after backward'</span>)</span><br><span class="line">print(net.conv1.bias.grad)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>conv1.bias.grad before backward
+tensor([0., 0., 0., 0., 0., 0.])
+conv1.bias.grad after backward
+tensor([-0.0026,  0.0131, -0.0005, -0.0052, -0.0071, -0.0015])
+</code></pre>
+<p>现在我们可以一览如何使用损失函数了</p>
+<h3 id="稍后阅读"><a class="markdownIt-Anchor" href="#稍后阅读"></a> 稍后阅读</h3>
+<p>神经网络包以构建区块的方式实现了众多的模型和损失函数，完整包含文档的列表可以参见<a href="https://pytorch.org/docs/nn" target="_blank" rel="noopener">此处</a></p>
+<h3 id="仅剩下需要学习的"><a class="markdownIt-Anchor" href="#仅剩下需要学习的"></a> 仅剩下需要学习的</h3>
+<ul>
+<li>更新网络的权重</li>
+</ul>
+<h2 id="更新网络的权重"><a class="markdownIt-Anchor" href="#更新网络的权重"></a> 更新网络的权重</h2>
+<p>实践中最简单的网络更新规则是随机梯度下降法（Stochastic Gradient Descent,SGD）</p>
+<p><code>weight</code>=<code>weight</code>-<code>learning_rate</code>*<code>gradinent</code></p>
+<p>我们可以使用下述简单的代码实现：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">learning_rate = <span class="number">0.01</span></span><br><span class="line"><span class="keyword">for</span> f <span class="keyword">in</span> net.parameters():</span><br><span class="line">    f.data.sub_(f.grad.data * learning_rate)</span><br></pre></td></tr></tbody></table></figure>
+<p>然而，在你使用神经网络的过程中，你也许会想使用多种不同的更新规则，如：SGD,Nesterov-SGD,RMSProp等。为了实现这个方法，Torch构建了一个数据包：<code>torch.optim</code>以实现这些方法，使用起来也很简单：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">import</span> torch.optim <span class="keyword">as</span> optim</span><br><span class="line"><span class="comment"># 创建一个优化器</span></span><br><span class="line">optimizer = optim.SGD(net.parameters(), lr=<span class="number">0.01</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练循环中</span></span><br><span class="line">optimizer.zero_grad() <span class="comment">#梯度置零</span></span><br><span class="line">output = net(input)</span><br><span class="line">loss = criterion(output, target)</span><br><span class="line">loss.backward()</span><br><span class="line">optimizer.step() <span class="comment">#更新权重</span></span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>注意<br>
+观察是如何使用optimizer.zero_grad()手动将梯度缓冲区设置为零的，因为正如在反向传播部分介绍的一样梯度是累计的</p>
+</blockquote>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div></div><div class="post-main post-comment"><div id="disqus_thread"></div><script type="text/javascript">
+var disqus_shortname = 'waynehfut';
+var disqus_identifier = '2019/04/11/torch3/';
+var disqus_title = 'PyTorch入门三-神经网络';
+var disqus_url = 'https://blog.waynehfut.com/2019/04/11/torch3/';
+(function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">Blog comments powered by <span class="logo-disqus">Disqus</span></a></div></article><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+  $(".fancybox").fancybox();
+});
+</script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+e.src='//www.google-analytics.com/analytics.js';
+r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+ga('create','UA-116559759-1');ga('send','pageview');</script></body></html>

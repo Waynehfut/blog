@@ -1,0 +1,54 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="记录学习及日常"><title>Conda的新激活方式 | 单调博客</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/font.css"><link rel="stylesheet" type="text/css" href="/css/noise.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a><a class="sidebar-nav-item" href="https://waynehfut.com">About</a></nav><div class="container post-meta"><div class="post-tags"><a class="post-tag-link" href="/tags/基本概念/">基本概念</a></div><div class="post-time">2018-12-27</div></div></div><div class="container post-header"><h1>Conda的新激活方式</h1></div><div class="container post-toc"><details class="toc"><summary class="toc-accordion">Outline</summary></details></div><div class="container post-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>Conda今天在更新后，使用的过程中遇到了一个小问题，记录备查、</p>
+<a id="more"></a>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">CommandNotFoundError: Your shell has not been properly configured to use <span class="string">'conda activate'</span>.</span><br><span class="line">If your shell is Bash or a Bourne variant, <span class="built_in">enable</span> conda <span class="keyword">for</span> the current user with</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">". /home/wayne/miniconda3/etc/profile.d/conda.sh"</span> &gt;&gt; ~/.bashrc</span><br><span class="line"></span><br><span class="line">or, <span class="keyword">for</span> all users, <span class="built_in">enable</span> conda with</span><br><span class="line"></span><br><span class="line">$ sudo ln -s /home/wayne/miniconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh</span><br><span class="line"></span><br><span class="line">The options above will permanently <span class="built_in">enable</span> the <span class="string">'conda'</span> <span class="built_in">command</span>, but they <span class="keyword">do</span> NOT</span><br><span class="line">put conda<span class="string">'s base (root) environment on PATH. To do so, run</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">$ conda activate</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">in your terminal, or to put the base environment on PATH permanently, run</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">$ echo "conda activate" &gt;&gt; ~/.bashrc</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Previous to conda 4.4, the recommended way to activate conda was to modify PATH in</span></span><br><span class="line"><span class="string">your ~/.bashrc file. You should manually remove the line that looks like</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">export PATH="/home/wayne/miniconda3/bin:$PATH"</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">^^^ The above line should NO LONGER be in your ~/.bashrc file! ^^^</span></span><br></pre></td></tr></tbody></table></figure>
+<p>上述问题是conda更新4.4后对写入bash文件的要求变化，在我的zsh和bash中之前写入了</p>
+<p><code>export PATH="/home/wayne/miniconda3/bin:$PATH"</code></p>
+<p>但是现在可以将这行移除，并使用下面的脚本写入文件</p>
+<blockquote>
+<p>bash:<br>
+<code>echo ". /home/wayne/miniconda3/etc/profile.d/conda.sh" &gt;&gt; ~/.bashrc</code></p>
+</blockquote>
+<blockquote>
+<p>zsh:<br>
+<code>echo ". /home/wayne/miniconda3/etc/profile.d/conda.sh" &gt;&gt; ~/.zshrc</code></p>
+</blockquote>
+<p>可以使得系统的shell识别到你的ananconda命令，同时避免写入系统环境变量导致的问题。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div></div><div class="post-main post-comment"><div id="disqus_thread"></div><script type="text/javascript">
+var disqus_shortname = 'waynehfut';
+var disqus_identifier = '2018/12/27/conda/';
+var disqus_title = 'Conda的新激活方式';
+var disqus_url = 'https://blog.waynehfut.com/2018/12/27/conda/';
+(function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">Blog comments powered by <span class="logo-disqus">Disqus</span></a></div></article><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+  $(".fancybox").fancybox();
+});
+</script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+e.src='//www.google-analytics.com/analytics.js';
+r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+ga('create','UA-116559759-1');ga('send','pageview');</script></body></html>

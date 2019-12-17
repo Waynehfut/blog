@@ -1,0 +1,164 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="记录学习及日常"><title>PyTorch入门四-卷积神经网络 | 单调博客</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/font.css"><link rel="stylesheet" type="text/css" href="/css/noise.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a><a class="sidebar-nav-item" href="https://waynehfut.com">About</a></nav><div class="container post-meta"><div class="post-tags"><a class="post-tag-link" href="/tags/PyTorch/">PyTorch</a><a class="post-tag-link" href="/tags/深度学习/">深度学习</a></div><div class="post-time">2019-04-11</div></div></div><div class="container post-header"><h1>PyTorch入门四-卷积神经网络</h1></div><div class="container post-toc"><details class="toc"><summary class="toc-accordion">Outline</summary><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#训练分类器"><span class="toc-number">1.</span> <span class="toc-text"> 训练分类器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于数据"><span class="toc-number">1.1.</span> <span class="toc-text"> 关于数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#训练一个图像分类器"><span class="toc-number">1.2.</span> <span class="toc-text"> 训练一个图像分类器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载并正则化cifar10数据"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 加载并正则化CIFAR10数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义一个卷积神经网络"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 定义一个卷积神经网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义一个损失函数和优化器"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 定义一个损失函数和优化器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#训练一个网络"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 训练一个网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在测试集上测试模型"><span class="toc-number">1.2.5.</span> <span class="toc-text"> 在测试集上测试模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在gpu上加速"><span class="toc-number">1.3.</span> <span class="toc-text"> 在GPU上加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在多个gpu上训练"><span class="toc-number">1.4.</span> <span class="toc-text"> 在多个GPU上训练</span></a></li></ol></li></ol></details></div><div class="container post-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="训练分类器"><a class="markdownIt-Anchor" href="#训练分类器"></a> 训练分类器</h1>
+<p>在已经知晓如何定义神经网络、计算损失和更新网络权重以后。<br>
+现在需要进一步思考</p>
+<h2 id="关于数据"><a class="markdownIt-Anchor" href="#关于数据"></a> 关于数据</h2>
+<p>通常而言，当你处理图像、文本、音频或者是视频数据是，你可以使用标准的python包，并加载到numpy中，之后你就可以将向量转换为<code>torch.*Tensor</code></p>
+<ul>
+<li>对于图像而言，使用诸如Pillow\OpenCV包都将非常有用</li>
+<li>对于音频而言，可使用scipy和librosa</li>
+<li>对于文本而言，使用原生的Python或者Cython接口，或者是NLTK和SpaCy都是有效的</li>
+</ul>
+<p>对于视觉领域而言，Torch创建了名为<code>torchvision</code>的包，它拥有大多数数据集的数据加载方法，例如：ImageNet，CIFAR10，MNIST等，以及针对图片的数据转换器：<code>torchvision.datasets</code>和<code>torch.utils.data.DataLoader</code></p>
+<p>这样为使用过程提供了巨大的便利，并避免了重复编写样板代码的问题</p>
+<p>在这篇入门教程中，主要是使用<strong>CIFAR10</strong>数据集，它有:<code>飞机</code>，<code>轿车</code>，<code>鸟</code>，<code>猫</code>，<code>鹿</code>，<code>狗</code>，<code>青蛙</code>，<code>马</code>，<code>船只</code>，<code>卡车</code>共计十个类别。<strong>CIFAR-10</strong>数据集的尺寸都是3x32x32，也就是说3-通道的彩图，并且每个图片尺寸为32x32<br>
+<img src="/2019/04/11/torch4/cifar10.png" alt="CIFAR1"></p>
+<p>cifar10</p>
+<h2 id="训练一个图像分类器"><a class="markdownIt-Anchor" href="#训练一个图像分类器"></a> 训练一个图像分类器</h2>
+<p>我们将遵循下列步骤：</p>
+<ol>
+<li>使用<code>torchvision</code>加载并正则化CIFAR10训练和测试数据集</li>
+<li>定义一个卷积神经网络</li>
+<li>定义损失函数</li>
+<li>在训练数据集上训练网络</li>
+<li>在测试数据集上测试数据</li>
+</ol>
+<h3 id="加载并正则化cifar10数据"><a class="markdownIt-Anchor" href="#加载并正则化cifar10数据"></a> 加载并正则化CIFAR10数据</h3>
+<p>使用<code>torchvision</code>将使得处理CIFAR10数据变得极其简单</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms</span><br></pre></td></tr></tbody></table></figure>
+<p>torchvision数据集的输出是PILImage图片数据，取值范围处于[0,1]，我们将转换这些张量并正则化为[-1,1]</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># compose表示计算的串联，步骤1，转换为张量；步骤2，Normalize((mean),(std))是将数据按照通道以mean和std进行正则化，即：input[channel] = (input[channel] - mean[channel]) / std[channel]</span></span><br><span class="line">transform = transforms.Compose( </span><br><span class="line">    [transforms.ToTensor(), </span><br><span class="line">    transforms.Normalize((<span class="number">0.5</span>,<span class="number">0.5</span>,<span class="number">0.5</span>),(<span class="number">0.5</span>,<span class="number">0.5</span>,<span class="number">0.5</span>))]) 、</span><br><span class="line">trainset = torchvision.datasets.CIFAR10(root=<span class="string">'./data'</span>, train=<span class="literal">True</span>,</span><br><span class="line">                                                                        download=<span class="literal">True</span>, transform=transform)</span><br><span class="line"><span class="comment"># 第一个参数表述待处理数据，batch_size表示一个批数据处理的大小，shuffle表示每个epoch中数据是否打乱，num_workers表示有多少个字进程处理数据加载，默认为0</span></span><br><span class="line">trainloader = torch.utils.data.DataLoader(trainset, batch_size=<span class="number">4</span>,</span><br><span class="line">                                                                        shuffle=<span class="literal">True</span>, num_workers=<span class="number">2</span>)</span><br><span class="line">testset = torchvision.datasets.CIFAR10(root=<span class="string">'./data'</span>, train=<span class="literal">False</span>,</span><br><span class="line">                                                                        download=<span class="literal">True</span>, transform=transform)</span><br><span class="line">testloader = torch.utils.data.DataLoader(testset, batch_size=<span class="number">4</span>,</span><br><span class="line">                                                                        shuffle=<span class="literal">False</span>, num_workers=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">classes = (<span class="string">'plane'</span>, <span class="string">'car'</span>, <span class="string">'bird'</span>, <span class="string">'cat'</span>,</span><br><span class="line">           <span class="string">'deer'</span>, <span class="string">'dog'</span>, <span class="string">'frog'</span>, <span class="string">'horse'</span>, <span class="string">'ship'</span>, <span class="string">'truck'</span>)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>Files already downloaded and verified
+Files already downloaded and verified
+</code></pre>
+<p>让我们看下训练数据集</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment">#图片可视函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">imshow</span><span class="params">(img)</span>:</span></span><br><span class="line">    img = img / <span class="number">2</span> + <span class="number">0.5</span></span><br><span class="line">    npimg = img.numpy()</span><br><span class="line">    plt.imshow(np.transpose(npimg, (<span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>)))</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机取一些数据</span></span><br><span class="line">dataiter = iter(trainloader)</span><br><span class="line">images, labels = dataiter.next()</span><br><span class="line"><span class="comment"># 图片展示</span></span><br><span class="line">imshow(torchvision.utils.make_grid(images))</span><br><span class="line"><span class="comment">#打印图片</span></span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/2019/04/11/torch4/output_17_0.png" alt="png"></p>
+<h3 id="定义一个卷积神经网络"><a class="markdownIt-Anchor" href="#定义一个卷积神经网络"></a> 定义一个卷积神经网络</h3>
+<p>可以从上篇复制网络结构过来，并将输入改为三个通道</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(Net, self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">3</span>, <span class="number">6</span>, <span class="number">5</span>)</span><br><span class="line">        self.pool = nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">6</span>, <span class="number">16</span>, <span class="number">5</span>)</span><br><span class="line">        <span class="comment"># fc的第一个参数手动计算，参见 https://blog.csdn.net/zw__chen/article/details/82839061</span></span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">16</span> * <span class="number">5</span> * <span class="number">5</span>, <span class="number">120</span>)</span><br><span class="line">        self.fc2 = nn.Linear(<span class="number">120</span>, <span class="number">84</span>)</span><br><span class="line">        self.fc3 = nn.Linear(<span class="number">84</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = self.pool(F.relu(self.conv1(x)))</span><br><span class="line">        x = self.pool(F.relu(self.conv2(x)))</span><br><span class="line">        x = x.view(<span class="number">-1</span>, <span class="number">16</span> * <span class="number">5</span> * <span class="number">5</span>)</span><br><span class="line">        x = F.relu(self.fc1(x))</span><br><span class="line">        x = F.relu(self.fc2(x))</span><br><span class="line">        x = self.fc3(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">net = Net()</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="定义一个损失函数和优化器"><a class="markdownIt-Anchor" href="#定义一个损失函数和优化器"></a> 定义一个损失函数和优化器</h3>
+<p>我们使用分类交叉熵损失和具有momentum迭代策略的SGD优化器</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.optim <span class="keyword">as</span> optim</span><br><span class="line">criterion = nn.CrossEntropyLoss()</span><br><span class="line">optimizer = optim.SGD(net.parameters(), lr=<span class="number">0.001</span>, momentum=<span class="number">0.9</span>)</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="训练一个网络"><a class="markdownIt-Anchor" href="#训练一个网络"></a> 训练一个网络</h3>
+<p>从这里开始一切才变得有趣，我们简单的在数据迭代中进行循环，并将数据输入网络进行调整</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(<span class="number">2</span>): <span class="comment">#在数据集上重复循环多次</span></span><br><span class="line">    running_loss = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> i, data <span class="keyword">in</span> enumerate(trainloader, <span class="number">0</span>):</span><br><span class="line">        <span class="comment"># 获取输入</span></span><br><span class="line">        inputs, labels = data</span><br><span class="line">        <span class="comment">#将优化器的梯度置零</span></span><br><span class="line">        optimizer.zero_grad()</span><br><span class="line">        <span class="comment"># 前馈+反向+优化</span></span><br><span class="line">        outputs = net(inputs)</span><br><span class="line">        loss = criterion(outputs, labels)</span><br><span class="line">        loss.backward()</span><br><span class="line">        optimizer.step()</span><br><span class="line">        <span class="comment"># 输出统计指标</span></span><br><span class="line">        running_loss +=loss.item()</span><br><span class="line">        <span class="keyword">if</span> i % <span class="number">2000</span>==<span class="number">1999</span>: <span class="comment">#每两千次mini-batch输出一次</span></span><br><span class="line">            print(<span class="string">'[%d, %5d] loss: %.3f'</span> % (epoch + <span class="number">1</span>, i + <span class="number">1</span>, running_loss /<span class="number">2000</span>)) </span><br><span class="line">            running_loss = <span class="number">0.0</span></span><br><span class="line">print(<span class="string">'Finish Training'</span>)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>[1,  2000] loss: 2.185
+[1,  4000] loss: 1.888
+[1,  6000] loss: 1.699
+[1,  8000] loss: 1.583
+[1, 10000] loss: 1.515
+[1, 12000] loss: 1.502
+[2,  2000] loss: 1.416
+[2,  4000] loss: 1.353
+[2,  6000] loss: 1.353
+[2,  8000] loss: 1.330
+[2, 10000] loss: 1.334
+[2, 12000] loss: 1.277
+Finish Training
+</code></pre>
+<h3 id="在测试集上测试模型"><a class="markdownIt-Anchor" href="#在测试集上测试模型"></a> 在测试集上测试模型</h3>
+<p>我们已经在训练集上将模型训练了两遍，但是我们还需要检查模型是否真的学习到了什么</p>
+<p>我们将通过在神经网络输出结果比较标签是否正确，并与事实对照，如果预测结果是正确的，我们将把正确的结果放到一个列表中。</p>
+<p>首先，我们展示一些测试集数据熟悉一下图片</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dataiter = iter(testloader)</span><br><span class="line">images, labels = dataiter.next()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印图片</span></span><br><span class="line">imshow(torchvision.utils.make_grid(images))</span><br><span class="line">print(<span class="string">'GroundTruth: '</span>, <span class="string">' '</span>.join(<span class="string">'%5s'</span> % classes[labels[j]] <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">4</span>)))</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/2019/04/11/torch4/output_31_0.png" alt="png"></p>
+<pre><code>GroundTruth:    cat  ship  ship plane
+</code></pre>
+<p>接下来让我们看下神经网络认为上述的图片是什么</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">outputs = net(images)</span><br><span class="line">print(outputs)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>tensor([[-2.7341, -2.1010,  0.8536,  2.9584, -0.1055,  1.9402,  1.6559, -1.0969,
+         -1.1401, -1.6067],
+        [ 2.8572,  4.1361, -1.3402, -1.8916, -1.7792, -3.6649, -3.3518, -3.7235,
+          4.7233,  2.9778],
+        [ 1.3926,  2.4972, -0.5155, -1.1045, -1.4472, -1.9245, -2.2989, -1.4306,
+          2.1951,  1.9672],
+        [ 1.8752, -0.1371,  0.9561, -0.2573,  0.3003, -1.3104, -2.2200, -0.9442,
+          2.4067, -0.8872]], grad_fn=&lt;AddmmBackward&gt;)
+</code></pre>
+<p>输出的是10个类别的概率，越高的概率对应着神经网络所认为的类别，因此我们只需要最高可能性的即可</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_, predicted = torch.max(outputs, <span class="number">1</span>)</span><br><span class="line">print(<span class="string">'Predicted: '</span>,<span class="string">' '</span>.join(<span class="string">'%5s'</span> % classes[predicted[j]] <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">4</span>)))</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>Predicted:    cat  ship   car  ship
+</code></pre>
+<p>结果看上去非常的好</p>
+<p>让我们再看下网络在整个数据集上的表现情况</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">correct = <span class="number">0</span></span><br><span class="line">total = <span class="number">0</span></span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> testloader:</span><br><span class="line">        images, labels = data</span><br><span class="line">        outputs = net(images)</span><br><span class="line">        _, predicted = torch.max(outputs.data, <span class="number">1</span>)</span><br><span class="line">        total += labels.size(<span class="number">0</span>)</span><br><span class="line">        correct += (predicted == labels).sum().item()</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Accuracy of the network on the 10000 test images: %d %%'</span> % (<span class="number">100</span> * correct / total))</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>Accuracy of the network on the 10000 test images: 55 %
+</code></pre>
+<p>看了总比碰运气好，将近10%的准确性可以认为神经网络确实学到了一些东西</p>
+<p>也许有些类别学的很好，但是有些学的不好：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class_correct = list(<span class="number">0.</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>))</span><br><span class="line">class_total = list(<span class="number">0.</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>))</span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> testloader:</span><br><span class="line">        images, labels = data</span><br><span class="line">        outputs = net(images)</span><br><span class="line">        _, predicted = torch.max(outputs, <span class="number">1</span>)</span><br><span class="line">        c = (predicted == labels).squeeze()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">            label = labels[i]</span><br><span class="line">            class_correct[label] += c[i].item()</span><br><span class="line">            class_total[label] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    print(<span class="string">'Accuracy of %5s : %2d %%'</span> % (classes[i], <span class="number">100</span>*class_correct[i] / class_total[i]))</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>Accuracy of plane : 60 %
+Accuracy of   car : 62 %
+Accuracy of  bird : 40 %
+Accuracy of   cat : 52 %
+Accuracy of  deer : 47 %
+Accuracy of   dog : 47 %
+Accuracy of  frog : 62 %
+Accuracy of horse : 60 %
+Accuracy of  ship : 59 %
+Accuracy of truck : 58 %
+</code></pre>
+<p>那么之后我们需要做什么？在GPU上如何加速？</p>
+<h2 id="在gpu上加速"><a class="markdownIt-Anchor" href="#在gpu上加速"></a> 在GPU上加速</h2>
+<p>正如将张量转移到GPU上一样，你也可以将神经网络转移到GPU上</p>
+<p>如果CUDA可用，那么我首先将需要定义一个cuda可见的设备</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">device = torch.device(<span class="string">"cuda:0"</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">"cpu"</span>)</span><br><span class="line"><span class="comment"># 假定当前机器支持GPU,应当打印出CUDA设备</span></span><br><span class="line">print(device)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>cpu
+</code></pre>
+<p>接下来的章节，假定<code>device</code>都是CUDA设备</p>
+<p>然后这些方法将递归遍历所有模块并将其参数和缓冲区转换为CUDA张量：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.to(device)</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>Net(
+  (conv1): Conv2d(3, 6, kernel_size=(5, 5), stride=(1, 1))
+  (pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+  (fc1): Linear(in_features=400, out_features=120, bias=True)
+  (fc2): Linear(in_features=120, out_features=84, bias=True)
+  (fc3): Linear(in_features=84, out_features=10, bias=True)
+)
+</code></pre>
+<p>请记住，您还必须将每一步的输入和目标发送到GPU：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inputs, labels = inputs.to(device), labels.to(device)</span><br></pre></td></tr></tbody></table></figure>
+<p>为什么我没有感到高速的加速呢？因为你的网络非常的小</p>
+<p>练习：尝试增加网络的宽度（第一个nn.Conv2d的第二个参数和第二个nn.Conv2d的第一个参数  - 它们需要是相同的数字），看看你能获得什么样的加速。</p>
+<h2 id="在多个gpu上训练"><a class="markdownIt-Anchor" href="#在多个gpu上训练"></a> 在多个GPU上训练</h2>
+<p>如果您想使用所有GPU查看更多加速的内容，请查看<a href="https://waynehfut.com/2019/04/12/torch4/" target="_blank" rel="noopener">Data Parallelism</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div></div><div class="post-main post-comment"><div id="disqus_thread"></div><script type="text/javascript">
+var disqus_shortname = 'waynehfut';
+var disqus_identifier = '2019/04/11/torch4/';
+var disqus_title = 'PyTorch入门四-卷积神经网络';
+var disqus_url = 'https://blog.waynehfut.com/2019/04/11/torch4/';
+(function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">Blog comments powered by <span class="logo-disqus">Disqus</span></a></div></article><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+  $(".fancybox").fancybox();
+});
+</script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+e.src='//www.google-analytics.com/analytics.js';
+r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+ga('create','UA-116559759-1');ga('send','pageview');</script></body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="记录学习及日常"><title>手术视频数据集整理 | 单调博客</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/font.css"><link rel="stylesheet" type="text/css" href="/css/noise.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a><a class="sidebar-nav-item" href="https://waynehfut.com">About</a></nav><div class="container post-meta"><div class="post-tags"><a class="post-tag-link" href="/tags/数据集/">数据集</a><a class="post-tag-link" href="/tags/行为识别/">行为识别</a></div><div class="post-time">2019-04-08</div></div></div><div class="container post-header"><h1>手术视频数据集整理</h1></div><div class="container post-toc"><details class="toc"><summary class="toc-accordion">Outline</summary><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#retinal-microsurgery-instrument-tracking-rmit"><span class="toc-number">1.</span> <span class="toc-text"> Retinal Microsurgery Instrument Tracking (RMIT)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#endovis-challenge"><span class="toc-number">2.</span> <span class="toc-text"> EndoVis Challenge</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#camma"><span class="toc-number">3.</span> <span class="toc-text"> CAMMA</span></a></li></ol></details></div><div class="container post-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="retinal-microsurgery-instrument-tracking-rmit"><a class="markdownIt-Anchor" href="#retinal-microsurgery-instrument-tracking-rmit"></a> Retinal Microsurgery Instrument Tracking (RMIT)</h1>
+<ol>
+<li>单器械追踪，RMIT包含3种图像（in vivo video sequence）序列，大多数的场景都被缩放为640×480<br>
+<a href="https://sites.google.com/site/sznitr/code-and-datasets" target="_blank" rel="noopener">https://sites.google.com/site/sznitr/code-and-datasets</a></li>
+</ol>
+<h1 id="endovis-challenge"><a class="markdownIt-Anchor" href="#endovis-challenge"></a> EndoVis Challenge</h1>
+<ol>
+<li>
+<p>Gastrointestinal Image ANAlysis (GIANA) :消化系统的病灶检测与定位，包括息肉检测、息肉分割、无线胶囊胃镜等<br>
+<a href="https://giana.grand-challenge.org/" target="_blank" rel="noopener">https://giana.grand-challenge.org/</a></p>
+</li>
+<li>
+<p>Surgical Workflow Analysis in the SensorOR：手术工作流分析，使用了外部传感和腔镜视频<br>
+<a href="https://endovissub2017-workflow.grand-challenge.org/" target="_blank" rel="noopener">https://endovissub2017-workflow.grand-challenge.org/</a></p>
+</li>
+<li>
+<p>Robotic Scene Segmentation：使用达芬奇机器人做了16场手术所得到的视频，视频分辨率为1280×1024，包括三种器械。<br>
+<a href="https://endovissub2018-roboticscenesegmentation.grand-challenge.org/home/" target="_blank" rel="noopener">https://endovissub2018-roboticscenesegmentation.grand-challenge.org/home/</a></p>
+</li>
+<li>
+<p>CATARACTS：白内障手术视频。从50场手术中收集了100份视频数据。1920×1080分辨率<br>
+<a href="https://cataracts2018.grand-challenge.org/data/" target="_blank" rel="noopener">https://cataracts2018.grand-challenge.org/data/</a></p>
+</li>
+</ol>
+<h1 id="camma"><a class="markdownIt-Anchor" href="#camma"></a> CAMMA</h1>
+<ol>
+<li>
+<p>MVOR Dataset 人类手术姿态数据集包括人体边界框、2/3D姿态等。<br>
+<a href="http://camma.u-strasbg.fr/datasets/mvor" target="_blank" rel="noopener">http://camma.u-strasbg.fr/datasets/mvor</a></p>
+</li>
+<li>
+<p>Cholec80 13名外科医生所进行的80项胆囊切除手术，25帧每秒<br>
+<a href="http://camma.u-strasbg.fr/datasets/cholec80" target="_blank" rel="noopener">http://camma.u-strasbg.fr/datasets/cholec80</a></p>
+</li>
+<li>
+<p>xawAR16 Dataset 多rgbd摄像机手术室术野记录，记录了手术室实时位姿和三维空间。<br>
+<a href="http://camma.u-strasbg.fr/xawar16-dataset" target="_blank" rel="noopener">http://camma.u-strasbg.fr/xawar16-dataset</a></p>
+</li>
+<li>
+<p>M2CAI 2016 Challenge Datasets M2CAI比赛数据集。包括用以做手术工作流分析的&nbsp;m2cai16-workflow和做手术器械检测的m2cai16-tool。<br>
+<a href="http://camma.u-strasbg.fr/m2cai2016/datasets/tool_detection" target="_blank" rel="noopener">http://camma.u-strasbg.fr/m2cai2016/datasets/tool_detection</a></p>
+</li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div></div><div class="post-main post-comment"><div id="disqus_thread"></div><script type="text/javascript">
+var disqus_shortname = 'waynehfut';
+var disqus_identifier = '2019/04/08/SurgicalVideo/';
+var disqus_title = '手术视频数据集整理';
+var disqus_url = 'https://blog.waynehfut.com/2019/04/08/SurgicalVideo/';
+(function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">Blog comments powered by <span class="logo-disqus">Disqus</span></a></div></article><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+  $(".fancybox").fancybox();
+});
+</script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+e.src='//www.google-analytics.com/analytics.js';
+r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+ga('create','UA-116559759-1');ga('send','pageview');</script></body></html>

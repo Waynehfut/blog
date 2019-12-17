@@ -1,0 +1,62 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="记录学习及日常"><title>在Mnist中使用CNN | 单调博客</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/font.css"><link rel="stylesheet" type="text/css" href="/css/noise.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a><a class="sidebar-nav-item" href="https://waynehfut.com">About</a></nav><div class="container post-meta"><div class="post-tags"><a class="post-tag-link" href="/tags/Keras/">Keras</a></div><div class="post-time">2018-02-28</div></div></div><div class="container post-header"><h1>在Mnist中使用CNN</h1></div><div class="container post-toc"><details class="toc"><summary class="toc-accordion">Outline</summary><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#以上概念下面我逐句的说一下这个代码"><span class="toc-number">1.</span> <span class="toc-text"> 以上概念，下面我逐句的说一下这个代码：</span></a></li></ol></details></div><div class="container post-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><em>在<a href="https://waynehfut.github.io/2018/02/27/mnist-mlp/" target="_blank" rel="noopener">上篇</a>中，说了Keras中的Hello World,说到了一些神经网络的基本概念，这篇将以keras的卷积神经网络为切入点，介绍卷积神经网络。<a href="https://github.com/keras-team/keras/blob/master/examples/mnist_cnn.py" target="_blank" rel="noopener">相关Link</a></em></p>
+<a id="more"></a>
+<p>第二个Sample是Cnn下的Mnist，用的模型也非常简单，先说几个这个代码里设计到的概念：<br>
+<strong>Flatten：</strong> 字面意思是平滑，拉平。也就是告诉我们这个东西是将什么东西拉直的，实际上一般是用在包含卷积或者池化的神经网络中，将矩阵数据转换为向量的，从而在后续的全连接层(Dense)实现后续操作。</p>
+<p><strong>Conv2D：</strong> 2D卷积，概念在此不做赘述，可以理解为通过卷积核将大矩阵转换为小矩阵的过程，可自定卷积核大小和卷积方式。通常的，在卷积层后会有激活函数将上一层卷积核卷积出的每个feature map合并到一个feature map中，从而实现局部感知</p>
+<p><strong>MaxPooling2D：</strong> 最大池化，是一类池化类型。池化可以理解为简单的卷积，即在池化层定义的尺寸内，选取最大值，一般池化层在卷积层以后。</p>
+<p><strong>backend：</strong> 这是Keras为了适应多个后端(backend)所设计的，因为在神经网络的下层的实现可以有多个，如：<code>Tensorflow</code>,<code>Theano</code>,<code>CNTK</code>等，为了实现用户自定义，故设计了此接口。一个后端的配置实例如下：</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="attr">"image_data_format"</span>: <span class="string">"channels_last"</span>,</span><br><span class="line">    <span class="attr">"epsilon"</span>: <span class="number">1e-07</span>,</span><br><span class="line">    <span class="attr">"floatx"</span>: <span class="string">"float32"</span>,</span><br><span class="line">    <span class="attr">"backend"</span>: <span class="string">"tensorflow"</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>iamge_data_format：字符串，“channels_last"或"channels_first”，该选项指定了Keras将要使用的维度顺序，可通过keras.backend.image_data_format()来获取当前的维度顺序。对2D数据来说，"channels_last"假定维度顺序为(rows,cols,channels)而"channels_first"假定维度顺序为(channels, rows, cols)。对3D数据而言，"channels_last"假定(conv_dim1, conv_dim2, conv_dim3, channels)，"channels_first"则是(channels, conv_dim1, conv_dim2, conv_dim3)</p>
+<p>epsilon：浮点数，防止除0错误的小数字</p>
+<p>floatx：字符串，“float16”, “float32”, “float64"之一，为浮点数精度<br>
+backend：字符串，所使用的后端，为"tensorflow"或"theano”</p>
+<h4 id="以上概念下面我逐句的说一下这个代码"><a class="markdownIt-Anchor" href="#以上概念下面我逐句的说一下这个代码"></a> 以上概念，下面我逐句的说一下这个代码：</h4>
+<p>部分相似代码，不再赘述，有需要的请参考<a href="https://waynehfut.github.io/2018/02/27/mnist-mlp/" target="_blank" rel="noopener">上篇</a>。</p>
+<p>第20行描述了数据文件的的行高为28，列高为28。</p>
+<p>第25行是调用Keras后端接口，检查当前系统对于图片信道的处理情况,一般情况下image_data_format都是channels_last，目前是重新变形,增加一个通信信道：从(60000, 28, 28)转为(60000, 28, 28, 1).</p>
+<p>第47行开始开始构建卷积神经网络，首先增加了一个卷积层，输入28 * 28 * 1，输出维度为32，卷积核的窗口选用3*3像素窗口，激活函数为relu。</p>
+<p>同样的第48行是将输出设为64，卷积核变为3*3，激活函数为relu。</p>
+<p>接下来为池化，池化区域为2*2，取最大值。</p>
+<p>之后进行平滑，开始如前一篇所提的一样进行全连接神经网络操作。</p>
+<blockquote>
+<p>谢谢您的阅读，如您所见，文章结束还有小红心和分享按钮。</p>
+</blockquote>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div></div><div class="post-main post-comment"><div id="disqus_thread"></div><script type="text/javascript">
+var disqus_shortname = 'waynehfut';
+var disqus_identifier = '2018/02/28/mnist-cnn/';
+var disqus_title = '在Mnist中使用CNN';
+var disqus_url = 'https://blog.waynehfut.com/2018/02/28/mnist-cnn/';
+(function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">Blog comments powered by <span class="logo-disqus">Disqus</span></a></div></article><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+  $(".fancybox").fancybox();
+});
+</script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+e.src='//www.google-analytics.com/analytics.js';
+r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+ga('create','UA-116559759-1');ga('send','pageview');</script></body></html>

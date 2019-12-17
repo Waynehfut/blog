@@ -1,0 +1,75 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="记录学习及日常"><title>使用Anaconda配置机器学习环境 | 单调博客</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/font.css"><link rel="stylesheet" type="text/css" href="/css/noise.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a><a class="sidebar-nav-item" href="https://waynehfut.com">About</a></nav><div class="container post-meta"><div class="post-tags"><a class="post-tag-link" href="/tags/深度学习/">深度学习</a></div><div class="post-time">2019-04-10</div></div></div><div class="container post-header"><h1>使用Anaconda配置机器学习环境</h1></div><div class="container post-toc"><details class="toc"><summary class="toc-accordion">Outline</summary><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-安装方法"><span class="toc-number">1.</span> <span class="toc-text"> 1. 安装方法：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-配置方法"><span class="toc-number">2.</span> <span class="toc-text"> 2. 配置方法：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-安装包"><span class="toc-number">3.</span> <span class="toc-text"> 3. 安装包：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-管理包"><span class="toc-number">4.</span> <span class="toc-text"> 4. 管理包：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-配置你的深度学习环境"><span class="toc-number">5.</span> <span class="toc-text"> 5. 配置你的深度学习环境</span></a></li></ol></details></div><div class="container post-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>Anaconda是一个python的虚拟环境包管理工具，相对于原本的python独立环境而言，可以自由的修改当前系统默认的运行时，而不需要反复安装，同时自带的conda包管理命令可以自动的匹配和分析包依赖，不需要再去下载whl文件或修改环境变量。</p>
+<h1 id="1-安装方法"><a class="markdownIt-Anchor" href="#1-安装方法"></a> 1. 安装方法：</h1>
+<p>初次安装建议使用：<a href="https://mirrors.tuna.tsinghua.edu.cn" target="_blank" rel="noopener">tuna.tsinghua.edu.cn</a> 上的miniconda安装包，从而节约IDE(如：pycharm等)初次加载的时间。</p>
+<p>在获取下载安装包以后，运行安装，注意写入环境变量（Add to Path），建议设置为默认python<br>
+安装完毕以后，就可以在命令行中使用conda命令</p>
+<p>配置镜像地址，因为conda镜像默认地址在国外，速度过慢。推荐使用清华的源：</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="2-配置方法"><a class="markdownIt-Anchor" href="#2-配置方法"></a> 2. 配置方法：</h1>
+<p>创建环境：作为一个虚拟环境，首先得创建一个环境容器以支撑运行，创建命令为：<code>conda create -n &lt;env_name&gt; python=&lt;python_version&gt;</code>，如我想创建一个名为sci的python3.5的运行环境，则命令为：</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n sci python=3.5</span><br></pre></td></tr></tbody></table></figure>
+<p>稍等几秒后，输入y，回车便可执行下一步。<br>
+输入<code>activate &lt;env_name&gt;</code>，如<code>activate sci</code>，便可激活环境</p>
+<p>激活后的命令行之前会有环境的名称，在这个状态下便可以安装python的各种包，你可以使用多种包管理工具：如pip，conda等。为了保证依赖的正确，不建议使用conda以外的包管理工具。</p>
+<h1 id="3-安装包"><a class="markdownIt-Anchor" href="#3-安装包"></a> 3. 安装包：</h1>
+<p>安装python包有多种不同的配置。</p>
+<ol>
+<li>直接安装：<code>conda install &lt;package_name&gt;</code>，适用于直接安装一些流行的包，如<code>numpy</code>，<code>scikit-learn</code>, 以numpy为例：<code>conda install numpy</code>，便可安装最新的版本。注意，同样需要y输入回车确认。</li>
+<li>对于有特定版本需求的而言，只需要在package_name后加版本号即可，<code>conda install &lt;package_name&gt;==&lt;version&gt;</code> ，如：<code>conda install numpy==1.12</code></li>
+<li>从文件安装，对于特定需求的whl文件，建议以<code>pip install &lt;whl_file&gt;</code>的方式安装，但是绝大多数情况下，conda都有对应的包。建议以<code>conda search &lt;package_name&gt;</code>的方式搜索包。</li>
+<li>从requirements.txt文件安装，对于python项目而言，多数项目的依赖会以requirements.txt文件的形式发布依赖及版本，在conda中，你可以使用：<code>conda install --yes --file requirements.txt</code>的方式安装requirement，conda会自动安装依赖包。</li>
+</ol>
+<h1 id="4-管理包"><a class="markdownIt-Anchor" href="#4-管理包"></a> 4. 管理包：</h1>
+<p>包的升级和移除<br>
+包升级：conda upgrade &lt;package_name&gt;<br>
+包移除：conda remove &lt;package_name&gt;</p>
+<h1 id="5-配置你的深度学习环境"><a class="markdownIt-Anchor" href="#5-配置你的深度学习环境"></a> 5. 配置你的深度学习环境</h1>
+<ol>
+<li>一般而言，我们面向的平台是基于python实现的深度学习框架，以tensorflow+keras为例，我们需要执行下述命令：</li>
+</ol>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conda create -n &lt;env_name&gt; python=3.5   # 创建环境名为&lt;env_name&gt;的python3.5环境</span><br><span class="line">conda install tensorflow                # 安装tensorflow</span><br><span class="line">conda install matplotlib                # 安装matplotlib</span><br><span class="line">conda install pillow                    # 安装pillow</span><br><span class="line">pip install opencv-python               # 安装opencv</span><br><span class="line">conda install scikit-learn              # 安装scikit-learn</span><br></pre></td></tr></tbody></table></figure>
+<ol start="2">
+<li>其次选择一个IDE,推荐<a href="https://www.jetbrains.com/pycharm/download/" target="_blank" rel="noopener">PyCharm</a>,选择社区版即可</li>
+</ol>
+<blockquote>
+<p>注：在IDE中你需要在建立项目后自行指定interpreter.</p>
+</blockquote>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div></div><div class="post-main post-comment"><div id="disqus_thread"></div><script type="text/javascript">
+var disqus_shortname = 'waynehfut';
+var disqus_identifier = '2019/04/10/dlenvwithconda/';
+var disqus_title = '使用Anaconda配置机器学习环境';
+var disqus_url = 'https://blog.waynehfut.com/2019/04/10/dlenvwithconda/';
+(function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">Blog comments powered by <span class="logo-disqus">Disqus</span></a></div></article><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+  $(".fancybox").fancybox();
+});
+</script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+e.src='//www.google-analytics.com/analytics.js';
+r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+ga('create','UA-116559759-1');ga('send','pageview');</script></body></html>
