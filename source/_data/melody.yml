@@ -130,7 +130,7 @@ cdn:
 # ---------------
 avatar: /assets/img/mysite.jpg
 
-top_img: /assets/img/setting_sun.jpg # false or url of img
+top_img: false # false or url of img
 
 post_meta:
   date_type: created # created or updated
