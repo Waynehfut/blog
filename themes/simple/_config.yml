@@ -20,7 +20,7 @@ toc_words: "Outline" # the line shown in toc
 show_toc_by_default: true # to show toc if `toc:` is not specified in post
 
 duoshuo: #duoshuo_shortname
-disqus: waynehfut #disqus _shortname
+disqus: dandiaoboke #disqus _shortname
 google_analytics: UA-116559759-1 #Google Analytics Tracking Code
 google_adsense_page_level_ads: #Google Adsense Page Level Ads Code
 
