@@ -5,8 +5,8 @@
 # Site
 title: Hao's Blog
 subtitle: Everything has a price
-description: 记录学习及日常
-author: HaoWang
+description: 
+author: Hao Wang
 language: en
 timezone: Asia/Shanghai
 
@@ -82,7 +82,7 @@ deploy:
   repo: git@github.com:waynehfut/blog.git
 
 search:
-  path: search.json
+  path: search.xml
   field: post
 
 auto_excerpt:
