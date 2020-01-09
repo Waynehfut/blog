@@ -4,7 +4,7 @@
 # ---------------
 theme_color:
   enable: true
-  main: "#88ADA6"
+  main: "##66CC99"
   paginator: "#00C4B6"
   button_hover: "#FF7242"
   text_selection: "#00C4B6"

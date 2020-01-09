@@ -54,4 +54,12 @@ conda install scikit-learn              # 安装scikit-learn
 ```
 2. 其次选择一个IDE,推荐[PyCharm](https://www.jetbrains.com/pycharm/download/),选择社区版即可
 
+# 6. 删除你的环境
+1. 如果遇到环境需要删除，你可以使用以下命令：
+
+```shell
+conda env remove -n ENV_NAME
+```
+2. 试试
+
 > 注：在IDE中你需要在建立项目后自行指定interpreter.
