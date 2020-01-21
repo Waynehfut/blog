@@ -28,6 +28,9 @@
     <loc>https://blog.waynehfut.com/2018/05/03/tensorflow-lite/</loc>
     <lastmod>2020-01-21</lastmod>
   </url>  <url>
+    <loc>https://blog.waynehfut.com/2018/02/28/mnist-cnn/</loc>
+    <lastmod>2020-01-21</lastmod>
+  </url>  <url>
     <loc>https://blog.waynehfut.com/2020/01/20/intro-to-tex/</loc>
     <lastmod>2020-01-21</lastmod>
   </url>  <url>
@@ -37,13 +40,13 @@
     <loc>https://blog.waynehfut.com/2019/10/24/optimizationfuncinML/</loc>
     <lastmod>2020-01-21</lastmod>
   </url>  <url>
-    <loc>https://blog.waynehfut.com/2018/02/27/mnist-mlp/</loc>
-    <lastmod>2020-01-21</lastmod>
-  </url>  <url>
     <loc>https://blog.waynehfut.com/2018/09/10/grandfather/</loc>
     <lastmod>2020-01-21</lastmod>
   </url>  <url>
-    <loc>https://blog.waynehfut.com/2018/02/28/mnist-cnn/</loc>
+    <loc>https://blog.waynehfut.com/2018/02/27/mnist-mlp/</loc>
+    <lastmod>2020-01-21</lastmod>
+  </url>  <url>
+    <loc>https://blog.waynehfut.com/2018/11/28/dropout/</loc>
     <lastmod>2020-01-21</lastmod>
   </url>  <url>
     <loc>https://blog.waynehfut.com/2018/12/27/conda/</loc>
@@ -55,10 +58,10 @@
     <loc>https://blog.waynehfut.com/2019/04/10/dlenvwithconda/</loc>
     <lastmod>2020-01-21</lastmod>
   </url>  <url>
-    <loc>https://blog.waynehfut.com/2018/11/28/dropout/</loc>
+    <loc>https://blog.waynehfut.com/2019/05/06/decisiontree/</loc>
     <lastmod>2020-01-21</lastmod>
   </url>  <url>
-    <loc>https://blog.waynehfut.com/2019/05/06/decisiontree/</loc>
+    <loc>https://blog.waynehfut.com/2018/03/26/YOLOV3/</loc>
     <lastmod>2020-01-21</lastmod>
   </url>  <url>
     <loc>https://blog.waynehfut.com/2019/03/18/XML%E8%A7%A3%E6%9E%90%E7%AE%80%E4%BB%8B/</loc>
@@ -73,9 +76,6 @@
     <loc>https://blog.waynehfut.com/2019/04/08/SurgicalVideo/</loc>
     <lastmod>2020-01-21</lastmod>
   </url>  <url>
-    <loc>https://blog.waynehfut.com/2018/03/26/YOLOV3/</loc>
-    <lastmod>2020-01-21</lastmod>
-  </url>  <url>
     <loc>https://blog.waynehfut.com/2018/08/23/ROCandAUC/</loc>
     <lastmod>2020-01-21</lastmod>
   </url>  <url>
@@ -85,10 +85,10 @@
     <loc>https://blog.waynehfut.com/2018/12/26/Mask/</loc>
     <lastmod>2020-01-21</lastmod>
   </url>  <url>
-    <loc>https://blog.waynehfut.com/2019/03/10/MLExplainbility-2/</loc>
+    <loc>https://blog.waynehfut.com/2019/03/23/MLExplainbility-4/</loc>
     <lastmod>2020-01-21</lastmod>
   </url>  <url>
-    <loc>https://blog.waynehfut.com/2019/03/23/MLExplainbility-4/</loc>
+    <loc>https://blog.waynehfut.com/2019/03/10/MLExplainbility-2/</loc>
     <lastmod>2020-01-21</lastmod>
   </url>  <url>
     <loc>https://blog.waynehfut.com/2019/03/19/MLExplainbility-3/</loc>
