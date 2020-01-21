@@ -50,7 +50,7 @@ categories: 技术
 
 当然，我们也有需要本地环境的时候。我的经验是，可以选择目前流行的texlive作为后端，前端可以按照个人习惯来，我这边推荐两个我用的比较多的环境。
 
-1. 安装texlive
+### 安装texlive
    
    安装texlive可以选择在线安装或者是离线安装，如果你的网络比较强势（处于教育骨干网，或者是国外的网络），我推荐你直接下载在线安装器安装（约18MB）
    - Windows: http://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe
@@ -82,7 +82,7 @@ categories: 技术
 
    ![环境变量](https://s2.ax1x.com/2020/01/22/1kHr8I.png)
 
-2. 在TexStudio中配置本地环境
+### 在TexStudio中配置本地环境
 
    配置好后端后，对于大部分人而言，选择TexStudio是最好的选择，https://www.texstudio.org/ ，作为一个跨平台的客户端，它拥有着较好的交互界面，支持9+语言，对于新手更加友好，安装同样是无脑的下一步即可。安装完成后，可以从 `Options-Configure TeXstudio-General-Language` 中修改语言为中文：
 
@@ -94,7 +94,7 @@ categories: 技术
 
    当然你还可以进一步的使用语句检查服务[languagetool](https://www.languagetool.org/)检查语法错误, 这里推荐知乎大佬的教程：https://zhuanlan.zhihu.com/p/38209314
    
-3. 在Visual Studio Code中配置本地环境
+### 在Visual Studio Code中配置本地环境
 
    作为一个半吊子码农，我还是更喜欢Visual Studio Code，它更加的纯粹和简单，只需安装下述插件即可：
    ![VSCodeTex插件](https://s2.ax1x.com/2020/01/22/1kHfaQ.png)
@@ -123,9 +123,70 @@ categories: 技术
 
 ## 段落
 
-## 图
+### 摘要
+在开始论文时，我们会需要分段，首先我们需要摘要：
+
+```tex
+\begin{abstract}
+I am abstract
+\end{abstract}
+```
+
+效果如图所示：
+
+![摘要](https://s2.ax1x.com/2020/01/22/1kHzGR.png)
+
+### 关键词
+
+接着我们需要关键词：
+
+```tex
+\providecommand{\keywords}[1] % 大部分期刊的$\TeX$模板已经自定义了关键词的格式，我们这里使用一个最简单的自定义格式：
+{
+  \small	
+  \textbf{\textit{Keywords---}} #1
+}
+\keywords{one, two, three, four}
+```
+
+效果如下所示：
+
+![关键词](https://s2.ax1x.com/2020/01/22/1kbPsK.png)
+
+### 节标题
+
+节标题有依据的层级不同，包括`\section{}`,`\subsection{}`,`\subssubection{}`等：
+
+```tex
+\section{Introduction}
+\subsection{Overview of the proposed method}
+```
+
+如图所示：
+
+![节标题](https://s2.ax1x.com/2020/01/22/1kbAde.png)
+
+### 致谢附录等特殊标题
+
+此部分在不同的期刊都有不同的格式，需要就特定模板来撰写，这里我使用最简单的自定义标题：
+
+```tex
+\section*{Acknowledgement}
+\section*{Appendix}
+```
+
+效果如下所示：
+
+![Acknowledgement](https://s2.ax1x.com/2020/01/22/1kbKQP.png)
 
 ## 表
+表，包括列表和表格等常见结构，这里我们
+
+
+
+## 图
+
+## 脚注
 
 ## 参考文献
 
