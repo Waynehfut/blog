@@ -180,8 +180,169 @@ I am abstract
 ![Acknowledgement](https://s2.ax1x.com/2020/01/22/1kbKQP.png)
 
 ## 表
-表，包括列表和表格等常见结构，这里我们
+表，包括列表和表格等常见结构，这里我们以最简单的格式做例子：
 
+### 无序号列表
+
+```tex
+\begin{itemize}
+    \item item 1
+    \item item 2
+\end{itemize}
+```
+
+效果如下：
+
+![无序列表](https://s2.ax1x.com/2020/01/22/1kbQL8.png)
+
+### 有序化列表
+
+```tex
+\begin{enumerate}
+   \item item 1
+   \item item 2
+\end{enumerate}
+```
+
+效果如下：
+
+![有序列表](https://s2.ax1x.com/2020/01/22/1kb3dg.png)
+
+### 普通表格
+
+这里展示了一个没有任何效果的表格环境{table}，使用`{tabular}`来声明表格区域，之后紧接着的是每一列对其方式，`l`,`c`,`r`分别代表居左，居中，居右，我们使用`&`符号来分割各个单元格，使用`\\`来分隔各个行，
+
+```tex
+\begin{table}[]
+   \begin{tabular}{ c c c }
+      cell1 & cell2 & cell3 \\ 
+      cell4 & cell5 & cell6 \\  
+      cell7 & cell8 & cell9    
+   \end{tabular}
+\end{table}
+```
+
+效果如下：
+
+![空白表格](https://s2.ax1x.com/2020/01/22/1kb8oQ.png)
+
+如果我们要加一些线条，可以使用三线表格。
+
+### 三线表格
+
+我们可以使用`\hline`命令来增加横线：
+
+```tex
+\begin{table}[]
+   \begin{tabular}{ c c c }
+      \hline
+      cell1 & cell2 & cell3 \\ 
+      \hline
+      cell4 & cell5 & cell6 \\  
+      cell7 & cell8 & cell9 \\ 
+      \hline
+   \end{tabular}
+\end{table}
+```
+
+效果如下：
+
+![三线表格](https://s2.ax1x.com/2020/01/22/1kbYJs.png)
+
+当然，我们有时候需要网格化表格：
+
+### 网格表格
+
+网格化表格，只需要增加竖向内容控制符即可，但是，往往我们还需要合并表格单元格。我们可以使用`\multicolumn`或者`\multirow`来控制单元格，这里我们把我们需要合并的单元格视作一个元素，后接需要合并的行或者列数（如这里的{2}），之后再跟上控制内容（如这里的{|c|}和{*}），最后紧接着单元格内容，注意，当使用了列合并时，一定要使用`\usepackage{multirow}`包，并控制合并行的线条，否则会出现渲染错误的问题
+
+```tex
+\begin{table}[]
+    \begin{tabular}{|c|c|c|}                 %控制表格对其方式
+    \hline                                   %划线
+    \multicolumn{2}{|c|}{cell1} & cell3    \\ \hline     %合并行
+    cell4 & cell5 & \multirow{2}{*}{cell6} \\ \cline{1-2}   %合并列，注意使用了\cline来控制合并后的线条
+    cell7 & cell8 &                        \\ \hline
+    \end{tabular}
+\end{table}
+```
+
+效果如下：
+
+![复合表格](https://s2.ax1x.com/2020/01/22/1kbwLT.png)
+
+### 标题及标签
+
+对于表格而言，我们还需要的是标题和标签，以在正文中引用，我们使用`\caption{}`和`\lable{}`来控制内容，注意只能将`caption`和`label`标签放置于`tabular`结构体外部，当`caption`存在于`\begin{taular}`之前时，注释将存在表格之前，当在`\end{tabular}`之后时，将出现在表格下方，一个好的实践是将`label`和`caption`放在一起：
+
+```
+\begin{table}[]
+	\caption{I am sample table} %显示在表格上的标记
+	\label{tab1sample}          %用于正文引用的标签
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\multicolumn{2}{|c|}{cell1} & cell3    \\ \hline
+		cell4 & cell5 & \multirow{2}{*}{cell6} \\ \cline{1-2}
+		cell7 & cell8 &                        \\ \hline
+	\end{tabular}
+\end{table}
+```
+
+效果如下：
+
+![引用表格](https://s2.ax1x.com/2020/01/22/1kbDwF.png)
+
+如果我们在正文中使用了表格，那我们以`~\ref{label}`方式来实现引用，如：
+
+```tex
+I will ref the table here~\ref{tab1sample}
+```
+
+效果如下：
+
+![引用表格](https://s2.ax1x.com/2020/01/22/1kbro4.png)
+
+但是我们看到这里还是非常的丑，表格和标题都是歪着的，这时，我们可以使用`\centering`命令开控制`{tabular}`结构体：
+
+```tex
+\begin{table}[]
+	\caption{I am sample table}
+	\label{tab1sample}
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\multicolumn{2}{|c|}{cell1} & cell3    \\ \hline
+		cell4 & cell5 & \multirow{2}{*}{cell6} \\ \cline{1-2}
+		cell7 & cell8 &                        \\ \hline
+	\end{tabular}
+\end{table
+```
+
+效果如下：
+
+ ![表格居中](https://s2.ax1x.com/2020/01/22/1kb6Y9.png)
+
+
+### 位置控制符
+
+我有时候希望表格的位置可以更加精确的显示在某个页面上，此时，我们可以使用精确的位置控制符，位置控制符对于任何的结构都适用，但是大部分情况下是用在表和图中，以下列举了常用的5个命令，需要注意的是，这些命令可以叠加，以防某个命令不可用时导致的布局错误。（小声逼逼：以下命令组合的效果请自行尝试啦，图表排版可以说是论文最烦人的部分了）
+
+- h:
+   会立即在当前位置显示表格；
+- t:
+   会在当前页面的顶端显示；
+- b:
+   会在当前页面的低端显示；
+- p:
+   会在特定面（当前）显示，仅适用于表格；
+- !:
+   覆盖预定义显示方式；
+- H:
+   把表格放置在精确的位置，效果于`h!`叠加类似；
+
+### 其他补充
+
+1. 对于部分期刊，如IEEE,有双栏的情况，如果希望跨栏，则将`{table}`环境修改为`{table*}`即可；
+2. 表格的创建非常麻烦，推荐[Tex Table Generator](http://www.tablesgenerator.com/)来直接生成。
 
 
 ## 图
