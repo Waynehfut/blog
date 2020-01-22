@@ -496,7 +496,7 @@ I will ref the table here~\ref{tab1sample}
 
 ## 公式
 
-公式编辑有很多技巧，例如使用word，或者商业软件Mathtype，在这里我推荐一个在线编辑工具 https://www.latex4technics.com/ ，非常的方便，可以实时预览Latex或者MathJax的渲染结果，比较直观。
+公式编辑有很多技巧，例如使用word，或者商业软件Mathtype，在这里我推荐一个在线编辑工具 https://www.latex4technics.com/ 或者 https://www.codecogs.com/latex/eqneditor.php，非常的方便，比较直观。
 
 ### 行内公式
 
