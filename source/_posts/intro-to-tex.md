@@ -428,7 +428,7 @@ I will ref the table here~\ref{tab1sample}
 
 ## 脚注
 
-类似 [作者单位](##作者单位)部分，我们可以使用`\footnote`命令来实现，如下所示：
+类似 [作者单位](#作者单位)部分，我们可以使用`\footnote`命令来实现，如下所示：
 
 ```tex
 \footnote{Hope must come true}.
@@ -496,7 +496,7 @@ I will ref the table here~\ref{tab1sample}
 
 ## 公式
 
-公式编辑有很多技巧，例如使用word，或者商业软件Mathtype，在这里我推荐一个在线编辑工具 https://www.latex4technics.com/ 或者 https://www.codecogs.com/latex/eqneditor.php，非常的方便，比较直观。
+公式编辑有很多技巧，例如使用word，或者商业软件Mathtype，在这里我推荐一个在线编辑工具 https://www.latex4technics.com/ 或者 https://www.codecogs.com/latex/eqneditor.php/ ，非常的方便，比较直观。
 
 ### 行内公式
 
