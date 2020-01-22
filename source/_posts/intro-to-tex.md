@@ -1,5 +1,5 @@
 ---
-title: 使用Latex写论文之一：Latex简介
+title: 使用Latex写论文之一：Latex快速上手与基础教程
 date: 2020-01-20 15:54:54
 tags: [Latex]
 categories: 技术
@@ -120,6 +120,28 @@ categories: 技术
 \end{document}                         %文件结束
 ```
 在此基础上，我们需要一堆小部件来对文件进行修饰，从而完成一个论文。
+
+## 作者单位
+
+使用`\author`即可注明作者，但是对于大部分的期刊而言，单位等格式都已经指定了固定格式，这里我们使用最简单的`authblk`包作为示例,`\usepackage{authblk}`，需要注意的是，作者信息也是作为题目的一部分，故而，我们需要在\maketitle之前使用这样的命令，此外，如果需要对作者进行标注（如邮箱或者通讯作者，在作者后增加`\thanks`命令即可）：
+
+```tex
+\renewcommand\Affilfont{\itshape\small}
+\author[1]{Hao~Wang, Sherleen~Zhu \thanks{Happy everyday}}%
+\author[2]{Turling Burling}
+\affil[1]{Hefei University of Technology}
+\affil[2]{University of Pittsburgh}	
+\maketitle
+```
+
+效果如下：
+
+![作者](https://s2.ax1x.com/2020/01/22/1kbvm8.png)
+
+脚注：
+
+![脚注](https://s2.ax1x.com/2020/01/22/1kq9Yj.png)
+
 
 ## 段落
 
@@ -326,33 +348,256 @@ I will ref the table here~\ref{tab1sample}
 
 我有时候希望表格的位置可以更加精确的显示在某个页面上，此时，我们可以使用精确的位置控制符，位置控制符对于任何的结构都适用，但是大部分情况下是用在表和图中，以下列举了常用的5个命令，需要注意的是，这些命令可以叠加，以防某个命令不可用时导致的布局错误。（小声逼逼：以下命令组合的效果请自行尝试啦，图表排版可以说是论文最烦人的部分了）
 
-- h:
-   会立即在当前位置显示表格；
-- t:
-   会在当前页面的顶端显示；
-- b:
-   会在当前页面的低端显示；
-- p:
-   会在特定面（当前）显示，仅适用于表格；
-- !:
-   覆盖预定义显示方式；
-- H:
-   把表格放置在精确的位置，效果于`h!`叠加类似；
+- h:  会立即在当前位置显示表格；
+- t:  会在当前页面的顶端显示；
+- b:  会在当前页面的低端显示；
+- p:  会在特定面（当前）显示，仅适用于表格；
+- !:  覆盖预定义显示方式；
+- H:  把表格放置在精确的位置，效果于`h!`叠加类似；
 
 ### 其他补充
 
 1. 对于部分期刊，如IEEE,有双栏的情况，如果希望跨栏，则将`{table}`环境修改为`{table*}`即可；
 2. 表格的创建非常麻烦，推荐[Tex Table Generator](http://www.tablesgenerator.com/)来直接生成。
 
-
 ## 图
+
+### 无子图的图片
+
+相较于表格，图片相对简单。我对图片的创建就不多说了，一般我在latex中使用的是矢量的`pdf`或者`eps`文件，注意使用pdf时，需要导入相应的包，如：`\usepackage[pdftex]{graphicx}`，一个较好的实践是将所有的图都放到一个位置（如:`pic`文件夹），同时我们仍然可以使用`\centering`控制居中。当我们加载一个图片时，可以使用`\includegraphics[大小控制]{图片源}`来控制显示图片。
+
+```tex
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.13in]{pic/1-1}
+	\caption{I am sample figure.}
+	\label{fig1sample}
+\end{figure}
+```
+
+效果如下：
+
+![图片示例](https://s2.ax1x.com/2020/01/22/1kbcWR.png)
+
+当然我们可以把一堆图片复合到一起：
+
+```tex
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.13in]{pic/1-1}
+	\includegraphics[width=1.13in]{pic/1-1}
+	\includegraphics[width=1.13in]{pic/1-1}
+	\caption{I am sample figure.}
+	\label{fig1sample}
+\end{figure}
+```
+
+效果如下：
+
+![复合图](https://s2.ax1x.com/2020/01/22/1kbWy6.png)
+
+### 带子图的图片
+
+有时候，实验会有好多个图，我需要把这些图复合在一起，这里我习惯使用`subfig`包，如：`\usepackage{subfig}`，使用时可以参考以下例子：
+
+```tex
+\begin{figure}[!t]
+	\centering
+	\subfloat[]{
+		\includegraphics[width=1.6in]{pic/1-1}
+	}
+	\subfloat[]{
+		\includegraphics[width=1.6in]{pic/1-1}
+	}
+	\quad 
+	\subfloat[]{
+		\includegraphics[width=1.6in]{pic/1-1}
+	}
+	\subfloat[]{
+		\includegraphics[width=1.6in]{pic/1-1}
+	}
+	\caption{combine 4 picture}
+	\label{fig2combine}
+\end{figure}
+```
+
+效果如下：
+
+![compact图片](https://s2.ax1x.com/2020/01/22/1kbTFH.png)
+
 
 ## 脚注
 
+类似 [作者单位](##作者单位)部分，我们可以使用`\footnote`命令来实现，如下所示：
+
+```tex
+\footnote{Hope must come true}.
+```
+
+效果如下:
+
+![角标](https://s2.ax1x.com/2020/01/22/1kqutJ.png)
+
+## 算法
+
+有时，我们会描述算法结构，这里我们需要导入`algorithm2e`或`algorithmic`包，具体的包存在细节上的不同，我们在此简单写一些示例，具体使用时还需要自行查找文档[algorithm2e文档](http://tug.ctan.org/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf)，[algorithmic文档](http://tug.ctan.org/macros/latex/contrib/algorithmicx/algorithmicx.pdf)
+
+以`algorithm2e`为例：
+
+```tex
+\begin{algorithm}[H]
+   \SetAlgoLined
+   \KwData{this text}
+   \KwResult{how to write algorithm with \LaTeX2e }
+   initialization\;
+   \While{not at end of this document}{
+      read current\;
+      \eIf{understand}
+         {go to next section\;
+         current section becomes this one\;}
+      {go back to the beginning of current section\;}
+   }
+\label{Algorithmsample}
+\caption{How to write algorithms}
+\end{algorithm}
+```
+
+效果为：
+
+![algorithm2e效果](https://s2.ax1x.com/2020/01/22/1kq5j0.png)
+
+
+以`algorithmic`为例，注意包需要首先使用`\usepackage{algorithm}`包：
+
+```tex
+\begin{algorithm}
+	\caption{How to write algorithms}
+	\label{algo2}
+		\begin{algorithmic}[H]
+      \REQUIRE	this text
+		\ENSURE  how to write algorithm with \LaTeX
+		\WHILE{not at end of this document}
+		\STATE	read current
+		\IF {understand}
+		\STATE	go to next section
+		\STATE current section becomes this one
+		\ELSE
+		\STATE go back to the beginning of current section
+		\ENDIF
+		\ENDWHILE
+		\label{Algorithmsample}
+	\end{algorithmic}
+\end{algorith
+```
+
+效果如下：
+
+![algorithmic效果](https://s2.ax1x.com/2020/01/22/1kLxiQ.png)
+
+## 公式
+
+公式编辑有很多技巧，例如使用word，或者商业软件Mathtype，在这里我推荐一个在线编辑工具 https://www.latex4technics.com/ ，非常的方便，可以实时预览Latex或者MathJax的渲染结果，比较直观。
+
+### 行内公式
+
+定义行内公式，使用`$$`即可如下：
+
+```tex
+I am a inline equation $a=b+c$
+```
+
+效果如下：
+
+![inline公式](https://s2.ax1x.com/2020/01/22/1kOQL6.png)
+
+### 行间公式
+
+对于多行公式则可以考虑使用`equation`环境来实现,同样可以使用`label`标签来实现引用，在此不表
+
+```tex
+I am a inline equation $a=b+c$, and I am display equation: 
+\begin{equation}
+   \label{eq1}
+   a^2=b^2+c^2
+\end{equation}
+```
+
+效果如下：
+
+![display公式](https://s2.ax1x.com/2020/01/22/1kO3dO.png)
+
+### 不带标号公式
+
+有时我们不需要公式带标号，我们可以使用`\[   \]`或者`\(   \)`来撰写公式，其中`\[   \]`表示不带编号的公式，`\(   \)`表示不带行号的inline公式，效果与`$$`类似
+
+```tex
+ we can get a no number display equation:
+ \[ a^2=b^2+c^2\] I am an equation.
+ \(a^3=b^3+c^3\) ,Wow, me too
+```
+
+如图所示：
+
+![不带行号的公式](https://s2.ax1x.com/2020/01/22/1kOwOP.png)
+
+
 ## 参考文献
 
-## 
+以上的部分，大致把论文用到的结构做了一个介绍，为了完成论文，我们还需要一些参考文献。需要注意的是，参考文献格式有太多不同风格，每个期刊都要特别注意，这里仅仅做了一个例子，我们需要使用到`cite`包。在文件头部添加`\usepackage{cite}`后，我们可以有两种方式来实现参考文献引用，bbl是内嵌于tex文件的一种实现，便于文件传输与发布，而我们常用到的是bibtex，也就是常说的`bib`文件，具体文档可以参考此处[cite包文档](http://mirror.las.iastate.edu/tex-archive/macros/latex/contrib/cite/cite.pdf)。
+
+### 使用bbl形式构建参考文献
+
+首先我们需要自行构建bbl，一般是通过`bib`文件生成，其与`cite.sty`相关，所以每个期刊都有可能不同。一般格式如下：
+
+```tex
+\begin{thebibliography}{1}
+   \bibitem{citekey}
+   H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+   0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+\end{thebibliography}
+```
 
 
-如果我们
-# 一些技巧
+使用时，可以在正文如此引用：
+
+```tex
+Here, we will cite a reference~\cite{citekey}
+```
+
+效果如下：
+
+![引文](https://s2.ax1x.com/2020/01/22/1kOO61.png)
+
+### 使用bibtex构建参考文献
+
+但是很麻烦的是，我们每次修改了参考文献，都需要更新`thebibliography`环境域下的代码（小声逼逼：有点蠢蠢的），所以为什么不直接引用bib文件呢，所以有了bibtex引用的方式。区别在于这种方式把参考文献单独放到了`bib`文件中，同时格式固定，可以依据`sty`文件自动生成`bbl`文件。此外，大部分文件管理工具都支持直接导出`bib`文件，所以强烈推荐啊！
+
+1. 首先使用文献管理工具导出bib文件，假设为`ref.bib`
+
+   ![bib](https://s2.ax1x.com/2020/01/22/1kXipd.png)
+
+2. 在原有参考文献部分替换为以下代码
+   
+   ```tex
+   \bibliographystyle{IEEEtran}  % 制定了生成的bbl格式的sty文件，大部分期刊的格式在texlive中都有涵盖
+   \bibliography{ref}            % 参考文献所在的路径
+   ```
+
+3. 正常的使用`citekey`引用
+   
+   ```tex
+   Here, we will cite a reference~\cite{citekey}
+   ```
+   
+   注：这里的`citekey`是指bib文件每个条目的第一个值，每个条目应当唯一，如下图：
+
+   ![bib文件](https://s2.ax1x.com/2020/01/22/1kXZ0f.png)
+
+   引用效果如下：
+
+   ![引用效果](https://s2.ax1x.com/2020/01/22/1kXF1A.png)
+
+
+## 其他补充
+
+本文仅仅是快速上手，后续有时间还会继续更新各部分细节，如有疑问可以评论交流。
