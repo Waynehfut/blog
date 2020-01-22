@@ -598,6 +598,6 @@ Here, we will cite a reference~\cite{citekey}
    ![引用效果](https://s2.ax1x.com/2020/01/22/1kXF1A.png)
 
 
-## 其他补充
+# 资源文件
 
 本文仅仅是快速上手，后续有时间还会继续更新各部分细节，文中提及的源文件已经上传，点击此处[下载](https://github.com/Waynehfut/blog/releases/download/intro_to_tex_attach/appendix.zip)，或直接[Overleaf](https://www.overleaf.com/read/xrkftwqrvgdj)查看,可供参考。如有疑问可以评论交流。
