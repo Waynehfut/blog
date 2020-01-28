@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>TabOrSpace</title>
+      <link href="/2020/01/28/TabOrSpace/"/>
+      <url>/2020/01/28/TabOrSpace/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>今天偶尔逛论坛的时候，看到一条消息，Python是用tab还是Space来调整缩进，一直以来都没太关注过，最终在官方的PEP-8的文档中找到了答案：<br><a href="https://www.python.org/dev/peps/pep-0008/#tabs-or-spaces" target="_blank" rel="noopener">https://www.python.org/dev/peps/pep-0008/#tabs-or-spaces</a></p><blockquote><h1 id="tabs-or-spaces"><a class="markdownIt-Anchor" href="#tabs-or-spaces"></a> Tabs or Spaces?</h1><p>Spaces are the preferred indentation method.<br>空格是首选的缩进方法。</p><p>Tabs should be used solely to remain consistent with code that is already indented with tabs.<br>制表符应仅用于与已经使用了制表符缩进的代码保持一致。</p><p>Python 3 disallows mixing the use of tabs and spaces for indentation.<br>Python 3不允许混用制表符和空格控制缩进。</p><p>Python 2 code indented with a mixture of tabs and spaces should be converted to using spaces  exclusively.<br>由制表符和空格组成的缩进的Python 2代码应转换为仅使用空格的方式。</p><p>When invoking the Python 2 command line interpreter with the -t option, it issues warnings about code that illegally mixes tabs and spaces. When using -tt these warnings become errors. These options are  highly recommended!<br>当使用-t选项调用Python 2命令行解释器时，它会发出有关非法混用制表符和空格的代码的警告。当使用-tt时，这些警告变为错误。强烈建议使用这些选项！<br>"</p></blockquote><p>以后在文本编辑器写代码的时候一定要注意这个问题！</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 代码 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> 代码记录 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用Latex写论文之一：Latex快速上手与基础教程</title>
       <link href="/2020/01/20/intro-to-tex/"/>
       <url>/2020/01/20/intro-to-tex/</url>
