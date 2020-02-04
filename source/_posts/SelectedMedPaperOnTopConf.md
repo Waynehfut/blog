@@ -138,5 +138,5 @@ ISBI is hosted by IEEE, but not as well-known as MICCAI or EMBC, so I just picke
 EMBC hosted by IEEE, but more focus on the biomedical inforamtion, not medical image.
 
 1. U-NetPlus: A Modified Encoder-Decoder U-Net Architecture for Semantic and Instance Segmentation of Surgical Instruments from Laparoscopic Images [[Paper]](https://doi.org/10/ggj492).
-2. 
-3. Using a Motion Capture System as Reference for Motion Tracking in Photoplethysmography Imaging. [[Paper]](https://doi.org/10/ggj49z).
+
+2. Using a Motion Capture System as Reference for Motion Tracking in Photoplethysmography Imaging. [[Paper]](https://doi.org/10/ggj49z).
