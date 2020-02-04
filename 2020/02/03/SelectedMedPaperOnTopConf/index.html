@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Selected Paper on Top conference"><meta name="keywords" content="论文阅读"><meta name="author" content="Hao Wang"><meta name="copyright" content="Hao Wang"><title>Selected Paper on Top conference | 图灵不灵</title><link rel="shortcut icon" href="/assets/img/mysite.jpg"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-116559759-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><link rel="alternate" href="/atom.xml" title="图灵不灵" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#outline"><span class="toc-number">1.</span> <span class="toc-text"> Outline</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#timeline"><span class="toc-number">2.</span> <span class="toc-text"> Timeline</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#cvpr-2019"><span class="toc-number">2.1.</span> <span class="toc-text"> CVPR 2019</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iccv-2019"><span class="toc-number">2.2.</span> <span class="toc-text"> ICCV 2019</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#miccai-2019"><span class="toc-number">2.3.</span> <span class="toc-text"> MICCAI 2019</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#isbi-2019"><span class="toc-number">2.4.</span> <span class="toc-text"> ISBI 2019</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#embc-2019"><span class="toc-number">2.5.</span> <span class="toc-text"> EMBC 2019</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/assets/img/mysite.jpg"></div><div class="author-info__name text-center">Hao Wang</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://weibo.com/waynehfut">Weibo</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">34</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">22</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">6</span></a></div></div></div><div id="content-outer"><div class="plain" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">图灵不灵</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="https://waynehfut.com">About</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div></div><div class="layout" id="content-inner"><article id="post"><div class="plain" id="post-title">Selected Paper on Top conference</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-02-03</time><span class="post-meta__separator">|</span><span class="post-meta-wordcount"><span>Word count: </span><span class="word-count">788</span><span class="post-meta__separator">|</span><span>Reading time: 4 min</span></span></div><div class="article-container" id="post-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>Recently, I am preparing the literature review for a paper which related to the medical image. I will sort out the last year(time) top conference papers to make me more clear insight, which include CVPR, ICCV, MICCAI, ISBI, EMBC. <strong>Notice: Papers were collected conditionally</strong>.</p>
+<h1 id="outline"><a class="markdownIt-Anchor" href="#outline"></a> Outline</h1>
+<ul>
+<li><a href="#cvpr-2019">CVPR 2019</a></li>
+<li><a href="#iccv-2019">ICCV 2019</a></li>
+<li><a href="#miccai-2019">MICCAI 2019</a></li>
+<li><a href="#isbi-2019">ISBI 2019</a></li>
+<li><a href="#embc-2019">EMBC 2019</a></li>
+</ul>
+<h1 id="timeline"><a class="markdownIt-Anchor" href="#timeline"></a> Timeline</h1>
+<h2 id="cvpr-2019"><a class="markdownIt-Anchor" href="#cvpr-2019"></a> CVPR 2019</h2>
+<p><a href="http://openaccess.thecvf.com/CVPR2019.py" target="_blank" rel="noopener">Homepage</a></p>
+<p>Since CVPR is not focus on the medical image, I just find only a few related papers.</p>
+<ol>
+<li>
+<p>Collaborative Learning of Semi-Supervised Segmentation and Classification for Medical Images <a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Zhou_Collaborative_Learning_of_Semi-Supervised_Segmentation_and_Classification_for_Medical_Images_CVPR_2019_paper.html" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Elastic Boundary Projection for 3D Medical Image Segmentation <a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Ni_Elastic_Boundary_Projection_for_3D_Medical_Image_Segmentation_CVPR_2019_paper.html" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Data Augmentation Using Learned Transformations for One-Shot Medical Image Segmentation <a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Zhao_Data_Augmentation_Using_Learned_Transformations_for_One-Shot_Medical_Image_Segmentation_CVPR_2019_paper.html" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Learning Active Contour Models for Medical Image Segmentation <a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Chen_Learning_Active_Contour_Models_for_Medical_Image_Segmentation_CVPR_2019_paper.html" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Machine Vision Guided 3D Medical Image Compression for Efficient Transmission and Accurate Segmentation in the Clouds <a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Liu_Machine_Vision_Guided_3D_Medical_Image_Compression_for_Efficient_Transmission_CVPR_2019_paper.html" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>X2CT-GAN: Reconstructing CT From Biplanar X-Rays With Generative Adversarial Networks <a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Ying_X2CT-GAN_Reconstructing_CT_From_Biplanar_X-Rays_With_Generative_Adversarial_Networks_CVPR_2019_paper.html" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+</ol>
+<h2 id="iccv-2019"><a class="markdownIt-Anchor" href="#iccv-2019"></a> ICCV 2019</h2>
+<p><a href="http://openaccess.thecvf.com/ICCV2019.py" target="_blank" rel="noopener">Homepage</a></p>
+<p>Not like the CVPR, ICCV got a plenty of papers on this topic.</p>
+<ol>
+<li>
+<p>Learning With Unsure Data for Medical Image Diagnosis <a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Wu_Learning_With_Unsure_Data_for_Medical_Image_Diagnosis_ICCV_2019_paper.pdf" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Recursive Cascaded Networks for Unsupervised Medical Image Registration <a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Zhao_Recursive_Cascaded_Networks_for_Unsupervised_Medical_Image_Registration_ICCV_2019_paper.pdf" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/microsoft/Recursive-Cascaded-Networks" target="_blank" rel="noopener">[Github]</a></p>
+</li>
+<li>
+<p><strong>Learning Fixed Points in Generative Adversarial Networks: From Image-to-Image Translation to Disease Detection and Localization <a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Siddiquee_Learning_Fixed_Points_in_Generative_Adversarial_Networks_From_Image-to-Image_Translation_ICCV_2019_paper.pdf" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/mahfuzmohammad/Fixed-Point-GAN" target="_blank" rel="noopener">[Github]</a></strong></p>
+</li>
+<li>
+<p>A Deep Step Pattern Representation for Multimodal Retinal Image Registration <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Lee_A_Deep_Step_Pattern_Representation_for_Multimodal_Retinal_Image_Registration_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</p>
+</li>
+<li>
+<p>HistoSegNet: Semantic Segmentation of Histological Tissue Type in Whole Slide Images <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Chan_HistoSegNet_Semantic_Segmentation_of_Histological_Tissue_Type_in_Whole_Slide_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</p>
+</li>
+<li>
+<p>Semantic-Transferable Weakly-Supervised Endoscopic Lesions Segmentation <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Dong_Semantic-Transferable_Weakly-Supervised_Endoscopic_Lesions_Segmentation_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</p>
+</li>
+<li>
+<p>Unsupervised Microvascular Image Segmentation Using an Active Contours Mimicking Neural Network <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Gur_Unsupervised_Microvascular_Image_Segmentation_Using_an_Active_Contours_Mimicking_Neural_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</p>
+</li>
+<li>
+<p>Conditional Recurrent Flow: Conditional Generation of Longitudinal Samples With Applications to Neuroimaging <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Hwang_Conditional_Recurrent_Flow_Conditional_Generation_of_Longitudinal_Samples_With_Applications_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</p>
+</li>
+<li>
+<p>A Deep Cybersickness Predictor Based on Brain Signal Analysis for Virtual Reality Contents <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Kim_A_Deep_Cybersickness_Predictor_Based_on_Brain_Signal_Analysis_for_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</p>
+</li>
+<li>
+<p>An Alarm System for Segmentation Algorithm Based on Shape Model <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Liu_An_Alarm_System_for_Segmentation_Algorithm_Based_on_Shape_Model_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</p>
+</li>
+<li>
+<p>Align, Attend and Locate: Chest X-Ray Diagnosis via Contrast Induced Attention Network With Limited Supervision <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Liu_Align_Attend_and_Locate_Chest_X-Ray_Diagnosis_via_Contrast_Induced_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</p>
+</li>
+<li>
+<p>DUAL-GLOW: Conditional Flow-Based Generative Model for Modality Transfer <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Sun_DUAL-GLOW_Conditional_Flow-Based_Generative_Model_for_Modality_Transfer_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</p>
+</li>
+<li>
+<p>Multi-Stage Pathological Image Classification Using Semantic Segmentation <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Takahama_Multi-Stage_Pathological_Image_Classification_Using_Semantic_Segmentation_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</p>
+</li>
+<li>
+<p>GLAMpoints: Greedily Learned Accurate Match Points <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Truong_GLAMpoints_Greedily_Learned_Accurate_Match_Points_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</p>
+</li>
+<li>
+<p><strong>Hallucinating IDT Descriptors and I3D Optical Flow Features for Action Recognition With CNNs <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Wang_Hallucinating_IDT_Descriptors_and_I3D_Optical_Flow_Features_for_Action_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</strong></p>
+</li>
+<li>
+<p>Joint Acne Image Grading and Counting via Label Distribution Learning <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Wu_Joint_Acne_Image_Grading_and_Counting_via_Label_Distribution_Learning_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</p>
+</li>
+<li>
+<p>CAMEL: A Weakly Supervised Learning Framework for Histopathology Image Segmentation <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Xu_CAMEL_A_Weakly_Supervised_Learning_Framework_for_Histopathology_Image_Segmentation_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</p>
+</li>
+<li>
+<p>Dilated Convolutional Neural Networks for Sequential Manifold-Valued Data <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Zhen_Dilated_Convolutional_Neural_Networks_for_Sequential_Manifold-Valued_Data_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a>.</p>
+</li>
+<li>
+<p><strong>Prior-Aware Neural Network for Partially-Supervised Multi-Organ Segmentation <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Zhou_Prior-Aware_Neural_Network_for_Partially-Supervised_Multi-Organ_Segmentation_ICCV_2019_paper.html" target="_blank" rel="noopener">[Paper]</a></strong>.</p>
+</li>
+</ol>
+<h2 id="miccai-2019"><a class="markdownIt-Anchor" href="#miccai-2019"></a> MICCAI 2019</h2>
+<p><a href="https://link.springer.com/book/10.1007/978-3-030-32239-7" target="_blank" rel="noopener">Homepage</a></p>
+<p>I did not select all the papers here, just only a few papers which I am interested.</p>
+<ol>
+<li>
+<p>Multi-stage Prediction Networks for Data Harmonization <a href="https://doi.org/10/ggj48m" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Triplet Feature Learning on Endoscopic Video Manifold for Online GastroIntestinal Image Retargeting <a href="https://doi.org/10/ggj48n" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p><strong>An Extremely Fast and Precise Convolutional Neural Network for Recognition and Localization of Cataract Surgical Tools <a href="https://doi.org/10/ggj48p" target="_blank" rel="noopener">[Paper]</a></strong></p>
+</li>
+<li>
+<p>Generating Large Labeled Data Sets for Laparoscopic Image Processing Tasks Using Unpaired Image-to-Image Translation <a href="https://doi.org/10/ggj48q" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p><strong>Incorporating Temporal Prior from Motion Flow for Instrument Segmentation in Minimally Invasive Surgery Video <a href="https://doi.org/10/ggj48r" target="_blank" rel="noopener">[Paper]</a></strong></p>
+</li>
+<li>
+<p><strong>Hard Frame Detection and Online Mapping for Surgical Phase Recognition <a href="https://doi.org/10/ggchdx" target="_blank" rel="noopener">[Paper]</a></strong></p>
+</li>
+<li>
+<p>Automated Surgical Activity Recognition with One Labeled Sequence <a href="https://doi.org/10/ggj48s" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Using 3D Convolutional Neural Networks to Learn Spatiotemporal Features for Automatic Surgical Gesture Recognition in Video <a href="https://doi.org/10/ggj48t" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Surgical Skill Assessment on In-Vivo Clinical Data via the Clearness of Operating Field <a href="https://doi.org/10/ggj48v" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Gastric Cancer Detection from Endoscopic Images Using Synthesis by GAN <a href="https://doi.org/10/ggj48w" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Combined Learning for Similar Tasks with Domain-Switching Networks <a href="https://doi.org/10/ggj48x" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p><strong>Two-Stream CNN with Loose Pair Training for Multi-modal AMD Categorization <a href="https://doi.org/10/ggj48z" target="_blank" rel="noopener">[Paper]</a></strong></p>
+</li>
+<li>
+<p>Multi-view Learning with Feature Level Fusion for Cervical Dysplasia Diagnosis <a href="https://doi.org/10/ggj483" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Selective Feature Aggregation Network with Area-Boundary Constraints for Polyp Segmentation <a href="https://doi.org/10/ggj484" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Decompose-and-Integrate Learning for Multi-class Segmentation in Medical Images <a href="https://doi.org/10/ggj485" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Multi-task Attention-Based Semi-supervised Learning for Medical Image Segmentation <a href="https://doi.org/10/ggj486" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+</ol>
+<h2 id="isbi-2019"><a class="markdownIt-Anchor" href="#isbi-2019"></a> ISBI 2019</h2>
+<p><a href="https://dblp.org/db/conf/isbi/isbi2019" target="_blank" rel="noopener">Homepage</a></p>
+<p>ISBI is hosted by IEEE, but not as well-known as MICCAI or EMBC, so I just picked up a litte paper here.</p>
+<ol>
+<li>
+<p>Multi-anatomy localization in fetal echocardiography videos <a href="https://doi.org/10/ggj49p" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Biphasic Model Of Lung Deformations For Video-Assisted Thoracoscopic Surgery (VATS) <a href="https://doi.org/10/ggj49q" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>Focusnet: An Attention-Based Fully Convolutional Network for Medical Image Segmentation <a href="https://doi.org/10/ggj49r" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+<li>
+<p>XAI-CBIR: Explainable AI System for Content based Retrieval of Video Frames from Minimally Invasive Surgery Videos <a href="https://doi.org/10/ggj49s" target="_blank" rel="noopener">[Paper]</a></p>
+</li>
+</ol>
+<h2 id="embc-2019"><a class="markdownIt-Anchor" href="#embc-2019"></a> EMBC 2019</h2>
+<p>EMBC hosted by IEEE, but more focus on the biomedical inforamtion, not medical image.</p>
+<ol>
+<li>U-NetPlus: A Modified Encoder-Decoder U-Net Architecture for Semantic and Instance Segmentation of Surgical Instruments from Laparoscopic Images <a href="https://doi.org/10/ggj492" target="_blank" rel="noopener">[Paper]</a>.</li>
+<li></li>
+<li>Using a Motion Capture System as Reference for Motion Tracking in Photoplethysmography Imaging. <a href="https://doi.org/10/ggj49z" target="_blank" rel="noopener">[Paper]</a>.</li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Hao Wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://blog.waynehfut.com/2020/02/03/SelectedMedPaperOnTopConf/">https://blog.waynehfut.com/2020/02/03/SelectedMedPaperOnTopConf/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/论文阅读/">论文阅读</a></div><div class="addthis_inline_share_toolbox pull-right"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c9099886054dcb4" async></script><nav id="pagination"><div class="next-post pull-right"><a href="/2020/01/28/TabOrSpace/"><span>TabOrSpace</span><i class="fa fa-chevron-right"></i></a></div></nav><div class="post-adv"></div><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: 'b698a9a6a0a4d1d5fa44',
+  clientSecret: '48472dac211244ab7b01182ce1f50305d69521f6',
+  repo: 'blog',
+  owner: 'Waynehfut',
+  admin: 'Waynehfut',
+  id: md5(decodeURI(location.pathname)),
+  language: 'en'
+})
+gitalk.render('gitalk-container')</script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2015 - 2020 By Hao Wang</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">谢谢你的访问</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
