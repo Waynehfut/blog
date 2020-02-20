@@ -1,7 +1,8 @@
 ---
 title: 20分钟学会使用git
 date: 2020-02-20 11:12:29
-tags:
+tags: [代码记录]
+categories: 代码
 ---
 
 # 20分钟学会使用git
