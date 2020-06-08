@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "@upupming/hexo-renderer-markdown-it-plus": "^2.0.0",
-    "hexo": "^3.9.0",
     "hexo-asset-image": "0.0.3",
     "hexo-deployer-git": "^2.1.0",
     "hexo-filter-flowchart": "^1.0.4",
