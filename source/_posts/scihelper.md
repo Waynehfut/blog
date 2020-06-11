@@ -10,7 +10,7 @@ categories: 代码
 
 # Chrome extension
 
-我比较懒得上传发布了，如果有你需要的欢迎[下载](https://github.com/Waynehfut/scihubhelper/releases/download/0.0.2/scihelper_chrome_extension.zip)安装，估计用的人也少。
+我比较懒得上传发布了，如果有你需要的欢迎[**点击此处下载**](https://github.com/Waynehfut/scihubhelper/releases/download/0.0.2/scihelper_chrome_extension.zip)安装，估计用的人也少。
 
 ## 安装演示
 
