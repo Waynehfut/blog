@@ -15,7 +15,14 @@ categories: 代码
 ## 安装演示
 
 下载解压后，开启开发者模式，之后加载解压文件夹即可使用，在需要找文献的网页上选取doi即可，doi可以智能识别，只要选取合规的doi后会自动弹出跳转按钮，即可在scihub上找取文献。
+
 ![tutorials](https://raw.githubusercontent.com/Waynehfut/scihubhelper/master/supportfile/chrometoolsinstall.gif)
+
+# 桌面版
+
+前往[release](https://github.com/Waynehfut/scihubhelper/releases)页面下载对应版本即可；
+
+![desktoptur](https://raw.githubusercontent.com/Waynehfut/scihubhelper/master/supportfile/desktop.gif)
 
 # TODO
 
