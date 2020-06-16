@@ -66,6 +66,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 ```
 
 ## miniconda
+
 ```shell
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```
@@ -73,6 +74,7 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ## NPM & Nodejs
 
 ### Resolving EACCES permissions errors when installing packages globally
+
 https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
 
 ```shell
@@ -91,6 +93,7 @@ npm install -g hexo-cli
 # 软件配置
 
 ## VSCODE
+
 - open with code [github](https://github.com/harry-cpp/code-nautilus)
 
 ```sh
@@ -111,11 +114,12 @@ wget -qO- https://raw.githubusercontent.com/cra0zy/code-nautilus/master/install.
 sudo apt install gnome-sushi
 ```
 
-## fusuma触控板手势
+## fusuma 触控板手势
 
 https://github.com/iberianpig/fusuma
 
 - 配置文件
+
 ```YAML
 swipe:
   3:
@@ -136,7 +140,7 @@ swipe:
       command: 'xdotool key super+Up'
     down:
       command: 'xdotool key super+Down'
- 
+
 pinch:
   2:
     in:
@@ -148,13 +152,45 @@ pinch:
       command: 'xdotool key super+d'
     out:
       command: 'xdotool key super+s'
- 
+
 threshold:
   swipe: 0.3
   pinch: 0.1
- 
+
 interval:
   swipe: 1
   pinch: 1
 
 ```
+
+## Deepin-wine 容器
+
+Repo: https://github.com/wszqkzqk/deepin-wine-ubuntu
+
+```shell
+git clone https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu.git
+cd deepin-wine-for-ubuntu
+chmod +x ./install_2.8.22.sh
+./install_2.8.22.sh
+wget https://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.wechat/deepin.com.wechat_2.6.8.65deepin0_i386.deb
+sudo dpkg -i deepin.com.wechat_2.6.8.65deepin0_i386.deb
+sudo apt install fonts-wqy-microhei fonts-wqy-zenhei # 解决中文字体变方块的问题
+```
+
+### 修复Wechat中文输入
+```shell
+cd /opt/deepinwine/tools
+sudo gedit run.sh
+sudo gedit run_v2.sh
+```
+修改`run.sh`和`run_v2.sh`如下：
+```shell
+#WINE_CMD="deepin-wine"
+WINE_CMD="LC_ALL=zh_CN.UTF-8 deepin-wine"
+ 
+#added by user
+export GTK_IM_MODULE="ibus"
+export QT_IM_MODULE="ibus" 
+export XMODIFIERS="@im=ibus
+```
+之后切换一下输入法就可以激活中文输入了。
