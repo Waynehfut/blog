@@ -131,7 +131,7 @@ cdn:
 avatar: /assets/img/mysite.jpg
 
 top_img: false # false or url of img
-top_img_height: 30
+top_img_height: 20
 
 post_meta:
   date_type: created # created or updated
@@ -277,8 +277,8 @@ busuanzi:
 # Follow Me Button
 follow:
   enable: true
-  url: 'https://weibo.com/waynehfut'
-  text: 'Weibo'
+  url: 'https://github.com/waynehfut'
+  text: 'Github'
 
 # Ads
 # ---------------
