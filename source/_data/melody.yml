@@ -86,7 +86,7 @@ katex:
 
 # Toggle fireworks (IE >= 10)
 # ---------------
-fireworks: true
+fireworks: false
 
 # Analysis
 # ---------------
@@ -131,6 +131,7 @@ cdn:
 avatar: /assets/img/mysite.jpg
 
 top_img: false # false or url of img
+top_img_height: 30
 
 post_meta:
   date_type: created # created or updated
@@ -211,13 +212,13 @@ disqus:
 #   client_id: b698a9a6a0a4d1d5fa44 
 #   client_secret: 48472dac211244ab7b01182ce1f50305d69521f6
 
-gitalk: 
-  enable: true    #用来做启用判断可以不用
-  client_id: b698a9a6a0a4d1d5fa44    #Github上生成的
-  client_secret: 48472dac211244ab7b01182ce1f50305d69521f6   #同上
-  repo: blog   #评论所在的github project
-  owner: Waynehfut    #github用户名
-  admin: Waynehfut    #可以初始化评论issue的github账户名称
+# gitalk: 
+#   enable: true    #用来做启用判断可以不用
+#   client_id: b698a9a6a0a4d1d5fa44    #Github上生成的
+#   client_secret: 48472dac211244ab7b01182ce1f50305d69521f6   #同上
+#   repo: blog   #评论所在的github project
+#   owner: Waynehfut    #github用户名
+#   admin: Waynehfut    #可以初始化评论issue的github账户名称
 
 # gitalk:
 #   enable: false
@@ -244,7 +245,7 @@ gitalk:
 # ---------------
 since: 2015
 
-footer_custom_text: 谢谢你的访问
+footer_custom_text: hitokoto
 
 ICP:
   enable: false
