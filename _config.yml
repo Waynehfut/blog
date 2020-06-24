@@ -17,7 +17,7 @@ root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
-# Directory
+# Directory配置
 source_dir: source
 public_dir: public
 tag_dir: tags
@@ -73,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: maupassant
+theme: mysimple
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
