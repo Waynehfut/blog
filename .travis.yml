@@ -10,7 +10,6 @@ branches:
   only:
     - master # build master branch only
 script:
-  - git clone https://github.com/tufu9441/maupassant-hexo.git themes/maupassant
   - hexo generate # generate static files
 deploy:
   provider: pages
