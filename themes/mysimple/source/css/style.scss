@@ -314,6 +314,11 @@ div {
                     text-decoration: underline;
                 }
             }
+            a[target="_blank"] {
+                &:before {
+                    content: "\f0c1"; font-family: FontAwesome;
+                }
+            }
         }
         .caption {
             color: #444;
