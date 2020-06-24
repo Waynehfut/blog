@@ -1,25 +1,7 @@
-<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="PyTorch入门一-PyTorch与numpy"><meta name="keywords" content="PyTorch,深度学习"><meta name="author" content="Hao Wang"><meta name="copyright" content="Hao Wang"><title>PyTorch入门一-PyTorch与numpy | 图灵不灵</title><link rel="shortcut icon" href="/assets/img/mysite.jpg"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-116559759-1', 'auto');
-ga('send', 'pageview');</script><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
-  copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
-  }
-} </script><link rel="alternate" href="/atom.xml" title="图灵不灵" type="application/atom+xml">
-</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-前言"><span class="toc-number">1.</span> <span class="toc-text"> 1. 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-运算"><span class="toc-number">2.</span> <span class="toc-text"> 2. 运算</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-numpy-桥接"><span class="toc-number">3.</span> <span class="toc-text"> 3. Numpy 桥接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#31-从torch张量转numpy向量"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1 从Torch张量转Numpy向量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#32-从numpy向量转换为torch张量"><span class="toc-number">3.1.1.</span> <span class="toc-text"> 3.2 从Numpy向量转换为Torch张量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-cuda向量"><span class="toc-number">4.</span> <span class="toc-text"> 4. CUDA向量</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/assets/img/mysite.jpg"></div><div class="author-info__name text-center">Hao Wang</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/waynehfut">Github</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">38</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">24</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">7</span></a></div></div></div><div id="content-outer"><div class="plain" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">图灵不灵</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="https://waynehfut.com">About</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div></div><div class="layout" id="content-inner"><article id="post"><div class="plain" id="post-title">PyTorch入门一-PyTorch与numpy</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-04-10</time><span class="post-meta__separator">|</span><i class="fa fa-inbox" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/技术/"> 技术</a><span class="post-meta__separator">|</span><span class="post-meta-wordcount"><span>Word count: </span><span class="word-count">1.2k</span><span class="post-meta__separator">|</span><span>Reading time: 5 min</span></span></div><div class="article-container" id="post-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="1-前言"><a class="markdownIt-Anchor" href="#1-前言"></a> 1. 前言</h1>
-<p>使用PyTorch时，没有那么多七七八八的导入，它时一个基于python的科学计算包，对于大众而言主要有两个方面的功能：</p>
-<ol>
-<li>通过使用GPU加速的高性能Numpy替代工具</li>
-<li>一个高度灵活和高速的深度学习研究平台</li>
-</ol>
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>PyTorch入门一-PyTorch与numpy | 低调的披风</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 4.2.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">PyTorch入门一-PyTorch与numpy</h1><a id="logo" href="/.">低调的披风</a><p class="description">一个记录我的杂事的博客</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">PyTorch入门一-PyTorch与numpy</h1><div class="post-meta">2019-04-10<span> | </span><span class="category"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="post-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>Pytorch的基础使用官方教程，主要描述了PyTorch与Numpy的关系</p>
+<a id="more"></a>
+<h1 id="前言">1. 前言</h1>
+<p>使用PyTorch时，没有那么多七七八八的导入，它时一个基于python的科学计算包，对于大众而言主要有两个方面的功能： 1. 通过使用GPU加速的高性能Numpy替代工具 2. 一个高度灵活和高速的深度学习研究平台</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br></pre></td></tr></tbody></table></figure>
 <p>我们可以随机创建一个未初始化的矩阵（5*3）</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x=torch.empty(<span class="number">5</span>,<span class="number">3</span>)</span><br><span class="line">print(x)</span><br></pre></td></tr></tbody></table></figure>
@@ -27,8 +9,7 @@ ga('send', 'pageview');</script><script src="https://v1.hitokoto.cn/?encode=js&a
         [1.2393e+28, 2.7376e+20, 7.3909e+22],
         [2.2855e+20, 3.2607e-12, 7.0373e+22],
         [6.7415e+22, 4.2038e+30, 1.4348e-19],
-        [2.7530e+12, 7.5338e+28, 1.4822e+11]])
-</code></pre>
+        [2.7530e+12, 7.5338e+28, 1.4822e+11]])</code></pre>
 <p>我们也可以像使用numpy一样去创建向量或者张量等等。</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">y = torch.zeros(<span class="number">5</span>, <span class="number">3</span>, dtype=torch.long)</span><br><span class="line">z = torch.tensor([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line">print(x)</span><br><span class="line">print(y)</span><br><span class="line">print(z)</span><br></pre></td></tr></tbody></table></figure>
 <pre><code>tensor([[0.6813, 0.4026, 0.9534],
@@ -41,8 +22,7 @@ tensor([[0, 0, 0],
         [0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]])
-tensor([5.5000, 3.0000])
-</code></pre>
+tensor([5.5000, 3.0000])</code></pre>
 <p>同时我们也可以创建变量或者重写变量，这类方法通常会重用输入向量的属性，除非我们修改了其中的值</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x=x.new_ones(<span class="number">5</span>,<span class="number">3</span>,dtype=torch.double)   <span class="comment">#新建一个全1矩阵，尺寸为5*3</span></span><br><span class="line">print(x)</span><br><span class="line">x=torch.randn_like(x,dtype=torch.float)  <span class="comment">#重写属性,实际上内存时变化的，地址重写了</span></span><br><span class="line">print(x)</span><br></pre></td></tr></tbody></table></figure>
 <pre><code>tensor([[1., 1., 1.],
@@ -54,88 +34,75 @@ tensor([[-0.5054, -1.0962, -1.0304],
         [-2.1840,  1.5417, -0.2002],
         [-0.5618,  0.3006, -0.3610],
         [-2.1936, -1.7692, -0.4636],
-        [-0.1050, -1.2666,  1.8402]])
-</code></pre>
+        [-0.1050, -1.2666,  1.8402]])</code></pre>
 <p>输出向量的尺寸也会非常的简单</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(x.size())</span><br></pre></td></tr></tbody></table></figure>
-<pre><code>torch.Size([5, 3])
-</code></pre>
+<pre><code>torch.Size([5, 3])</code></pre>
 <p>因为是以元组(tuple)的形式保存的，故而它支持众多的其他运算</p>
-<h1 id="2-运算"><a class="markdownIt-Anchor" href="#2-运算"></a> 2. 运算</h1>
+<h1 id="运算">2. 运算</h1>
 <p>Torch支持许多的运算符，以加法为例：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = torch.rand(<span class="number">5</span>,<span class="number">3</span>)</span><br><span class="line">print(x+y)</span><br></pre></td></tr></tbody></table></figure>
 <pre><code>tensor([[-0.1500, -0.1588, -0.1751],
         [-1.8099,  2.2868,  0.6413],
         [-0.3108,  0.6843,  0.6317],
         [-2.0301, -0.8799, -0.1055],
-        [ 0.3287, -0.8820,  2.5337]])
-</code></pre>
+        [ 0.3287, -0.8820,  2.5337]])</code></pre>
 <p>或是使用torch函数</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(torch.add(x,y))</span><br></pre></td></tr></tbody></table></figure>
 <pre><code>tensor([[-0.1500, -0.1588, -0.1751],
         [-1.8099,  2.2868,  0.6413],
         [-0.3108,  0.6843,  0.6317],
         [-2.0301, -0.8799, -0.1055],
-        [ 0.3287, -0.8820,  2.5337]])
-</code></pre>
+        [ 0.3287, -0.8820,  2.5337]])</code></pre>
 <p>或者可以指定输出向量</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">result = torch.empty(<span class="number">5</span>,<span class="number">3</span>)</span><br><span class="line">torch.add(x,y,out=result)</span><br><span class="line">print(result)</span><br></pre></td></tr></tbody></table></figure>
 <pre><code>tensor([[-0.1500, -0.1588, -0.1751],
         [-1.8099,  2.2868,  0.6413],
         [-0.3108,  0.6843,  0.6317],
         [-2.0301, -0.8799, -0.1055],
-        [ 0.3287, -0.8820,  2.5337]])
-</code></pre>
+        [ 0.3287, -0.8820,  2.5337]])</code></pre>
 <p>或者使用内联函数</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y.add_(x)</span><br><span class="line">print(y)</span><br></pre></td></tr></tbody></table></figure>
 <pre><code>tensor([[-0.1500, -0.1588, -0.1751],
         [-1.8099,  2.2868,  0.6413],
         [-0.3108,  0.6843,  0.6317],
         [-2.0301, -0.8799, -0.1055],
-        [ 0.3287, -0.8820,  2.5337]])
-</code></pre>
+        [ 0.3287, -0.8820,  2.5337]])</code></pre>
 <blockquote>
 <p>注意:在torch中，所有使用_结尾的函数都会调整张量，例如：<code>x.copy＿(y) , x.t＿()</code> ，都会改变x的值</p>
 </blockquote>
 <p>在torch中所有的numpy的原生方法，如切片等也可以使用：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(x[:,<span class="number">1</span>])</span><br></pre></td></tr></tbody></table></figure>
-<pre><code>tensor([-1.0962,  1.5417,  0.3006, -1.7692, -1.2666])
-</code></pre>
+<pre><code>tensor([-1.0962,  1.5417,  0.3006, -1.7692, -1.2666])</code></pre>
 <p>如果需要调整张量的尺寸，你可以使用<code>torch.view</code></p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn(<span class="number">4</span>,<span class="number">4</span>)</span><br><span class="line">y=x.view(<span class="number">16</span>)</span><br><span class="line">z=x.view(<span class="number">-1</span>,<span class="number">8</span>)</span><br><span class="line">print(x.size(),y.size(),z.size())</span><br></pre></td></tr></tbody></table></figure>
-<pre><code>torch.Size([4, 4]) torch.Size([16]) torch.Size([2, 8])
-</code></pre>
+<pre><code>torch.Size([4, 4]) torch.Size([16]) torch.Size([2, 8])</code></pre>
 <p>如果你有一个张量对象，你可以使用<code>.item()</code>来获取到其中的数值</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x=torch.randn(<span class="number">1</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x.item())</span><br></pre></td></tr></tbody></table></figure>
 <pre><code>tensor([0.0375])
-0.037461359053850174
-</code></pre>
+0.037461359053850174</code></pre>
 <blockquote>
 <p>稍后阅读：将近100+种张量操作符，包括transposing，indexing，slicing， mathematical operations， linear algebra，random numbers等，可以在此处找到<a href="https://pytorch.org/docs/stable/torch.html" target="_blank" rel="noopener">Here</a></p>
 </blockquote>
-<h1 id="3-numpy-桥接"><a class="markdownIt-Anchor" href="#3-numpy-桥接"></a> 3. Numpy 桥接</h1>
+<h1 id="numpy-桥接">3. Numpy 桥接</h1>
 <p>从Torch张量到Numpy向量之间的相互转换非常的简单</p>
 <p>Torch张量和Numpy向量直接共享底层的内存地址，对其中之一做改动都会影响到另一个</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = torch.ones(<span class="number">5</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></tbody></table></figure>
-<pre><code>tensor([1., 1., 1., 1., 1.])
-</code></pre>
-<h2 id="31-从torch张量转numpy向量"><a class="markdownIt-Anchor" href="#31-从torch张量转numpy向量"></a> 3.1 从Torch张量转Numpy向量</h2>
+<pre><code>tensor([1., 1., 1., 1., 1.])</code></pre>
+<h2 id="从torch张量转numpy向量">3.1 从Torch张量转Numpy向量</h2>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b=a.numpy()</span><br><span class="line">print(b)</span><br></pre></td></tr></tbody></table></figure>
-<pre><code>[1. 1. 1. 1. 1.]
-</code></pre>
+<pre><code>[1. 1. 1. 1. 1.]</code></pre>
 <p>检查一下torch数值变化以后numpy向量的变化</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a.add_(<span class="number">1</span>)</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></tbody></table></figure>
 <pre><code>tensor([2., 2., 2., 2., 2.])
-[2. 2. 2. 2. 2.]
-</code></pre>
-<h3 id="32-从numpy向量转换为torch张量"><a class="markdownIt-Anchor" href="#32-从numpy向量转换为torch张量"></a> 3.2 从Numpy向量转换为Torch张量</h3>
+[2. 2. 2. 2. 2.]</code></pre>
+<h3 id="从numpy向量转换为torch张量">3.2 从Numpy向量转换为Torch张量</h3>
 <p>同样检查np数据的变化所对应带来的Torch张量的变化</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.ones(<span class="number">5</span>)</span><br><span class="line">b = torch.from_numpy(a)</span><br><span class="line">np.add(a, <span class="number">1</span>, out=a)</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></tbody></table></figure>
 <pre><code>[2. 2. 2. 2. 2.]
-tensor([2., 2., 2., 2., 2.], dtype=torch.float64)
-</code></pre>
+tensor([2., 2., 2., 2., 2.], dtype=torch.float64)</code></pre>
 <p>注意：除了ChatTensor以外，其他所有类型的Tensor都支持转换为Numpy形式返回</p>
-<h1 id="4-cuda向量"><a class="markdownIt-Anchor" href="#4-cuda向量"></a> 4. CUDA向量</h1>
+<h1 id="cuda向量">4. CUDA向量</h1>
 <p>张量可以使用<code>.to</code>方法转移到任意一个设备中</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意此部分仅仅在CUDA加速运行时存在时可用</span></span><br><span class="line"><span class="comment"># 我们将需要使用`torch.device`对象来将张量对象从内存中移出</span></span><br><span class="line"><span class="keyword">if</span> torch.cuda.is_avaiable():</span><br><span class="line">    device = torch.device(<span class="string">"cuda"</span>)</span><br><span class="line">    y = torch.ones_like(x, device=device)</span><br><span class="line">    x = x.to(device)</span><br><span class="line">    z = x + y</span><br><span class="line">    print(z)</span><br><span class="line">    print(z.to(<span class="string">"cpu"</span>, torch.double))</span><br></pre></td></tr></tbody></table></figure>
 <figure class="highlight stylus"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">tensor</span><span class="params">([-<span class="number">0.7816</span>], device=<span class="string">'cuda:0'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">tensor</span><span class="params">([-<span class="number">0.7816</span>], dtype=torch.float64)</span></span></span><br></pre></td></tr></tbody></table></figure>
@@ -157,8 +124,4 @@ tensor([2., 2., 2., 2., 2.], dtype=torch.float64)
             });
             document.body.appendChild(img);
           });
-      </script></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Hao Wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://blog.waynehfut.com/2019/04/10/torch1/">https://blog.waynehfut.com/2019/04/10/torch1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/PyTorch/">PyTorch</a><a class="post-meta__tags" href="/tags/深度学习/">深度学习</a></div><div class="addthis_inline_share_toolbox pull-right"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c9099886054dcb4" async></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/04/10/torch2/"><i class="fa fa-chevron-left">  </i><span>PyTorch入门二-自动微分</span></a></div><div class="next-post pull-right"><a href="/2019/04/10/dlenvwithconda/"><span>使用Anaconda配置机器学习环境</span><i class="fa fa-chevron-right"></i></a></div></nav><div class="post-adv"></div></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2015 - 2020 By Hao Wang</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
-}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
+      </script></div><div class="tags"><a href="/tags/PyTorch/"><i class="fa fa-tag"></i>PyTorch</a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="fa fa-tag"></i>深度学习</a></div><div class="post-nav"><a class="pre" href="/2019/04/10/torch2/">PyTorch入门二-自动微分</a><a class="next" href="/2019/04/10/dlenvwithconda/">使用Anaconda配置机器学习环境</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://blog.waynehfut.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81/">代码</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" style="font-size: 15px;">论文阅读</a> <a href="/tags/%E6%97%A5%E8%AE%B0/" style="font-size: 15px;">日记</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 15px;">神经网络</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 15px;">机器学习</a> <a href="/tags/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" style="font-size: 15px;">基本概念</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E6%89%A9%E5%85%85/" style="font-size: 15px;">数据扩充</a> <a href="/tags/%E8%A1%8C%E4%B8%BA%E8%AF%86%E5%88%AB/" style="font-size: 15px;">行为识别</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" style="font-size: 15px;">数据集</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E8%AE%B0%E5%BD%95/" style="font-size: 15px;">代码记录</a> <a href="/tags/%E7%BB%84%E4%BC%9A%E5%88%86%E4%BA%AB/" style="font-size: 15px;">组会分享</a> <a href="/tags/PyTorch/" style="font-size: 15px;">PyTorch</a> <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" style="font-size: 15px;">目标检测</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 15px;">深度学习</a> <a href="/tags/Keras/" style="font-size: 15px;">Keras</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 15px;">工具</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/TensorFlow/" style="font-size: 15px;">TensorFlow</a> <a href="/tags/Ubuntu/" style="font-size: 15px;">Ubuntu</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/" style="font-size: 15px;">图像分割</a> <a href="/tags/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/" style="font-size: 15px;">基本算法</a> <a href="/tags/Latex/" style="font-size: 15px;">Latex</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/06/21/lostinkonx/">那年二十七八</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/11/scihelper/">SCI Helper文献获取工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/08/ubuntuissues/">Ubuntu安装后常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/20/quickgittur/">20分钟学会使用git</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/03/SelectedMedPaperOnTopConf/">Selected Paper on Top Conference</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/28/TabOrSpace/">Python中使用Tab还是Space</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/20/intro-to-tex/">使用Latex写论文：Latex快速上手与基础教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/25/pycharm-import-error/">解决Pycharm中的Unresolved Reference "XXX"的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/optimizationfuncinML/">Optimization for Deep Learning</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/06/decisiontree/">基于树的机器学习模型</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">低调的披风.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
