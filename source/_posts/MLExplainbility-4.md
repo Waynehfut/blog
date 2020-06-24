@@ -4,8 +4,10 @@ date: 2019-03-23 09:04:00
 tags: [机器学习]
 categories: 技术
 ---
-> 本篇翻译自Kaggle机器学习可解释性微公开课🎓，本篇时第四课时，主讲利用SHAP(SHapley Additive exPlanations)值用以在一次独立预测中分解模型。
 
+本篇翻译自Kaggle机器学习可解释性微公开课🎓，本篇时第四课时，主讲利用SHAP(SHapley Additive exPlanations)值用以在一次独立预测中分解模型。
+
+<!-- more -->
 Check source at [Kaggle](https://www.kaggle.com/learn/machine-learning-explainability) by Dan Becker, translate by [waynehfut](https://waynehfut.com/)
 
 # 简介
@@ -41,7 +43,7 @@ SHAP值解释了对于给定特征具有某些特定值所产生的影响，并�
 SHAP值将以保证良好属性的方式执行此操作。当我们进行如下的预测时：
 `sum(SHAP values for all features) = pred_for_team - pred_for_baseline_values`
 也就是说，所有特征的SHAP值是对为什么预测与基线不同的一个求和。这也允许我们将预测分解为下图：
-![p1](MLExplainbility-4/p1.png)
+![p1](p1.png)
 
 那如何理解这些呢？
 
@@ -103,7 +105,7 @@ shap.initjs()
 shap.force_plot(explainer.expected_value[1], shap_values[1], data_for_prediction)
 ```
 Out：
-![p2](MLExplainbility-4/p2.png)
+![p2](p2.png)
 
 如果你仔细的查看创建SHAP值的代码，你将会注意到我们参考了`shap.TreeExplainer(my_model)`中的树。但是SHAP包已经解释了模型的每种类型。
 
@@ -118,4 +120,4 @@ k_explainer = shap.KernelExplainer(my_model.predict_proba, train_X)
 k_shap_values = k_explainer.shap_values(data_for_prediction)
 shap.force_plot(k_explainer.expected_value[1], k_shap_values[1], data_for_prediction)
 ```
-![p3](MLExplainbility-4/p3.png)
+![p3](p3.png)

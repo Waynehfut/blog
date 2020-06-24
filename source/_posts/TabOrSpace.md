@@ -1,9 +1,15 @@
 ---
-title: TabOrSpace
+title: Python中使用Tab还是Space
 date: 2020-01-28 10:59:56
 tags: [Python,代码记录]
 categories: 代码
 ---
+
+Python使用Tab是怎么回事呢？Python使用相信大家都很熟悉，但是Python使用Tab是怎么回事呢，下面就让小编带大家一起了解吧。
+Python使用Tab，其实就是Space，大家可能会很惊讶Python使用怎么会Tab呢？但事实就是这样，小编也感到非常惊讶。
+这就是关于Python使用Tab的事情了，大家有什么想法呢，欢迎在评论区告诉小编一起讨论哦！
+
+<!-- more -->
 
 今天偶尔逛论坛的时候，看到一条消息，Python是用tab还是Space来调整缩进，一直以来都没太关注过，最终在官方的PEP-8的文档中找到了答案：
 https://www.python.org/dev/peps/pep-0008/#tabs-or-spaces

@@ -1,9 +1,14 @@
 ---
-title: 使用Latex写论文之一：Latex快速上手与基础教程
+title: 使用Latex写论文：Latex快速上手与基础教程
 date: 2020-01-20 15:54:54
 tags: [Latex]
 categories: 技术
+mathjax2: true
+toc: true
 ---
+
+本篇主讲Latex是什么，以及基本的Latex操作。
+<!-- more -->
 
 # 什么是$\LaTeX$
 

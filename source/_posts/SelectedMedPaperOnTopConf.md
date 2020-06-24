@@ -4,7 +4,9 @@ date: 2020-02-03 19:20:17
 tags: [论文阅读]
 ---
 
-Recently, I am preparing the literature review for a paper which related to the medical image. I will sort out the last year(time) top conference papers to make me more clear insight, which include CVPR, ICCV, MICCAI, ISBI, EMBC. **Notice: Papers were collected conditionally**.
+Recently, I am preparing the literature review for a paper which related to the medical image. I will sort out the last year(time) top conference papers to make me more clear insight, which include CVPR, ICCV, MICCAI, ISBI, EMBC. Notice: Papers were collected conditionally.
+
+<!-- more -->
 
 # Outline
 

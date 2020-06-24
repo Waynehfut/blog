@@ -5,6 +5,10 @@ tags: [深度学习,PyTorch]
 categories: 技术
 ---
 
+Pytorch的基础使用官方教程，主要描述了PyTorch构建简单神经网络
+
+<!-- more -->
+
 # Torch中的Nerual Networks
 
 我们可以使用`torch.nn`来构建神经网络

@@ -5,6 +5,9 @@ tags: [Ubuntu, 代码记录]
 categories: 教程
 ---
 
+这里记录了常见的Ubuntu系统安装和操作的问题，现在做个记录以备查。
+<!-- more -->
+
 # 系统安装
 
 ## Ubuntu 无法挂载 NTFS 磁盘

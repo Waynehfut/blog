@@ -5,7 +5,7 @@ tags: Keras
 categories: 技术
 ---
 
-*在[上篇](https://waynehfut.github.io/2018/02/27/mnist-mlp/)中，说了Keras中的Hello World,说到了一些神经网络的基本概念，这篇将以keras的卷积神经网络为切入点，介绍卷积神经网络。[相关Link](https://github.com/keras-team/keras/blob/master/examples/mnist_cnn.py)*
+在[上篇](https://waynehfut.github.io/2018/02/27/mnist-mlp/)中，说了Keras中的Hello World,说到了一些神经网络的基本概念，这篇将以keras的卷积神经网络为切入点，介绍卷积神经网络。[相关Link](https://github.com/keras-team/keras/blob/master/examples/mnist_cnn.py)
 <!-- more -->
 第二个Sample是Cnn下的Mnist，用的模型也非常简单，先说几个这个代码里设计到的概念：
 **Flatten：** 字面意思是平滑，拉平。也就是告诉我们这个东西是将什么东西拉直的，实际上一般是用在包含卷积或者池化的神经网络中，将矩阵数据转换为向量的，从而在后续的全连接层(Dense)实现后续操作。

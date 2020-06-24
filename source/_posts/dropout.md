@@ -3,6 +3,7 @@ title: Targeted Dropout论文阅读笔记
 date: 2018-11-28 11:02:43
 tags: [论文阅读,神经网络]
 categories: 论文
+mathjax: true
 ---
 本文由谷歌大脑首席科学家Geoffrey E. Hinton 联合牛津大学等国际神经网络大拿共同发表与NIPS 2018，其主要给出了一个新的Dropout实现策略，核心是在常规的Dropout之前加入类似于树状剪枝的操作，据文章称可以提高运行效率。[Git repo](https://github.com/for-ai/TD)
 <!-- more -->
@@ -52,4 +53,3 @@ $$\mathcal{W}\left(\theta\right)=\left\{ \underset { 1\le i\le { N }_{ row\left(
 应用方面，当然是一个好的小点，又可以加到现在的工作之中，并且实现难度不大，在文章的测试数据来看，效果还是很好的。
 
 论文原文：{% pdf https://drive.google.com/file/d/14PtfepkAhysWtJMjfr4QqeCwH-aMMU9B/preview %}
-[Preview is supported by Google Drive <img src = "https://www.gstatic.com/images/branding/product/1x/drive_48dp.png" width="15dp" width="15dp">]

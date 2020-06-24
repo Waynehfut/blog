@@ -6,11 +6,13 @@ categories: 技术
 ---
 
 
-> 本篇翻译自Kaggle机器学习可解释性微公开课🎓，本篇时第二课时，主讲机器学习可解释性中数据排列重要性的发现
+本篇翻译自Kaggle机器学习可解释性微公开课🎓，本篇时第二课时，主讲机器学习可解释性中数据排列重要性的发现
+
+<!-- more -->
 
 Check source at [Kaggle](https://www.kaggle.com/learn/machine-learning-explainability) by Dan Becker, translate by [waynehfut](https://waynehfut.com/)
 
-<!-- more -->
+
 
 ## 简介 Introduction
 
@@ -48,7 +50,7 @@ fix在本节课中，我们将集中于**排列重要性**，相较于其他的�
 
 相反，我们会先问以下问题：如果我们随机的打乱验证集的单列数据，保留其他列的原始数据排序，那么打乱后的数据将会如何影响预测结果精度呢？
 
-![1.png](MLExplainbility-2/1.png)
+![1.png](1.png)
 
 随机的重新排列单列数据可能会导致较低的预测精度，由于打乱后的数据与真实世界的数据再也没有任何关联。如果我们重度的依赖打乱的模型进行预测，模型的精度必然会受到影响。因此，打乱`height at age 10`必然会造成恶劣的影响，但是如果我们打乱了`socks owned`的话，或许结果不会受到这么大的影响。
 
@@ -85,7 +87,7 @@ from eli5.sklearn import PermutationImportance
 perm = PermutationImportance(my_model,random_state = 1).fit(val_X,val_y)
 eli5.show_weights(perm, feature_names = val_X.columns.tolist())
 ```
-![2.png](MLExplainbility-2/2.png)
+![2.png](2.png)
 
 ## 排列重要性的解释
 

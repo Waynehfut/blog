@@ -5,6 +5,9 @@ tags: [深度学习,PyTorch]
 categories: 技术
 ---
 
+Pytorch的基础使用官方教程，主要描述了PyTorch与Numpy的关系
+
+<!-- more -->
 
 # 1. 前言
 

@@ -3,7 +3,12 @@ title: PyTorch入门二-自动微分
 date: 2019-04-10 22:45:43
 tags: [深度学习,PyTorch]
 categories: 技术
+mathjax: true
 ---
+
+Pytorch的基础使用官方教程，主要描述了自动微分的原理
+
+<!-- more -->
 
 # Autograd:自动计算微分
 

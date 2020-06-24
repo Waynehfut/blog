@@ -4,7 +4,8 @@ date: 2019-02-25 21:16:46
 tags: [深度学习,神经网络]
 categories: 技术
 ---
-来源台大李宏毅课程，The next Step for Mechine Learning, Youtube: https://www.youtube.com/watch?v=XnyM3-xtxHs
+来源台大李宏毅课程，The next Step for Mechine Learning.
+Youtube: https://www.youtube.com/watch?v=XnyM3-xtxHs
 
 <!-- more -->
 ## 1. 机器能否知道自己“不知道”?

@@ -4,9 +4,11 @@ date: 2020-06-11 14:53:59
 tags: [工具, 论文阅读]
 categories: 代码
 ---
-# 前言
+
 
 最近在家办公，很多时候访问外网不方便，还好有scihub可以之间搞下来论文，相对来说比较方法，但是复制粘贴doi的方法有点愚蠢，所以花了一下午时间看了看Chrome extension和JavaScript的一些知识，写了一个小工具。就叫它SCI Helper吧。
+
+<!-- more -->
 
 # Chrome extension
 

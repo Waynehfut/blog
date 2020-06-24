@@ -5,11 +5,12 @@ tags: [机器学习]
 categories: 技术
 ---
 
-> 本篇翻译自Kaggle机器学习可解释性微公开课🎓，本篇时第一课时，主要阐述了机器学习可解释性应用领域
+本篇翻译自Kaggle机器学习可解释性微公开课🎓，本篇时第一课时，主要阐述了机器学习可解释性应用领域
 
-Check source at [Kaggle](https://www.kaggle.com/learn/machine-learning-explainability) by Dan Becker, translate by [waynehfut](https://waynehfut.com/)
 
 <!-- more -->
+
+Check source at [Kaggle](https://www.kaggle.com/learn/machine-learning-explainability) by Dan Becker, translate by [waynehfut](https://waynehfut.com/)
 
 ## 哪类洞察是有可能的 What Types of Insights Are Possible 
 

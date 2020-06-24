@@ -6,7 +6,7 @@ categories: 技术
 ---
 
 
-*感谢支持我的小伙伴们，这些简单的博客仅仅是为了督促我自己学习而已，如果有对你有用的东西，那是非常棒了，谢谢。本次将说一下Keras中另一个例子[相关Link](https://github.com/keras-team/keras/blob/master/examples/cifar10_cnn.py)*
+本次将说一下Keras中另一个例子[相关Link](https://github.com/keras-team/keras/blob/master/examples/cifar10_cnn.py)
 
 正如题目所说的一样，这仍然是一个CNN的例子，但是有所不同的是，在这个例子中，我们将使用一个图像中一个常用的数据处理策略：Augmentation.
 

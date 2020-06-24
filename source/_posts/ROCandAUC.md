@@ -3,10 +3,13 @@ title: ROC和AUC的理解
 date: 2018-08-23 17:13:37
 tags: [基本概念]
 categories: 记录
+toc: true
 ---
-# ROC 曲线
+本篇主要解释了ROC和AUC的定义来源，希望能让自己更清楚这些指标。
 
+<!-- more -->
 
+# ROC
 
 ## 一、基本定义及理解
 
@@ -15,7 +18,7 @@ ROC曲线全称是受试者工作特征曲线(Receiver Operating Characteristic 
 - **横轴**是负正类率(false positive rate aka. **FPR**)即划分的例子中所有负例占所有负例的比例，其实就是特异度。
 - **纵轴**是真正类率(True postive rate aka. **TPR**)也叫灵敏度。
 
-<!-- more -->
+
 
 要绘制这两个轴线，还需要四个概念
 

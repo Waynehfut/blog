@@ -4,6 +4,9 @@ date: 2019-04-08 19:45:31
 tags: [行为识别,数据集]
 categories: 技术
 ---
+本篇总结了大多数现有的公开手术数据集。
+<!-- more -->
+
 # Retinal Microsurgery Instrument Tracking (RMIT)
  1. 单器械追踪，RMIT包含3种图像（in vivo video sequence）序列，大多数的场景都被缩放为640×480
  [https://sites.google.com/site/sznitr/code-and-datasets](https://sites.google.com/site/sznitr/code-and-datasets)
