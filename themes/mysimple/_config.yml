@@ -78,6 +78,9 @@ menu:
   - page: home
     directory: .
     icon: fa-home
+  - page: projects
+    directory: projects/
+    icon: fa-github-alt  
   - page: archive
     directory: archives/
     icon: fa-archive
