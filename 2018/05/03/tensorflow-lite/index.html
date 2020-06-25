@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>轻量级神经网络处理框架TensorFlow Lite | 低调的披风</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><script data-ad-client="ca-pub-9308755319739380" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>轻量级神经网络处理框架TensorFlow Lite | 低调的披风</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
@@ -17,7 +17,7 @@ ga('create','UA-116559759-1','auto');ga('send','pageview');
 </ul>
 <p>而它的实现思想如下图所示：</p>
 <figure>
-<img src="tensorflow-lite/tflite-architecture.jpg" alt="tflite-architecture.jpg"><figcaption>tflite-architecture.jpg</figcaption>
+<img src="tensorflow-lite/tflite-architecture.jpg" alt=""><figcaption>tflite-architecture.jpg</figcaption>
 </figure>
 <p>可以看出，训练的过程仍然还是放在大型设备上的，TFLite提供的只是一个转换器，将训练好的Model文件转换为体积更小的<code>.tflite</code>文件，而TFLite在Android和IOS设备上的实施则是依赖于Interpreter提供的各种kernels加载<code>.tflite</code>中的权重，从而在系统中实现相关的计算，TFLite向上提供了model参数加载的能力，向下实现了浮点运算和数据量化运算的接口，是一个介于<code>C++</code>/<code>JAVA API</code>和<code>ANNAPI</code>/<code>CoreML</code>等系统接口之间的计算层。</p>
 <h2 id="四如何使用-tflite">四、如何使用 TFLite</h2>
@@ -27,7 +27,7 @@ ga('create','UA-116559759-1','auto');ga('send','pageview');
 <h2 id="五演示效果">五、演示效果</h2>
 <p>下图展示了一些示例程序的演示结果：</p>
 <figure>
-<img src="tensorflow-lite/sample.jpg" alt="sample.jpg"><figcaption>sample.jpg</figcaption>
+<img src="tensorflow-lite/sample.jpg" alt=""><figcaption>sample.jpg</figcaption>
 </figure>
 <p>效率还可以 &gt; 题外话：近来忙于一些杂事，心态有些浮躁，论文进度也一般，在此反思。想来8号合肥GDG的Google I/O Extend，希望今年能有机会现场去听一波。</p>
 <p>参考: - https://github.com/tensorflow/tensorflow/blob/master/tensorflow/docs_src/mobile/tflite/demo_android.md - https://www.tensorflow.org/mobile/tflite/ - http://developers.googleblog.cn/2017/12/tensorflow-lite.html - https://www.tensorflowers.cn/t/277</p>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>基于树的机器学习模型 | 低调的披风</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><script data-ad-client="ca-pub-9308755319739380" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>基于树的机器学习模型 | 低调的披风</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
@@ -12,7 +12,7 @@ ga('create','UA-116559759-1','auto');ga('send','pageview');
 <h1 id="决策树">决策树</h1>
 <p>决策树(Decision Tree)是一种监督性的学习算法。它适用于分类和具有连续性的输入(特征)/输出(预测)。基于树的方法，通常将特征空间划分为一系列的矩形(决策空间)，然后给每一个矩形设置一个简单的子模型(如仅仅是设置一个常数阈值)。理论上上来说，这是简单有效的。首先通过一个例子来理解决策树，然后我们使用形式化分析法来分析决策树的创建过程。如考虑一个简单的借贷公司用户的数据集。我们可以综合客户的账号余额、信用记录、任职年限和历史借贷来预测用户的风险等级，并给出是否借贷。该问题便可以使用下列的决策树来解决：</p>
 <figure>
-<img src="tree1.png" alt="tree1"><figcaption>tree1</figcaption>
+<img src="tree1.png" alt=""><figcaption>tree1</figcaption>
 </figure>
 <h2 id="cart-模型">CART 模型</h2>
 <p>分类回归树(Classification and Regression Trees, <a href="https://en.wikipedia.org/wiki/Predictive_analytics#Classification_and_regression_trees_.28CART.29" target="_blank" rel="noopener">CART</a>)是由<a href="https://en.wikipedia.org/wiki/Leo_Breiman" target="_blank" rel="noopener">Leo Breiman</a>提出决策树构建算法，主要用来做面向分类或回归预测建模问题。CART是生成决策树最为常见的一种算法。在scikit-learn中主要使用<code>sklearn.tree.DecisionTreeClassifier</code>和<code>sklearn.tree.DecisionTreeRegressor</code>来分别用于基于决策树的分类和回归。</p>
@@ -212,9 +212,9 @@ ga('create','UA-116559759-1','auto');ga('send','pageview');
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1" role="doc-endnote"><p>https://datasciencevision.com/tree-based-models/.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩</a></p></li>
-<li id="fn2" role="doc-endnote"><p>https://en.wikipedia.org/wiki/Gini_coefficient<a href="#fnref2" class="footnote-back" role="doc-backlink">↩</a></p></li>
-<li id="fn3" role="doc-endnote"><p>https://en.wikipedia.org/wiki/Cross_entropy<a href="#fnref3" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn1" role="doc-endnote"><p>https://datasciencevision.com/tree-based-models/.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>https://en.wikipedia.org/wiki/Gini_coefficient<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>https://en.wikipedia.org/wiki/Cross_entropy<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <script>

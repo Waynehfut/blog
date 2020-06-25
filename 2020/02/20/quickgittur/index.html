@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>20分钟学会使用git | 低调的披风</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><script data-ad-client="ca-pub-9308755319739380" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>20分钟学会使用git | 低调的披风</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
@@ -13,7 +13,7 @@ ga('create','UA-116559759-1','auto');ga('send','pageview');
 <p>首次安装后，需要配置个人信息，以供远程仓库或者协作者识别你的个人信息(用户名和邮箱)。以我的为例：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"Hao Wang"</span></span><br><span class="line">git config --global user.email <span class="string">"waynehfut@outlook.com"</span></span><br></pre></td></tr></tbody></table></figure>
 <figure>
-<img src="https://s2.ax1x.com/2020/02/20/3mDh0f.png" alt="git config"><figcaption>git config</figcaption>
+<img src="https://s2.ax1x.com/2020/02/20/3mDh0f.png" alt=""><figcaption>git config</figcaption>
 </figure>
 <p>之后云端及协作端都会以这样的信息来识别你。</p>
 <h2 id="配置ssh访问">配置SSH访问</h2>
@@ -26,7 +26,7 @@ ga('create','UA-116559759-1','auto');ga('send','pageview');
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> Generating public/private rsa key pair.</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/c/Users/you/.ssh/id_rsa):[Press enter]</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase]</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Enter same passphrase again: [Type passphrase again]</span></span><br></pre></td></tr></tbody></table></figure>
 <p>一般一路按Enter到底即可，当看到这个结果时，即表示生成成功</p>
 <figure>
-<img src="https://s2.ax1x.com/2020/02/20/3mrljI.png" alt="ssh key"><figcaption>ssh key</figcaption>
+<img src="https://s2.ax1x.com/2020/02/20/3mrljI.png" alt=""><figcaption>ssh key</figcaption>
 </figure></li>
 <li><p>在远程代码仓库配置</p>
 <p>一般远程的代码仓库都支持ssh，以GitHub为例，在<a href="https://github.com/settings/keys" target="_blank" rel="noopener">这个链接</a>中点击<code>New SSH key</code>； 填写从<code>C:\Users\$yourname$\.ssh</code>下<code>id_rsa.pub</code>内的内容到github上 <img src="https://s2.ax1x.com/2020/02/20/3mrO8H.png" alt="add key"></p></li>
@@ -34,7 +34,7 @@ ga('create','UA-116559759-1','auto');ga('send','pageview');
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></tbody></table></figure>
 <p>出现类似以下输出即表示添加成功</p>
 <figure>
-<img src="https://s2.ax1x.com/2020/02/20/3mserq.png" alt="test ssh"><figcaption>test ssh</figcaption>
+<img src="https://s2.ax1x.com/2020/02/20/3mserq.png" alt=""><figcaption>test ssh</figcaption>
 </figure></li>
 </ol>
 <h1 id="与远程同步">与远程同步</h1>
@@ -55,13 +55,13 @@ ga('create','UA-116559759-1','auto');ga('send','pageview');
 <li>如果是本地创建项目，可以先在远程仓库创建一个空白仓库，直接新建即可：</li>
 </ol>
 <figure>
-<img src="https://s2.ax1x.com/2020/02/20/3myB7V.png" alt="create repo"><figcaption>create repo</figcaption>
+<img src="https://s2.ax1x.com/2020/02/20/3myB7V.png" alt=""><figcaption>create repo</figcaption>
 </figure>
 <ol start="2" type="1">
 <li>为方便起见，不要使用平台提供的任何文件，不使用readme初始化。</li>
 </ol>
 <figure>
-<img src="https://s2.ax1x.com/2020/02/20/3myh0x.png" alt="create"><figcaption>create</figcaption>
+<img src="https://s2.ax1x.com/2020/02/20/3myh0x.png" alt=""><figcaption>create</figcaption>
 </figure>
 <ol start="3" type="1">
 <li>初始化本地项目信息</li>
@@ -75,25 +75,25 @@ ga('create','UA-116559759-1','auto');ga('send','pageview');
 <li>我们打开一个项目文件夹，并点击左侧的源代码管理按钮，我们可以看到很多待提交的更改（注意，该文件夹已经初始化了远程仓库）：</li>
 </ul>
 <figure>
-<img src="https://s2.ax1x.com/2020/02/20/3m6N4O.png" alt="project"><figcaption>project</figcaption>
+<img src="https://s2.ax1x.com/2020/02/20/3m6N4O.png" alt=""><figcaption>project</figcaption>
 </figure>
 <ul>
 <li>先填写commit信息，并点击“+”号暂存本地。</li>
 </ul>
 <figure>
-<img src="https://s2.ax1x.com/2020/02/20/3m6g58.png" alt="add info"><figcaption>add info</figcaption>
+<img src="https://s2.ax1x.com/2020/02/20/3m6g58.png" alt=""><figcaption>add info</figcaption>
 </figure>
 <ul>
 <li>点击提交，提交的待同步更改</li>
 </ul>
 <figure>
-<img src="https://s2.ax1x.com/2020/02/20/3mc5WD.png" alt="commit"><figcaption>commit</figcaption>
+<img src="https://s2.ax1x.com/2020/02/20/3mc5WD.png" alt=""><figcaption>commit</figcaption>
 </figure>
 <ul>
 <li>同步仓库</li>
 </ul>
 <figure>
-<img src="https://s2.ax1x.com/2020/02/20/3mcTQH.png" alt="sync"><figcaption>sync</figcaption>
+<img src="https://s2.ax1x.com/2020/02/20/3mcTQH.png" alt=""><figcaption>sync</figcaption>
 </figure>
 <p>这样就可以提交代码到远程仓库</p>
 <h1 id="其他操作">其他操作</h1>
