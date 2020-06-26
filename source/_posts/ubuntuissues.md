@@ -3,6 +3,7 @@ title: ubuntu安装后常见问题
 date: 2020-06-08 16:16:35
 tags: [Ubuntu, 代码记录]
 categories: 教程
+toc: true
 ---
 
 这里记录了常见的Ubuntu系统安装和操作的问题，现在做个记录以备查。
@@ -10,10 +11,22 @@ categories: 教程
 
 # 系统安装
 
+## 解压
+
+```shell
+#解压缩
+tar -xzvf ***.tar.gz
+tar -xjvf ***.tar.bz2
+unzip text.zip
+```
+
+
 ## Ubuntu 无法挂载 NTFS 磁盘
 
 可能因为在挂载 wimdows 盘后，强制关机造成的，可使用
+```shell
 sudo ntfsfix /dev/**_
+```
 来修复。其中，_**为具体哪个盘，例如 sudo ntfsfix /dev/sda4
 
 ## 安装 Nvidia 显卡驱动后， 重启依然卡死。
