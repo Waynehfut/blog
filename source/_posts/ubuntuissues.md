@@ -81,6 +81,16 @@ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
+## TMUX
+
+安装Tmux后，终端输入`tmux`，之后可以使用`Ctrl+B`的快捷键进入命令模式；
+命令模式下：
+`Shift+%`表示左右分屏;
+`Shift+"`表示上下分屏；
+`↑`表示向上切换分屏
+`↓`表示向下切换分屏
+`←`表示向左切换分屏
+`→`表示向右切换分屏
 ## miniconda
 
 ```shell
