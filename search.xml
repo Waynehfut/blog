@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>使用Flutter开发App</title>
+      <link href="/2020/07/09/flutter-learn-p1/"/>
+      <url>/2020/07/09/flutter-learn-p1/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>最近看了一些代码上的东西，偶然看到了Flutter，感觉他的代码很高级，而且调试起来很简单，所以想来尝试一下。我计划以一个图片浏览器为出发点来开始这个语言的学习，希望能继续下去。</p><a id="more"></a><h1 id="配置flutter环境">配置flutter环境</h1><p>参考<a href="https://flutter.dev/docs/get-started/install/linux" target="_blank" rel="noopener">Flutter</a>很容易配置好linux下面的环境。</p><h2 id="检测安装">检测安装</h2><p>在配置过程中，可能会遇到android-license的问题，此时执行<code>lutter doctor --android-licenses</code>即可</p><p>安装好后，执行flutter doctor，可以得到</p><figure><img src="https://i.imgur.com/gbjdxWs.png" alt=""><figcaption>flutter doctor</figcaption></figure><p>就可以开始下一步的编写了。</p><h1 id="开始新项目">开始新项目</h1><p>我习惯用vscode来编写我的代码，此时，我们可以执行命令<code>flutter new project</code></p><figure><img src="https://i.imgur.com/2URumrB.png" alt=""><figcaption>new proj</figcaption></figure><p>便可构建出一个模板项目</p><figure><img src="https://i.imgur.com/31MzbLz.png" alt=""><figcaption>temple hello</figcaption></figure><p>我们的主要逻辑也是在这个<code>main.dart</code>中执行的，按下F5我们便可以得运行。</p><figure><img src="https://i.imgur.com/r6qaNbr.png" alt=""><figcaption>debug</figcaption></figure><p>得到运行结果： <img src="https://imgur.com/LaDAFWL.png" alt="run"></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 代码 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> flutter </tag>
+            
+            <tag> Android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>那年二十七八</title>
       <link href="/2020/06/21/lostinkonx/"/>
       <url>/2020/06/21/lostinkonx/</url>
