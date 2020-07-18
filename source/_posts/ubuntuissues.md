@@ -75,6 +75,13 @@ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 
 # 环境配置
 
+## GIT
+```shell
+ssh-keygen -t rsa -b 4096 -C "waynehfut@outlook.com"
+git config --global user.name "Hao Wang"
+git config --global user.email "waynehfut@outlook.com"
+```
+
 ## ZSH
 
 ```shell
