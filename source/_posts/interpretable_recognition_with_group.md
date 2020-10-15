@@ -1,5 +1,5 @@
 ---
-title: Interpretable and Accurate Fine-grained Recognition via Region Grouping
+title: 论文阅读之Interpretable and Accurate Fine-grained Recognition via Region Grouping
 date: 2020-10-15T20:53:47+08:00
 tags: [深度学习, 论文阅读]
 categories: 论文
