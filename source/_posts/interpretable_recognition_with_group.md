@@ -61,14 +61,11 @@ $$
 q_{ij}^k=\frac{exp(-\Vert(x_{ij}-d_k)/\sigma_k\Vert_2^2/2)}{\sum_k exp(-\Vert(x_{ij}-d_k)/\sigma_k\Vert_2^2/2)}
 $$
 
-对比Softmax可知，这部分实际上是加入L2正则化后的Softmax，其中 $\sigma \in (0,1)$ 是一个用以平滑部分字典 $d_k$ 的可训练参数，所有的 $q_{ij}^k \in R^K$ 组成了 $Q \in R^{K\times H\times W}$，这部分实际上是每个像素都进行了一次预测。
-
-
-#### 区域分配
+对比 Softmax 可知，这部分实际上是加入 L2 正则化后的 Softmax，其中 $\sigma \in (0,1)$ 是一个用以平滑部分字典 $d_k$ 的可训练参数，所有的 $q_{ij}^k \in R^K$ 组成了 $Q \in R^{K\times H\times W}$，这部分实际上是每个像素都进行了一次预测。
 
 #### 区域发现
 
-#### 发现区域的正则化
+#### 区域发现的正则化
 
 ### 区域特征提取及归因分析
 
