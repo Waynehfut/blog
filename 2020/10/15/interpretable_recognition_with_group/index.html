@@ -36,7 +36,7 @@ ga('create','UA-116559759-1','auto');ga('send','pageview');
 <li><span class="math inline">\([Z,a]=f(X,Q,D;{\theta}_{f})\)</span>：主要负责了区域特征提取和归因分析，在前一步的区域选择中已经通过区域字典 <span class="math inline">\(D\)</span> 搞定了区域分配图 <span class="math inline">\(Q\)</span> 之后，这块主要是来得到区域内的特征 <span class="math inline">\(Z\in R^{D\times K}\)</span> 并设定一个注意力参数 <span class="math inline">\(a\in R^K\)</span>来控制所对应区域在最终分类中的重要性，以供后续继续优化，记作 <span class="math inline">\(f(\cdot)\)</span>。</li>
 <li><span class="math inline">\(\hat{y}=h(Z,a;\theta_c)\)</span>：表示的是基于注意力的分类，通过将注意力参数 <span class="math inline">\(a\)</span> 和区域特征 <span class="math inline">\(Z\)</span> 放到线性分类器中，即可通过训练以适应数据，记作 <span class="math inline">\(h(\cdot)\)</span>。</li>
 </ul>
-<p>但是有个很严肃的问题是，文章认为它需要从弱标签里来学习到对应区域，为了确保“部分”目标的字典可以学习得到，作者假设图片上的特征是从属于一个图片特征集合的，而这个集合即服从 U 形分布，那么这一组特征在图片上可能的概率便可以使用 U 形分布，正则化工作也就是在这部分进行。具体而言，对于给定的一个图片特征集合 <span class="math inline">\(X_{1:N}\)</span> ，假设 <span class="math inline">\(p(d_k|X_{1:N})\)</span> 是区域 <span class="math inline">\(d_k\)</span> 出现在这个集合中的条件概率，并假定 <span class="math inline">\(p(d_k|X_{1:N})\)</span> 概率服从 U 形分布，从而可以控制特征是否存在的概率。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。作者在文中并没有做进一步的解释，而是认为对于部分简单的同类图像会包含很多相同的特征，如在小规模的数据集 Cub-200 birds 中，鸟的各个部分特征都是存在的，因此会将这个“特征是否存在”这个事件置为发生，否则对于复杂的数据集，如 ImageNet 中，则置为未发生。</p>
+<p><img src="https://i.loli.net/2020/10/18/AW23HxZsSyYG1Uq.png" alt="示意图"> 但是有个很严肃的问题是，文章认为它需要从弱标签里来学习到对应区域，为了确保“部分”目标的字典可以学习得到，作者假设图片上的特征是从属于一个图片特征集合的，而这个集合即服从 U 形分布，那么这一组特征在图片上可能的概率便可以使用 U 形分布，正则化工作也就是在这部分进行。具体而言，对于给定的一个图片特征集合 <span class="math inline">\(X_{1:N}\)</span> ，假设 <span class="math inline">\(p(d_k|X_{1:N})\)</span> 是区域 <span class="math inline">\(d_k\)</span> 出现在这个集合中的条件概率，并假定 <span class="math inline">\(p(d_k|X_{1:N})\)</span> 概率服从 U 形分布，从而可以控制特征是否存在的概率。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。作者在文中并没有做进一步的解释，而是认为对于部分简单的同类图像会包含很多相同的特征，如在小规模的数据集 Cub-200 birds 中，鸟的各个部分特征都是存在的，因此会将这个“特征是否存在”这个事件置为发生，否则对于复杂的数据集，如 ImageNet 中，则置为未发生。</p>
 <h3 id="部分分割与正则化">部分分割与正则化</h3>
 <p>假设已经完全理解了前述的概念，对于部分分割与正则化则是从区域分配，区域出现和区域出现正则化三个部分来详细说明的。</p>
 <h4 id="区域分配">区域分配</h4>
@@ -49,12 +49,18 @@ q_{ij}^k=\frac{\exp(-\Vert(x_{ij}-d_k)/\sigma_k\Vert_2^2/2)}{\sum_k \exp(-\Vert(
 <h4 id="区域发现">区域发现</h4>
 <p>对于一个给定的分配图，下一步是确定该区域是否存在区域类别 <span class="math inline">\(d_k\)</span> 。最简单的方式是在分配图 <span class="math inline">\(Q^k = [q_{ij}^k]\)</span> 的第 <span class="math inline">\(k\)</span> 个分配字图中进行最大池化。作者接着提出，在此之前进行平滑低带宽的<a href="https://zh.wikipedia.org/wiki/%E5%BE%84%E5%90%91%E5%9F%BA%E5%87%BD%E6%95%B0%E6%A0%B8" target="_blank" rel="noopener">高斯核函数</a>操作可以消除特征图异常数据，作者从而将这部分的计算形式化为： <span class="math inline">\(t_k=\max_{ij}\mathcal{G}\times Q^k\)</span> ，这里的 <span class="math inline">\(\mathcal{G}\)</span> 即为 2D 的高斯核函数，<span class="math inline">\(\times\)</span> 是卷积运算。则对于所有特征向量而言，是否从属区域类别 <span class="math inline">\(d_k\)</span> 的概率可以整合为一个向量 <span class="math inline">\(\tau = [t_1, t_2, ..., t_K]^T \in (0,1)^K\)</span></p>
 <p>这部分其实就是一个最大池化的变种。</p>
+<figure>
+<img src="https://i.loli.net/2020/10/18/ynMip3FTXI1N5rk.png" alt=""><figcaption>区域分配与发现</figcaption>
+</figure>
 <h4 id="区域发现的正则化">区域发现的正则化</h4>
 <p>接下来就是文章的重点设计了，作者通过对齐区域出现的经验分布和先验的 U 形 Beta 分布来正则化每个部分发生的概率。数学上有，对于每次从整体数据集中获得的小批量样本（mini-batch）中给定的 <span class="math inline">\(N\)</span> 个例子，将小样本的区域发现向量 <span class="math inline">\(\tau_n,n=1,2,...,N\)</span> 整合为一个大的向量 <span class="math inline">\(T=[\tau_1,\tau_2,...,\tau_N]\)</span> 来估计经验分布 <span class="math inline">\(p(d_K|X_{1:N})\)</span> ( <span class="math inline">\(d_k\)</span> 在 <span class="math inline">\(X_{1:N}\)</span> 中出现的概率)，假设先验分布 <span class="math inline">\(\hat{p}(d_K|X_{1:N})\)</span> 是已知的，如使用 Beta 分布来代替。那接下来就可以使用一维的 Wasserstein Distance 来对对其经验分布 <span class="math inline">\(p(d_k|X_{1:N})\)</span> 和 先验分布 <span class="math inline">\(p(d_k|X_{1:N})\)</span>， 具体计算如下：</p>
 <p><span class="math display">\[
 W(p(d_k|X_{1:N}),p(d_k|X_{1:N}))=\int_0^1|F^{-1}(z)-\hat{F}^{-1}(z)|dz
 \]</span></p>
 <p>其中， <span class="math inline">\(F(\cdot)\)</span> 和 <span class="math inline">\(F(\cdot)\)</span> 是经验分布和先验分布的分布函数，<span class="math inline">\(z\)</span> 取值在 <span class="math inline">\([0,1]\)</span> 之间。</p>
+<figure>
+<img src="https://i.loli.net/2020/10/18/VDnzety9cP5NxTF.png" alt=""><figcaption>区域发现正则化</figcaption>
+</figure>
 <p>在小批量的训练中，可以以小批量的样本求和的方式替代 Wasserstein Distance 的积分计算，从而可以转化为 <span class="math inline">\(F^{-1}\)</span> 和 <span class="math inline">\(\hat{F}^{-1}\)</span> 的 L1 距离，作者这里还提到了<strong><em>对分布函数的逆进行重构来提高训练稳定性</em></strong>。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p><span class="math display">\[
 W(p(d_k|X_{1:N}),p(d_k|X_{1:N}))=\frac{1}{N}\sum_{n=1}^N|\log([\tau_k^*]_i+\epsilon)-\log(\hat{F}^-1(\frac{2n-1}{2N})+\epsilon)|
@@ -75,11 +81,11 @@ z_k^{'}=\frac{1}{\sum_{ij} q_{ij}^k}\sum_{ij}q_{ij}^k(x_{ij}-d_k)/\sigma_k, z_k=
 <p>其中的 <span class="math inline">\(W \in R^{C\times D}\)</span> 是 <span class="math inline">\(C\)</span> 个通道线性分类器的权重，而 <span class="math inline">\(a\)</span> 则代表了该区域的重要性，越大则越重要。基于上述的分类结果，可以很容易的把 <span class="math inline">\(a\)</span> 叠加到前述的区域分配图 <span class="math inline">\(\mathcal{Q}\)</span> 中，记作 <span class="math inline">\(\mathcal{Q}^T a\)</span>, 其中 <span class="math inline">\(\mathcal{Q}\in R^{K\times H\times W}\)</span>是重新调整大小后的分配图</p>
 <h3 id="其他实现细节">其他实现细节</h3>
 <h4 id="损失函数">损失函数</h4>
-<p>除了分类用的交叉熵，还增加了前述的Wasserstein Distance来正则化中间区域发现矩阵。</p>
+<p>除了分类用的交叉熵，还增加了前述的 Wasserstein Distance 来正则化中间区域发现矩阵。</p>
 <h4 id="网络结构">网络结构</h4>
-<p>使用了Resnet101作为基础骨干网络（Backbone）</p>
+<p>使用了 Resnet101 作为基础骨干网络（Backbone）</p>
 <h4 id="训练和接口">训练和接口</h4>
-<p>对所有数据都是使用了基于小批量的SGD，模型初始化时使用了ImageNet的预训练参数。数据还进一步的用了Cneter crop来增强。</p>
+<p>对所有数据都是使用了基于小批量的 SGD，模型初始化时使用了 ImageNet 的预训练参数。数据还进一步的用了 Cneter crop 来增强。</p>
 <h2 id="实验效果">实验效果</h2>
 <figure>
 <img src="https://i.loli.net/2020/10/16/2XjhnWKZ3MtwvPQ.png" alt=""><figcaption>执行效果</figcaption>
