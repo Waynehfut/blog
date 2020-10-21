@@ -98,7 +98,8 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 `↓`表示向下切换分屏
 `←`表示向左切换分屏
 `→`表示向右切换分屏
-## miniconda
+
+## Miniconda
 
 ```shell
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
