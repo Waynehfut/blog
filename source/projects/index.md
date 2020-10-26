@@ -5,10 +5,17 @@ comments: false
 toc: true
 ---
 
-# SCI Helper:
+## GuidedNet
+
+Surgical workflow prediction with the guided network in IoMT system.
+
+[GuidedNet](https://github.com/Waynehfut/GuideNet)
+![](https://github.com/Waynehfut/GuideNet/blob/main/models/GuideNet.png)
+
+## SCI Helper
 
 Help you find the accessible paper with the DOI
 
 [Homepage](https://waynehfut.github.io/scihubhelper/)
 
-![](https://waynehfut.github.io/scihubhelper/supportfile/chrometoolsinstall.gif)
+![demo](https://waynehfut.github.io/scihubhelper/supportfile/chrometoolsinstall.gif)
