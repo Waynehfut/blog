@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>论文阅读之 Prototypical Network for Few-Shot Learning</title>
+      <link href="2020/11/02/prototypical_network_for_few_shot_learning/"/>
+      <url>2020/11/02/prototypical_network_for_few_shot_learning/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>基于 Few-shot learning 和 Meta-learning 的方法在现实场景中有着较广泛的应用，特别是在对医学等数据标注成本较高的场景中，基于 Few-shot 甚至是 Zero-shot 的方法具有一定的优势。这篇文章来自于 2017 年的 NeurIPS，由加拿大多伦多大学 Vector Institute 的 Jake Snell 完成。这个方法简单且有效，在该领域有一定的影响力。此文基于这篇文章作了一些自己的理解，并总结了部分小样本学习和元学习的内容。</p><a id="more"></a><h2 id="小样本学习与-meta-learning-的理解">小样本学习与 Meta Learning 的理解</h2><p>小样本学习的问题在各个领域都是非常常见的，主流的观点认为小样本学习是一个模型已经从一个大型数据集学习道路许多信息后，可以从新给出的几个少量新类实例（Few-shot）中学习到有用的知识，并调整训练器的权重适应并分类出这些新的类别数据。一般这样的任务被称为 N-Way-M-Shot, 如下图所示是一个5-way 1-shot的示意图：</p><p><img src="https://i.loli.net/2020/11/03/DNHR1AfXezjaBt3.png"></p><p>但是问题在于，如果是采用 Fine-tune 或是 re-train 的方式，少量的新类别数据基本不可能得到好的分类性能，大部分情况都会导致过拟合。目前小样本学习的主流思路是将数据视作一个空间内的高维数据表示，在这个假设下，每个数据将可以被编码（embedding）到一个向量中。此外，如果可以找到一个合理的编码规则，那么同一类的数据将被编码到该高维空间的相近距离中，不同类的数据将尽可能的远离。基于这一思想，Matching Network 和 Prototypical Network 等方法相继被提出。但是本质上还是在距离计算上做工作，这部分的方法也被称为<strong>基于度量的方法</strong>。需要注意的是这部分的方法有个前提假设，即同类的相似而异类的不相似。如果不使用这个假设，那么可以考虑<strong>基于模型的方法</strong>，这类方法的思路是使用模型来生成这个假设，主流方法有 MANN(Memory-Augmented Neural Network)和 Meta Networks，这部分的内容比较复杂，后续会再更新这部分内容。上述的方法多数还是在模型构建之前做工作，但是训练过程中，基于梯度的优化方法可能不适用与小样本的数据，为此，部分研究对优化内容进行了修改，提出了<strong>基于优化的方法</strong>。如 MAML 和 Reptile 等，这类方法我的理解是针对参数优化设计了一些替代方法，如基于多任务的 MAML 和基于多轮优化内循环的 Reptile。这部分内容较多，还需要进一步阅读。这篇主要还是讨论基于度量的方法。</p><h2 id="原型网络的定义">原型网络的定义</h2><h2 id="原型网络混合密度估计">原型网络混合密度估计</h2><h2 id="原型网络的线性原理">原型网络的线性原理</h2><h2 id="与匹配网络的对比">与匹配网络的对比</h2><h2 id="实验设计的策略影响">实验设计的策略影响</h2><h2 id="omniglot-few-shot-实验">Omniglot Few-shot 实验</h2><h2 id="miniimagenet-few-shot-实验">miniImageNet Few-shot 实验</h2><h2 id="cub-zero-shot-实验">CUB Zero-shot 实验</h2><h2 id="参考">参考</h2><p>在理解原文时，参考了以下博文和主页，谢谢！</p><ul><li>Lilian Weng. Meta-Learning: Learning to Learn Fast. <a href="https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html" target="_blank" rel="noopener">https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html</a>. 2018-11-30</li><li>ZMonster's Blog. 论文笔记：Few-Shot Learning.<a href="https://www.zmonster.me/2019/12/08/few-shot-learning.html" target="_blank" rel="noopener">https://www.zmonster.me/2019/12/08/few-shot-learning.html</a>,2019-12-08</li><li>Cyprien NIELLY, Few-shot Learning with Prototypical Networks. <a href="https://towardsdatascience.com/few-shot-learning-with-prototypical-networks-87949de03ccd" target="_blank" rel="noopener">https://towardsdatascience.com/few-shot-learning-with-prototypical-networks-87949de03ccd</a>, 2020-06-25</li><li>Daisukelab.Prototypical Networks as a Fine Grained Classifier.<a href="https://www.kaggle.com/c/humpback-whale-identification/discussion/81085" target="_blank" rel="noopener">https://www.kaggle.com/c/humpback-whale-identification/discussion/81085</a>,2018</li><li>羽_羊， 小样本学习（few-shot learning）之——原形网络（Prototypical Networks）. <a href="https://blog.csdn.net/m0_38031488/aricle/details/85274890" target="_blank" rel="noopener">https://blog.csdn.net/m0_38031488/aricle/details/85274890</a>. 2018-12-27</li><li>Poppy,《Prototypical Networks for Few-shot Learning》阅读笔记.<a href="https://zhuanlan.zhihu.com/p/54340045" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/54340045</a>.2019-01-08</li><li>MSnoopy',小样本学习之原型网络. <a href="https://blog.csdn.net/Snoopy_S/article/details/88420013" target="_blank" rel="noopener">https://blog.csdn.net/Snoopy_S/article/details/88420013</a>. 2019-03-12</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 论文 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 深度学习 </tag>
+            
+            <tag> 论文阅读 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用 C++ 调用 Pytorch 模型</title>
       <link href="2020/10/17/pytorchcpp/"/>
       <url>2020/10/17/pytorchcpp/</url>
