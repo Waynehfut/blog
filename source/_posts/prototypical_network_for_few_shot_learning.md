@@ -55,22 +55,25 @@ $$
 \mathbb{c}_k\leftarrow \frac{1}{N_S}\sum_{(x_i,y_i)\in S_k}f_{\phi}(x_i)
 $$
 
-接着这个episode的损失是对于每个类别$k$，该类所有位于$Q_k$中的数据有下述公式可以计算损失：
+接着这个 episode 的损失是对于每个类别$k$，该类所有位于$Q_k$中的数据有下述公式可以计算损失：
 
 $$
 J \leftarrow J + \frac{1}{N_C N_Q}[d(f_{\phi}(x),\mathbb{c}_k)+\log\sum_{k'}\exp(-d(f_{\phi(x)},c_{k'}))]
 $$
 
 这部分的公式推导如下：假设对于第$k$类的第$i$个样本，有损失函数更新值：$J_i^k$，则对应的更新值为：
+
 $$
 J_i^k=d(f_{\phi(x_i)},c_k)+\log\sum_{i=1}^{N_q}\exp(-d(f_{\phi}(x_i),c_i))
 $$
 
-则对于所有的$N_C$个类而言，就有每个都会有$N_Q$个Query set样本。因此会共有$N_C\times N_Q$个部分损失，因此所有的Query set样本的损失是除以$N_CN_Q$的均值。
+则对于所有的$N_C$个类而言，就有每个都会有$N_Q$个 Query set 样本。因此会共有$N_C\times N_Q$个部分损失，因此所有的 Query set 样本的损失是除以$N_CN_Q$的均值。
 
 至此方法论部分已经完全说明，后续主要更新一下理论分析部分。
 
 ## 原型网络混合密度估计
+
+对于一个原型网络而言如果使用一个特定的距离函数，比如说[regular Bergman divergences](https://www.zhihu.com/question/22426561/answer/209945856)，那么原型网络的算法等价于在具有指数族分布的支持集上实施了混合密度估计。
 
 ## 原型网络的线性原理
 
@@ -91,6 +94,7 @@ $$
 - Lilian Weng. Meta-Learning: Learning to Learn Fast. [https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html](https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html). 2018-11-30
 - ZMonster's Blog. 论文笔记：Few-Shot Learning.[https://www.zmonster.me/2019/12/08/few-shot-learning.html](https://www.zmonster.me/2019/12/08/few-shot-learning.html),2019-12-08
 - sirlis. 元学习文章阅读（Prototypical Network）[http://sirlis.cn/MetaLearning-ProtoNet/](http://sirlis.cn/MetaLearning-ProtoNet/)
+- 如何理解 Bregman divergence？ - 覃含章的回答 - [https://www.zhihu.com/question/22426561/answer/209945856 知乎](https://www.zhihu.com/question/22426561/answer/209945856)
 - Cyprien NIELLY. Few-shot Learning with Prototypical Networks. [https://towardsdatascience.com/few-shot-learning-with-prototypical-networks-87949de03ccd](https://towardsdatascience.com/few-shot-learning-with-prototypical-networks-87949de03ccd), 2020-06-25
 - Daisukelab. Prototypical Networks as a Fine Grained Classifier.[https://www.kaggle.com/c/humpback-whale-identification/discussion/81085](https://www.kaggle.com/c/humpback-whale-identification/discussion/81085),2018
 - 羽\_羊， 小样本学习（few-shot learning）之——原形网络（Prototypical Networks）. [https://blog.csdn.net/m0_38031488/aricle/details/85274890](https://blog.csdn.net/m0_38031488/aricle/details/85274890). 2018-12-27
