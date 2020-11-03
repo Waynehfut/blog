@@ -27,7 +27,7 @@ toc: true
 
 但是问题在于，如果是采用 Fine-tune 或是 re-train 的方式，少量的新类别数据基本不可能得到好的分类性能，大部分情况都会导致过拟合。目前小样本学习的主流思路是将数据视作一个空间内的高维数据表示，在这个假设下，每个数据将可以被编码（embedding）到一个向量中。此外，如果将寻找$F$的任务视作找一个合理的编码规则，那么同一类的数据将被编码到该高维空间的相近距离中，不同类的数据将尽可能的远离。基于这一思想，Matching Network 和 Prototypical Network 等方法相继被提出。但是本质上还是在距离计算上做工作，这部分的方法也被称为**基于度量的方法**。需要注意的是这部分的方法有个前提假设，即同类的相似而异类的不相似。如果不使用这个假设，那么可以考虑**基于模型的方法**，这类方法的思路是使用模型来生成这个假设，主流方法有 MANN(Memory-Augmented Neural Network)和 Meta Networks，这部分的内容比较复杂，后续会再更新这部分内容。上述的方法多数还是在模型构建之前做工作，但是训练过程中，基于梯度的优化方法可能不适用与小样本的数据，为此，部分研究对优化内容进行了修改，提出了**基于优化的方法**。如 MAML 和 Reptile 等，这类方法我的理解是针对参数优化设计了一些替代方法，如基于多任务的 MAML 和基于多轮优化内循环的 Reptile。这部分内容较多，还需要进一步阅读。这篇主要还是讨论基于度量的方法。
 
-## 原型网络及形式化表示
+## 原型网络的立意及形式化表示
 
 基于度量的方法可以从 K 阶近邻的算法中参考从而加深理解。类比 k 阶近邻算法，可以将 Support Set 中的数据视作$K$个类别数据的特征组合，基于度量的方法就是将这些特征组合编码起来，并计算数据样本之间的相似性。原型网络基于这一思想，认为 Support set 中同类的数据具有相同的原型表示，不同类型的原型表示之间应该具有较大的差别。基于这个思想，对于一个给定的具有 $N$ 个图片的小规模 Support set 数据 $S=\{\left(x_1,y_1\right),...,\left(x_N,y_N\right)\}$，其中 $x_i\in\mathbb{R}^{D\times H\times W}$，表示输入的图具有 $D$ 个维度，高宽分别为 $H$ 和 $W$。$y_i$ 表示对应的标签，它可以是一个 class 的标签，也可以是其他任务，如图片分割，目标检测等任务的标签。对于一个类别$k$而言，所有属于$k$的值记作 $S_k$.
 
@@ -43,9 +43,32 @@ $$
 p_{\phi}\left(y=k|X\right)=\frac{\exp(-d(f_{\phi}(x),c_k))}{\sum_{k'}\exp\left(-d(f_\phi\left(x\right),c_{k'})\right)}
 $$
 
-训练的目标则是使用SGD最小化类别$k$对应的$p_{\phi}$负对数概率的值来计算作为优化目标，即：$J\left(\phi\right)=-\log p_{\phi}\left(y=k|x\right)$，而对于训练training task的数据则是随机从训练集中选取得到，并进一步的分为support set和query set. 计算$J\left(\phi\right)$的算法伪代码如下：
+训练的目标则是使用 SGD 最小化类别$k$对应的$p_{\phi}$负对数概率的值来计算作为优化目标，即：$J\left(\phi\right)=-\log p_{\phi}\left(y=k|x\right)$，而对于训练 training task 的数据则是随机从训练集中选取得到，并进一步的分为 support set 和 query set. 计算$J\left(\phi\right)$的算法伪代码如下：
 
-![伪代码](https://i.loli.net/2020/11/03/QGjAVvLPbtZEYUm.png)
+![伪代码](https://i.loli.net/2020/11/03/drpsXJFnq4RGevT.png)
+
+对于一个有$K$个类的训练集来说，$N_C$表示每轮 episode 所提取的数据包含的子类量。$N_S$是每个类中的 Support set 数据的数量。$N_Q$是每个类中的 Query set 数据的数量。$RANDOMSAMPLE(S,N)$表示从集合$S$中取得$N$个不重复的元素
+
+算法的输入是一批训练数据$\mathcal{D}=\{(x_1,y_1),...,(x_N,y_N)\}$,其中每个$y_i\in\{1,...,K\}$。作者使用$\mathcal{D}_k$表示数据集$\mathcal{D}$中所有$y_i=k$的集合$\left(X_i,y_i\right)$。算法执行时，对于每个类别而言首先会为当前迭代（episode）从$\{1,...,K\}$选择$N_C$个类。接着在选定的$N_C$个类别中，分别遍历每个类别。对于特定的类别$k$，支持集$S_k$是从当前 episode 的数据集中所有类别为$k$的数据中选取$N_S$个数据，接着在当前 eposide 剩余的数据（$D_{V_k}\backslash S_k$）中选取$N_Q$个数据作为 Query set。接着计算当前支持集所对应的原型公式如下^[需要注意此部分的计算依据前述的定义的分母应当为$N_S$]：
+
+$$
+\mathbb{c}_k\leftarrow \frac{1}{N_S}\sum_{(x_i,y_i)\in S_k}f_{\phi}(x_i)
+$$
+
+接着这个episode的损失是对于每个类别$k$，该类所有位于$Q_k$中的数据有下述公式可以计算损失：
+
+$$
+J \leftarrow J + \frac{1}{N_C N_Q}[d(f_{\phi}(x),\mathbb{c}_k)+\log\sum_{k'}\exp(-d(f_{\phi(x)},c_{k'}))]
+$$
+
+这部分的公式推导如下：假设对于第$k$类的第$i$个样本，有损失函数更新值：$J_i^k$，则对应的更新值为：
+$$
+J_i^k=d(f_{\phi(x_i)},c_k)+\log\sum_{i=1}^{N_q}\exp(-d(f_{\phi}(x_i),c_i))
+$$
+
+则对于所有的$N_C$个类而言，就有每个都会有$N_Q$个Query set样本。因此会共有$N_C\times N_Q$个部分损失，因此所有的Query set样本的损失是除以$N_CN_Q$的均值。
+
+至此方法论部分已经完全说明，后续主要更新一下理论分析部分。
 
 ## 原型网络混合密度估计
 
@@ -67,6 +90,7 @@ $$
 
 - Lilian Weng. Meta-Learning: Learning to Learn Fast. [https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html](https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html). 2018-11-30
 - ZMonster's Blog. 论文笔记：Few-Shot Learning.[https://www.zmonster.me/2019/12/08/few-shot-learning.html](https://www.zmonster.me/2019/12/08/few-shot-learning.html),2019-12-08
+- sirlis. 元学习文章阅读（Prototypical Network）[http://sirlis.cn/MetaLearning-ProtoNet/](http://sirlis.cn/MetaLearning-ProtoNet/)
 - Cyprien NIELLY. Few-shot Learning with Prototypical Networks. [https://towardsdatascience.com/few-shot-learning-with-prototypical-networks-87949de03ccd](https://towardsdatascience.com/few-shot-learning-with-prototypical-networks-87949de03ccd), 2020-06-25
 - Daisukelab. Prototypical Networks as a Fine Grained Classifier.[https://www.kaggle.com/c/humpback-whale-identification/discussion/81085](https://www.kaggle.com/c/humpback-whale-identification/discussion/81085),2018
 - 羽\_羊， 小样本学习（few-shot learning）之——原形网络（Prototypical Networks）. [https://blog.csdn.net/m0_38031488/aricle/details/85274890](https://blog.csdn.net/m0_38031488/aricle/details/85274890). 2018-12-27
