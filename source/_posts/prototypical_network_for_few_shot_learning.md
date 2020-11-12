@@ -130,6 +130,8 @@ $$
 作者对比了匹配网络，效果如下：
 ![实验对比](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201112165735.png)
 
+{% pdf ./manuscript.pdf %}
+
 ## 参考
 
 在写作这篇文字时，参考了以下博文和主页，谢谢！
