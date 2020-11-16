@@ -9,10 +9,6 @@
     <lastmod>2020-11-16</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2019/04/10/torch1/</loc>
-    <lastmod>2020-11-16</lastmod>
-  </url>
-  <url>
     <loc>https://blog.waynehfut.com/2018/03/06/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
     <lastmod>2020-11-16</lastmod>
   </url>
@@ -25,6 +21,14 @@
     <lastmod>2020-11-16</lastmod>
   </url>
   <url>
+    <loc>https://blog.waynehfut.com/2019/04/11/torch4/</loc>
+    <lastmod>2020-11-16</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.waynehfut.com/2020/10/17/pytorchcpp/</loc>
+    <lastmod>2020-11-16</lastmod>
+  </url>
+  <url>
     <loc>https://blog.waynehfut.com/2019/04/11/torch3/</loc>
     <lastmod>2020-11-16</lastmod>
   </url>
@@ -33,11 +37,7 @@
     <lastmod>2020-11-16</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2019/04/11/torch4/</loc>
-    <lastmod>2020-11-16</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.waynehfut.com/2020/10/17/pytorchcpp/</loc>
+    <loc>https://blog.waynehfut.com/2019/04/10/torch1/</loc>
     <lastmod>2020-11-16</lastmod>
   </url>
   <url>
@@ -81,22 +81,6 @@
     <lastmod>2020-11-16</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2018/11/28/dropout/</loc>
-    <lastmod>2020-11-16</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.waynehfut.com/2019/04/10/dlenvwithconda/</loc>
-    <lastmod>2020-11-16</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.waynehfut.com/2018/12/27/conda/</loc>
-    <lastmod>2020-11-16</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.waynehfut.com/2019/05/06/decisiontree/</loc>
-    <lastmod>2020-11-16</lastmod>
-  </url>
-  <url>
     <loc>https://blog.waynehfut.com/2020/10/15/interpretable_recognition_with_group/</loc>
     <lastmod>2020-11-16</lastmod>
   </url>
@@ -105,7 +89,7 @@
     <lastmod>2020-11-16</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2018/03/04/cifar10-cnn/</loc>
+    <loc>https://blog.waynehfut.com/2018/12/27/conda/</loc>
     <lastmod>2020-11-16</lastmod>
   </url>
   <url>
@@ -113,7 +97,23 @@
     <lastmod>2020-11-16</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2018/11/22/Video-and-Language-ECCV-MM-2016-Tao-Mei-Pub/</loc>
+    <loc>https://blog.waynehfut.com/2019/04/10/dlenvwithconda/</loc>
+    <lastmod>2020-11-16</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.waynehfut.com/2018/11/28/dropout/</loc>
+    <lastmod>2020-11-16</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.waynehfut.com/2018/03/04/cifar10-cnn/</loc>
+    <lastmod>2020-11-16</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.waynehfut.com/2019/05/06/decisiontree/</loc>
+    <lastmod>2020-11-16</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.waynehfut.com/2019/03/18/XML%E8%A7%A3%E6%9E%90%E7%AE%80%E4%BB%8B/</loc>
     <lastmod>2020-11-16</lastmod>
   </url>
   <url>
@@ -125,7 +125,7 @@
     <lastmod>2020-11-16</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2018/08/23/ROCandAUC/</loc>
+    <loc>https://blog.waynehfut.com/2018/11/22/Video-and-Language-ECCV-MM-2016-Tao-Mei-Pub/</loc>
     <lastmod>2020-11-16</lastmod>
   </url>
   <url>
@@ -133,7 +133,7 @@
     <lastmod>2020-11-16</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2019/03/18/XML%E8%A7%A3%E6%9E%90%E7%AE%80%E4%BB%8B/</loc>
+    <loc>https://blog.waynehfut.com/2018/08/23/ROCandAUC/</loc>
     <lastmod>2020-11-16</lastmod>
   </url>
   <url>
