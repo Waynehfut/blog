@@ -5,7 +5,7 @@ tags: [深度学习,PyTorch]
 categories: 技术
 ---
 
-Pytorch的基础使用官方教程，主要描述了构建卷积神经网络
+PyTorch的基础使用官方教程，主要描述了构建卷积神经网络
 
 <!-- more -->
 

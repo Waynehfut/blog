@@ -1,12 +1,12 @@
 ---
-title: 使用 C++ 调用 Pytorch 模型
+title: 使用 C++ 调用 PyTorch 模型
 date: 2020-10-17T21:21:59+08:00
 categories: 技术
-tags: [Pytorch, C++, 深度学习]
+tags: [PyTorch, C++, 深度学习]
 toc: true
 ---
 
-最近所里有一个 GUI 项目需要调用 Pytorch 的模型，虽然之前做过一些，但是大部分用的是 Python 接口，这次对实效性有要求，因此做一个 C++的接口，现在把一些配置事项做个记录。
+最近所里有一个 GUI 项目需要调用 PyTorch 的模型，虽然之前做过一些，但是大部分用的是 Python 接口，这次对实效性有要求，因此做一个 C++的接口，现在把一些配置事项做个记录。
 
 <!-- more -->
 
@@ -15,7 +15,7 @@ toc: true
 ### 下载安装支持库
 
 首先，需要下载安装[`LibTorch`支持库](https://pytorch.org/get-started/locally/)，推荐使用
-![LibPytorch](https://i.loli.net/2020/10/17/IRexd6gaAzskvGZ.png)
+![LibPyTorch](https://i.loli.net/2020/10/17/IRexd6gaAzskvGZ.png)
 
 下载后直接解压
 
@@ -28,7 +28,7 @@ unzip libtorch-shared-with-deps-latest.zip
 
 ### 追踪原始模型
 
-需要注意的是，如果希望加载 Pytorch 库到 C++中，首先需要基于 JIT 库的 [TorchScript](https://pytorch.org/docs/master/jit.html#creating-torchscript-code) 对模型进行转化，这里以简单`resnet18`模型来作为示例，可以简单的使用`torchvision`中的模型库进行生成，接着我们生成一个简单的假数据，利用`torch.jit.trace`让 TorchScript 能够遍历一遍模型，便可完成追踪。
+需要注意的是，如果希望加载 PyTorch 库到 C++中，首先需要基于 JIT 库的 [TorchScript](https://pytorch.org/docs/master/jit.html#creating-torchscript-code) 对模型进行转化，这里以简单`resnet18`模型来作为示例，可以简单的使用`torchvision`中的模型库进行生成，接着我们生成一个简单的假数据，利用`torch.jit.trace`让 TorchScript 能够遍历一遍模型，便可完成追踪。
 
 ```python
 import torch
@@ -216,4 +216,4 @@ model loads ok
 ## 基于 C++ 前端训练模型
 
 实际上 C++前端提供了训练模型的接口，但是实施难度不低，相比 Python 训练完成后转 TypeScript 调用，这个方式稍显复杂。
-官方提供的教程如下：[使用 Pytorch 的 C++前端](https://pytorch.org/tutorials/advanced/cpp_frontend.html)，后续再更新吧。
+官方提供的教程如下：[使用 PyTorch 的 C++前端](https://pytorch.org/tutorials/advanced/cpp_frontend.html)，后续再更新吧。

@@ -5,7 +5,7 @@ tags: [深度学习,PyTorch]
 categories: 技术
 ---
 
-Pytorch的基础使用官方教程，主要描述了数据并行的原理
+PyTorch的基础使用官方教程，主要描述了数据并行的原理
 
 <!-- more -->
 
@@ -14,7 +14,7 @@ Pytorch的基础使用官方教程，主要描述了数据并行的原理
 往往，我们的实际使用环境有多个加速单元，我们将需要使用GPU来进行加速，在这部分中，我们可以使用`DataParalle
 l`来调用多个GPU
 
-在Pytorch中使用多个GPU非常简易，可以直接将模型放到GPU中
+在PyTorch中使用多个GPU非常简易，可以直接将模型放到GPU中
 
 
 ```python
@@ -31,7 +31,7 @@ mytensor = my_tensor.to(device)
 
 值得注意的是，刚才已经调用了my_tensor.to(device)并返回了一个新的GPU中my_tensor的复制来重写了原有`my_tensor`。你需要将它赋值到一个新的张量中，并在GPU中使用这个张量
 
-在多个GPU上执行前向传播和后向传播仍旧很自然。然而Pytorch默认只用一个GPU。你可以很简单的通过使用`DataParallel`在多个GPU上并行的进行运算操作
+在多个GPU上执行前向传播和后向传播仍旧很自然。然而PyTorch默认只用一个GPU。你可以很简单的通过使用`DataParallel`在多个GPU上并行的进行运算操作
 
 
 ```python

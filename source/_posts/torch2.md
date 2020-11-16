@@ -6,7 +6,7 @@ categories: 技术
 mathjax: true
 ---
 
-Pytorch的基础使用官方教程，主要描述了自动微分的原理
+PyTorch的基础使用官方教程，主要描述了自动微分的原理
 
 <!-- more -->
 
