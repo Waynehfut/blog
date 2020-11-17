@@ -5,19 +5,19 @@
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2019/04/15/torch5/</loc>
-    <lastmod>2020-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.waynehfut.com/2019/04/10/torch1/</loc>
-    <lastmod>2020-11-17</lastmod>
-  </url>
-  <url>
     <loc>https://blog.waynehfut.com/2018/03/06/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
     <loc>https://blog.waynehfut.com/2016/03/29/wheniwasyoung/</loc>
+    <lastmod>2020-11-17</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.waynehfut.com/2019/04/15/torch5/</loc>
+    <lastmod>2020-11-17</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.waynehfut.com/2019/04/10/torch1/</loc>
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
@@ -37,6 +37,10 @@
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
+    <loc>https://blog.waynehfut.com/2020/11/02/prototypical_network_for_few_shot_learning/</loc>
+    <lastmod>2020-11-17</lastmod>
+  </url>
+  <url>
     <loc>https://blog.waynehfut.com/2020/10/17/pytorchcpp/</loc>
     <lastmod>2020-11-17</lastmod>
   </url>
@@ -49,23 +53,11 @@
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2020/02/20/quickgittur/</loc>
-    <lastmod>2020-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.waynehfut.com/2019/11/25/pycharm-import-error/</loc>
-    <lastmod>2020-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.waynehfut.com/2018/02/27/mnist-mlp/</loc>
-    <lastmod>2020-11-17</lastmod>
-  </url>
-  <url>
     <loc>https://blog.waynehfut.com/2018/02/28/mnist-cnn/</loc>
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2020/11/02/prototypical_network_for_few_shot_learning/</loc>
+    <loc>https://blog.waynehfut.com/2018/02/27/mnist-mlp/</loc>
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
@@ -77,11 +69,19 @@
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
+    <loc>https://blog.waynehfut.com/2019/11/25/pycharm-import-error/</loc>
+    <lastmod>2020-11-17</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.waynehfut.com/2020/02/20/quickgittur/</loc>
+    <lastmod>2020-11-17</lastmod>
+  </url>
+  <url>
     <loc>https://blog.waynehfut.com/2020/01/20/intro-to-tex/</loc>
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2019/04/10/dlenvwithconda/</loc>
+    <loc>https://blog.waynehfut.com/2020/10/15/interpretable_recognition_with_group/</loc>
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
@@ -89,11 +89,19 @@
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2020/07/09/flutter-learn-p1/</loc>
+    <loc>https://blog.waynehfut.com/2019/04/10/dlenvwithconda/</loc>
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2020/10/15/interpretable_recognition_with_group/</loc>
+    <loc>https://blog.waynehfut.com/2018/12/27/conda/</loc>
+    <lastmod>2020-11-17</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.waynehfut.com/2018/03/04/cifar10-cnn/</loc>
+    <lastmod>2020-11-17</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.waynehfut.com/2020/07/09/flutter-learn-p1/</loc>
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
@@ -105,23 +113,11 @@
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2018/03/04/cifar10-cnn/</loc>
-    <lastmod>2020-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.waynehfut.com/2019/02/25/challengefoMl/</loc>
-    <lastmod>2020-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.waynehfut.com/2018/12/27/conda/</loc>
+    <loc>https://blog.waynehfut.com/2018/11/22/Video-and-Language-ECCV-MM-2016-Tao-Mei-Pub/</loc>
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
     <loc>https://blog.waynehfut.com/2019/03/18/XML%E8%A7%A3%E6%9E%90%E7%AE%80%E4%BB%8B/</loc>
-    <lastmod>2020-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.waynehfut.com/2020/01/28/TabOrSpace/</loc>
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
@@ -137,11 +133,11 @@
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2019/03/23/MLExplainbility-4/</loc>
+    <loc>https://blog.waynehfut.com/2020/01/28/TabOrSpace/</loc>
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2018/11/22/Video-and-Language-ECCV-MM-2016-Tao-Mei-Pub/</loc>
+    <loc>https://blog.waynehfut.com/2019/02/25/challengefoMl/</loc>
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
@@ -154,6 +150,10 @@
   </url>
   <url>
     <loc>https://blog.waynehfut.com/2019/03/10/MLExplainbility-2/</loc>
+    <lastmod>2020-11-17</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.waynehfut.com/2019/03/23/MLExplainbility-4/</loc>
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
