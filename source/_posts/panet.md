@@ -27,9 +27,21 @@ toc: true
 
 ### 符号定义
 
-- $\mathcal{C}_{seen}$ 和 $\mathcal{C}_{unseen}$ 是两个互不重合的图像集合，分别或从中得到：
-- $\mathcal{D}_{train}$ 和 $\mathcal{D}_{test}$ 表示训练集和测试集，同时在每次 Few-shot 的训练 (episode) 中，都会从这两个集合抽取部分不重复的数据，称之为 $\mathcal{S}$ 和 $\mathcal{Q}$，通常称为支持集和查询集。则训练集和测试集可以表示为 $\mathcal{D}_{train} = \{(\mathcal{S}_i,\mathcal{Q}_i)\}_{i=1}^{N_{train}}$ 和 $\mathcal{D}_{test} = \{(\mathcal{S}_i,\mathcal{Q}_i)\}_{i=1}^{N_{test}}$，其中 $N_{train}$ 和 $N_{test}$ 分别表示训练集和测试集的总数量，这里可以类比前述 Few-shot 学习中对于 Training Task 和 Test Task 的定义。
-- 每次训练（episode）中的 $(\mathcal{S}_i,\mathcal{Q}_i)$ 实例中会 $K$ 个样本 $<image,mask>$ 其中这些样本下每个都有包含 $C$ 个语义类别，也被称为 `C-Way-K-shot`
+- $\mathcal{C}_{seen}$ 和 $\mathcal{C}_{unseen}$ 是两个互不重合的图像集合，分别从中可得到 $\mathcal{D}_{train}$ 和 $\mathcal{D}_{test}$；
+- $\mathcal{D}_{train}$ 和 $\mathcal{D}_{test}$ 表示训练集和测试集，同时在每次 Few-shot 的训练 (episode) 中，都会从这两个集合抽取部分不重复的数据，称之为 $\mathcal{S}$ 和 $\mathcal{Q}$，通常称为支持集和查询集。则训练集和测试集可以表示为 $\mathcal{D}_{train} = \{(\mathcal{S}_i,\mathcal{Q}_i)\}_{i=1}^{N_{train}}$ 和 $\mathcal{D}_{test} = \{(\mathcal{S}_i,\mathcal{Q}_i)\}_{i=1}^{N_{test}}$，其中 $N_{train}$ 和 $N_{test}$ 分别表示训练集和测试集的总数量，这里可以类比前述 Few-shot 学习中对于 Training Task 和 Test Task 的定义；
+- 每次训练（episode）中的 $(\mathcal{S}_i,\mathcal{Q}_i)$ 实例中会 $K$ 个样本 $<image,mask>$ 其中这些样本下每个都有包含 $C$ 个语义类别，也被称为 `C-Way-K-shot`，例如对于$\mathcal{S}_i=\{(I_{c,k},M_{c,k})\}$而言，其中 $k=1,2,...,k$，并且$c\in\mathcal{C}_i$, $|\mathcal{C}_i|=C$。而查询集$\mathcal{Q}_i$包含$N_{query} <image, mask>$个图像对，且总共的类别与支持集$\mathcal{S}_i$相同.
+- 所训练的模型$\mathcal{M}$就是在每次训练（episode）从支持集中找特征并应有到查询集中。
+
+### 模型概览
+
+![模型流程](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201121221328.png)
+首先模型将使用共享权值的 VGG-16 作为 backbone 来提取特征，之后使用 average pooling 从支持集中获取原型集，之后（a）用这些原型集在查询集上计算每个像素到原型的距离，取最近距离来划分区域原型，得到查询集分割结果并进一步得到查询集原型,（b）这个原型再返回支持集获得支持集分割结果，同时作者还设计了一个原型对齐正则化 PAR 来约束（a) 和（b）两个步骤学习到的嵌入方式一致。
+
+### 原型获取
+
+### 非参数度量学习
+
+### 原型分配正则化
 
 ## 实验细节
 
