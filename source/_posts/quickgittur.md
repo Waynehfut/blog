@@ -27,8 +27,7 @@ git config --global user.name "Hao Wang"
 git config --global user.email "waynehfut@outlook.com"
 ```
 
-![git config](https://s2.ax1x.com/2020/02/20/3mDh0f.png)
-
+![git config](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203421.png)
 之后云端及协作端都会以这样的信息来识别你。
 
 ### 配置 SSH 访问
@@ -54,14 +53,13 @@ git config --global user.email "waynehfut@outlook.com"
 
    一般一路按 Enter 到底即可，当看到这个结果时，即表示生成成功
 
-   ![ssh key](https://s2.ax1x.com/2020/02/20/3mrljI.png)
+   ![ssh key](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203457.png)
 
 2. 在远程代码仓库配置
 
    一般远程的代码仓库都支持 ssh，以 GitHub 为例，在[这个链接](https://github.com/settings/keys)中点击`New SSH key`；
    填写从`C:\Users\$yourname$\.ssh`下`id_rsa.pub`内的内容到 github 上
-   ![add key](https://s2.ax1x.com/2020/02/20/3mrO8H.png)
-
+   ![add key](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203515.png)
 3. 测试
 
    ```shell
@@ -70,7 +68,7 @@ git config --global user.email "waynehfut@outlook.com"
 
    出现类似以下输出即表示添加成功
 
-   ![test ssh](https://s2.ax1x.com/2020/02/20/3mserq.png)
+   ![test ssh](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203542.png)
 
 ## 与远程同步
 
@@ -81,7 +79,7 @@ git config --global user.email "waynehfut@outlook.com"
 如果远程代码库已经设置好了，可以直接从 git clone 下来。以这个仓库为例：
 
 1. 点击这个部分的按钮复制 ssh 路径
-   ![copy ssh](https://s2.ax1x.com/2020/02/20/3ms7yn.png)
+   ![copy ssh](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203602.png)
 
 2. 在本地的 shell(cmd)打开并执行 git clone 命令
 
@@ -90,21 +88,21 @@ git clone git@github.com:Waynehfut/CNNDetectFramework.git
 ```
 
 类似这样的结果，即表示拉取成功
-![git cloned](https://s2.ax1x.com/2020/02/20/3mySSJ.png)
+![git cloned](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203619.png)
 
-3. 我们在本地就会发现代码已经拉取下来（文件夹名称与项目同名）
+1. 我们在本地就会发现代码已经拉取下来（文件夹名称与项目同名）
 
 ### 本地创建代码库
 
 1. 如果是本地创建项目，可以先在远程仓库创建一个空白仓库，直接新建即可：
 
-![create repo](https://s2.ax1x.com/2020/02/20/3myB7V.png)
+![create repo](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203643.png)
 
-2. 为方便起见，不要使用平台提供的任何文件，不使用 readme 初始化。
+1. 为方便起见，不要使用平台提供的任何文件，不使用 readme 初始化。
 
-![create](https://s2.ax1x.com/2020/02/20/3myh0x.png)
+![create](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203704.png)
 
-3. 初始化本地项目信息
+1. 初始化本地项目信息
 
 在项目根目录下执行以下命令：
 
@@ -120,7 +118,7 @@ git push -u origin master # 将本地状态推送到远程仓库
 
 - 我们打开一个项目文件夹，并点击左侧的源代码管理按钮，我们可以看到很多待提交的更改（注意，该文件夹已经初始化了远程仓库）：
 
-![project](https://s2.ax1x.com/2020/02/20/3m6N4O.png)
+![project](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203728.png)
 
 - 先填写 commit 信息，并点击“+”号暂存本地。
 
@@ -130,7 +128,7 @@ git push -u origin master # 将本地状态推送到远程仓库
   git add <file>
   ```
 
-![add info](https://s2.ax1x.com/2020/02/20/3m6g58.png)
+![add info](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203748.png)
 
 - 点击提交，提交的待同步更改
 
@@ -140,7 +138,7 @@ git push -u origin master # 将本地状态推送到远程仓库
   git commit -m "message"
   ```
 
-![commit](https://s2.ax1x.com/2020/02/20/3mc5WD.png)
+![commit](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203807.png)
 
 - 同步仓库
 
@@ -151,7 +149,7 @@ git push -u origin master # 将本地状态推送到远程仓库
    git push <remote-branch> <local-branch>
    ```
 
-![sync](https://s2.ax1x.com/2020/02/20/3mcTQH.png)
+![sync](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203827.png)
 
 这样就可以提交代码到远程仓库
 
@@ -191,7 +189,7 @@ git push -u origin master # 将本地状态推送到远程仓库
    git revert commitID #依据commitID回退
    ```
 
-   ![gitlog](https://s2.ax1x.com/2020/02/21/3mgRXj.png)
+   ![gitlog](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203847.png)
 
 ### 分支
 

@@ -20,7 +20,7 @@ categories: 代码
 
 安装好后，执行 Flutter doctor，可以得到
 
-![Flutter doctor](https://i.imgur.com/gbjdxWs.png)
+![Flutter doctor](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124202851.png)
 
 就可以开始下一步的编写了。
 
@@ -28,19 +28,20 @@ categories: 代码
 
 我习惯用 vscode 来编写我的代码，此时，我们可以执行命令`Flutter new project`
 
-![new proj](https://i.imgur.com/2URumrB.png)
+![new proj](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124202920.png)
 
 便可构建出一个模板项目
 
-![temple hello](https://i.imgur.com/31MzbLz.png)
+![temple hello](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124202952.png)
 
 我们的主要逻辑也是在这个`main.dart`中执行的，按下 F5 我们便可以得运行。
 
-![debug](https://i.imgur.com/r6qaNbr.png)
+![debug](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203038.png)
 
 得到运行结果：
 
-<img src="https://imgur.com/LaDAFWL.png" width=256 />
+
+<img src="https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203109.png" width=256 />
 
 ## 有状态页面
 

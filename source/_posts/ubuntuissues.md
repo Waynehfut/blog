@@ -136,11 +136,11 @@ wget -qO- https://raw.githubusercontent.com/cra0zy/code-nautilus/master/install.
 
 - 拓展
 
-![Extensions](https://i.imgur.com/ZHBWMLt.png)
+![Extensions](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203236.png)
 
 ## Tweak Theme
 
-![Tweak setting](https://i.imgur.com/90Lbel5.png)
+![Tweak setting](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203253.png)
 
 ## 空格预览增强工具
 

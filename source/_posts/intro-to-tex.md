@@ -31,7 +31,7 @@ toc: true
 
 便可以产生如图所示的效果
 
-![示例图](https://s2.ax1x.com/2020/01/22/1kHVg0.png)
+![示例图](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203934.png)
 
 但是$\LaTeX$的文档大部分都是面向排版的，对于我这样的小白而言，只想写写论文水一水的样子，为了能够高效的摸鱼，我把我遇到的一些经验做个记录。
 
@@ -45,11 +45,11 @@ toc: true
 
 除非你需要配置中文环境，选择在线服务是最好的，这里强烈推荐Overleaf [https://www.overleaf.com](https://www.overleaf.com)，一个非常适合写论文和协作的在线$\LaTeX$服务。其中囊括了大量的期刊模板，可以快速开始草稿的撰写，并且可以与包括IEEE,Springer, Taylor & Francis在内的等多家出版社的投稿系统对接，可以实现一键投稿（小声逼逼：虽然我从来不敢这么干~）
 
-![Overleaf的界面](https://s2.ax1x.com/2020/01/22/1kHME4.png)
+![Overleaf的界面](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124204010.png)
 
 使用Overleaf最有利的可以直观的所见即所得，除非出现编译错误，大部分情况下不必“知其所以然”了，仅关注写作的内容即可，更重要的是，它支持富文本模式，可以像写Word一样来使用$\LaTeX$
 
-![富文本模式](https://s2.ax1x.com/2020/01/22/1kHubF.png)
+![富文本模式](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124204030.png)
 
 ## 本地配置
 
@@ -77,36 +77,36 @@ toc: true
 
    需要注意的是，安装完成后请在命令行测试安装是否正常，运行$\TeX$命令：
 
-   ![运行tex](https://s2.ax1x.com/2020/01/22/1kHwUH.png)
+   ![运行tex](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124204056.png)
 
    如果提示这样的信息即安装完成：
 
-   ![命令结果](https://s2.ax1x.com/2020/01/22/1kH05d.png)
+   ![命令结果](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124204110.png)
 
    如果没有这样的信息，请检查环境变量是否囊括texlive的路径：
 
-   ![环境变量](https://s2.ax1x.com/2020/01/22/1kHr8I.png)
+   ![环境变量](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124204130.png)
 
 ### 在TexStudio中配置本地环境
 
    配置好后端后，对于大部分人而言，选择TexStudio是最好的选择，https://www.texstudio.org/ ，作为一个跨平台的客户端，它拥有着较好的交互界面，支持9+语言，对于新手更加友好，安装同样是无脑的下一步即可。安装完成后，可以从 `Options-Configure TeXstudio-General-Language` 中修改语言为中文：
 
-   ![TexStudio修改中文](https://s2.ax1x.com/2020/01/22/1kHgr8.png)
+   ![TexStudio修改中文](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124204152.png)
 
    对于写论文的同学，还可以进一步在TexStudio中配置语言检查工具，从而避免单词错误，支持LibreOffice等文字编辑器的开源词典，路径为  `Options-Configure TeXstudio-Language Checking`:
 
-   ![语法检查](https://s2.ax1x.com/2020/01/22/1kHWVg.png) 
+   ![语法检查](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124204208.png)
 
    当然你还可以进一步的使用语句检查服务[languagetool](https://www.languagetool.org/)检查语法错误, 这里推荐知乎大佬的教程：https://zhuanlan.zhihu.com/p/38209314
    
 ### 在Visual Studio Code中配置本地环境
 
    作为一个半吊子码农，我还是更喜欢Visual Studio Code，它更加的纯粹和简单，只需安装下述插件即可：
-   ![VSCodeTex插件](https://s2.ax1x.com/2020/01/22/1kHfaQ.png)
+   ![VSCodeTex插件](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124204405.png)
 
    之后侧边栏便会出现一个$\TeX$符号，让我们打开一个$\TeX$目录试试吧：
 
-   ![实际操作](https://s2.ax1x.com/2020/01/22/1kHh5j.png)
+   ![实际操作](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124204427.png)
 
    还是非常方便的，重要的是，它支持保存实时渲染，无需像TexStudio一样需要按F5刷新。
 
@@ -141,11 +141,11 @@ toc: true
 
 效果如下：
 
-![作者](https://s2.ax1x.com/2020/01/22/1kbvm8.png)
+![作者](https://raw.githubusercontent.com/Waynehfut/blog/img/img/1kbvm8.png)
 
 脚注：
 
-![脚注](https://s2.ax1x.com/2020/01/22/1kq9Yj.png)
+![脚注](https://raw.githubusercontent.com/Waynehfut/blog/img/img/1kq9Yj.png)
 
 
 ## 段落
@@ -161,7 +161,7 @@ I am abstract
 
 效果如图所示：
 
-![摘要](https://s2.ax1x.com/2020/01/22/1kHzGR.png)
+![摘要](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205031.png)
 
 ### 关键词
 
@@ -178,7 +178,7 @@ I am abstract
 
 效果如下所示：
 
-![关键词](https://s2.ax1x.com/2020/01/22/1kbPsK.png)
+![关键词](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205048.png)
 
 ### 节标题
 
@@ -191,7 +191,7 @@ I am abstract
 
 如图所示：
 
-![节标题](https://s2.ax1x.com/2020/01/22/1kbAde.png)
+![节标题](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205110.png)
 
 ### 致谢附录等特殊标题
 
@@ -204,7 +204,7 @@ I am abstract
 
 效果如下所示：
 
-![Acknowledgement](https://s2.ax1x.com/2020/01/22/1kbKQP.png)
+![Acknowledgement](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205748.png)
 
 ## 表
 表，包括列表和表格等常见结构，这里我们以最简单的格式做例子：
@@ -220,7 +220,7 @@ I am abstract
 
 效果如下：
 
-![无序列表](https://s2.ax1x.com/2020/01/22/1kbQL8.png)
+![无序列表](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205221.png)
 
 ### 有序化列表
 
@@ -233,7 +233,7 @@ I am abstract
 
 效果如下：
 
-![有序列表](https://s2.ax1x.com/2020/01/22/1kb3dg.png)
+![有序列表](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205236.png)
 
 ### 普通表格
 
@@ -251,7 +251,7 @@ I am abstract
 
 效果如下：
 
-![空白表格](https://s2.ax1x.com/2020/01/22/1kb8oQ.png)
+![空白表格](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205255.png)
 
 如果我们要加一些线条，可以使用三线表格。
 
@@ -274,7 +274,7 @@ I am abstract
 
 效果如下：
 
-![三线表格](https://s2.ax1x.com/2020/01/22/1kbYJs.png)
+![三线表格](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205334.png)
 
 当然，我们有时候需要网格化表格：
 
@@ -295,7 +295,7 @@ I am abstract
 
 效果如下：
 
-![复合表格](https://s2.ax1x.com/2020/01/22/1kbwLT.png)
+![复合表格](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205350.png)
 
 ### 标题及标签
 
@@ -316,7 +316,7 @@ I am abstract
 
 效果如下：
 
-![引用表格](https://s2.ax1x.com/2020/01/22/1kbDwF.png)
+![引用表格](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205406.png)
 
 如果我们在正文中使用了表格，那我们以`~\ref{label}`方式来实现引用，如：
 
@@ -326,7 +326,7 @@ I will ref the table here~\ref{tab1sample}
 
 效果如下：
 
-![引用表格](https://s2.ax1x.com/2020/01/22/1kbro4.png)
+![引用表格](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205446.png)
 
 但是我们看到这里还是非常的丑，表格和标题都是歪着的，这时，我们可以使用`\centering`命令开控制`{tabular}`结构体：
 
@@ -346,7 +346,7 @@ I will ref the table here~\ref{tab1sample}
 
 效果如下：
 
- ![表格居中](https://s2.ax1x.com/2020/01/22/1kb6Y9.png)
+ ![表格居中](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205651.png)
 
 
 ### 位置控制符
@@ -382,7 +382,7 @@ I will ref the table here~\ref{tab1sample}
 
 效果如下：
 
-![图片示例](https://s2.ax1x.com/2020/01/22/1kbcWR.png)
+![图片示例](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205708.png)
 
 当然我们可以把一堆图片复合到一起：
 
@@ -399,7 +399,7 @@ I will ref the table here~\ref{tab1sample}
 
 效果如下：
 
-![复合图](https://s2.ax1x.com/2020/01/22/1kbWy6.png)
+![复合图](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205723.png)
 
 ### 带子图的图片
 
@@ -428,7 +428,7 @@ I will ref the table here~\ref{tab1sample}
 
 效果如下：
 
-![compact图片](https://s2.ax1x.com/2020/01/22/1kbTFH.png)
+![compact图片](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205820.png)
 
 
 ## 脚注
@@ -441,7 +441,7 @@ I will ref the table here~\ref{tab1sample}
 
 效果如下:
 
-![角标](https://s2.ax1x.com/2020/01/22/1kqutJ.png)
+![角标](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124210137.png)
 
 ## 算法
 
@@ -469,7 +469,7 @@ I will ref the table here~\ref{tab1sample}
 
 效果为：
 
-![algorithm2e效果](https://s2.ax1x.com/2020/01/22/1kq5j0.png)
+![algorithm2e效果](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205846.png)
 
 
 以`algorithmic`为例，注意包需要首先使用`\usepackage{algorithm}`包：
@@ -497,7 +497,7 @@ I will ref the table here~\ref{tab1sample}
 
 效果如下：
 
-![algorithmic效果](https://s2.ax1x.com/2020/01/22/1kLxiQ.png)
+![algorithmic效果](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205904.png)
 
 ## 公式
 
@@ -513,7 +513,7 @@ I am a inline equation $a=b+c$
 
 效果如下：
 
-![inline公式](https://s2.ax1x.com/2020/01/22/1kOQL6.png)
+![inline公式](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205923.png)
 
 ### 行间公式
 
@@ -529,7 +529,7 @@ I am a inline equation $a=b+c$, and I am display equation:
 
 效果如下：
 
-![display公式](https://s2.ax1x.com/2020/01/22/1kO3dO.png)
+![display公式](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205940.png)
 
 ### 不带标号公式
 
@@ -543,7 +543,7 @@ I am a inline equation $a=b+c$, and I am display equation:
 
 如图所示：
 
-![不带行号的公式](https://s2.ax1x.com/2020/01/22/1kOwOP.png)
+![不带行号的公式](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124205956.png)
 
 
 ## 参考文献
@@ -571,7 +571,7 @@ Here, we will cite a reference~\cite{citekey}
 
 效果如下：
 
-![引文](https://s2.ax1x.com/2020/01/22/1kOO61.png)
+![引文](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124210017.png)
 
 ### 使用bibtex构建参考文献
 
@@ -579,7 +579,7 @@ Here, we will cite a reference~\cite{citekey}
 
 1. 首先使用文献管理工具导出bib文件，假设为`ref.bib`
 
-   ![bib](https://s2.ax1x.com/2020/01/22/1kXipd.png)
+   ![bib](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124210036.png)
 
 2. 在原有参考文献部分替换为以下代码
    
@@ -596,11 +596,11 @@ Here, we will cite a reference~\cite{citekey}
    
    注：这里的`citekey`是指bib文件每个条目的第一个值，每个条目应当唯一，如下图：
 
-   ![bib文件](https://s2.ax1x.com/2020/01/22/1kXZ0f.png)
+   ![bib文件](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124210053.png)
 
    引用效果如下：
 
-   ![引用效果](https://s2.ax1x.com/2020/01/22/1kXF1A.png)
+   ![引用效果](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124210114.png)
 
 
 # 资源文件

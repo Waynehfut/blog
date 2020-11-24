@@ -11,4 +11,4 @@ comments: false
 
 点此[waynehfut@outlook.com](mailto:waynehfut@outlook.com)邮件联系，邮件主题注明“博客”
 
-![](https://i.imgur.com/ArLNSe4.png)
+![If you cannot see this image, please check your connection to the google](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124202808.png)
