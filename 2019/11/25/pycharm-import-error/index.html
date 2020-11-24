@@ -5,16 +5,16 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 ga('create','UA-116559759-1','auto');ga('send','pageview');
 </script><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 4.2.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">解决Pycharm中的Unresolved Reference &quot;XXX&quot;的问题</h1><a id="logo" href="/.">低调的披风</a><p class="description">一个记录我的杂事的博客</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/projects/"><i class="fa fa-github-alt"> 项目</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/tags/"><i class="fa fa-tags"> 标签</i></a><a href="/about"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">解决Pycharm中的Unresolved Reference &quot;XXX&quot;的问题</h1><div class="post-meta">2019-11-25<span> | </span><span class="category"><a href="/categories/%E4%BB%A3%E7%A0%81/">代码</a></span><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 167</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 1</span><span class="post-meta-item-text"> 分钟</span></span></span></div><div class="post-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>在折腾Pycharm时有时候会遇到<code>Unresolved Reference "XXX"</code>的问题，而这个问题是由于自定义文件夹没有包括到索引导致的。 <a id="more"></a> 如图</p>
 <figure>
-<img src="https://i.imgur.com/VNMd5wN.png" alt=""><figcaption>错误图</figcaption>
+<img src="https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203140.png" alt=""><figcaption>错误图</figcaption>
 </figure>
 <p>这个经常发生在自定义文件夹的情况中</p>
 <figure>
-<img src="https://i.imgur.com/xuvX18Z.png" alt=""><figcaption>错误原因</figcaption>
+<img src="https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203157.png" alt=""><figcaption>错误原因</figcaption>
 </figure>
 <p>问题原因是Pycharm没有识别出这个文件夹哪些文件该索引，因此我们在需要索引的文件夹里。</p>
 <p>如下图修改即可：</p>
 <figure>
-<img src="https://i.imgur.com/fzHkF6L.png" alt=""><figcaption>设置根目录</figcaption>
+<img src="https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124203214.png" alt=""><figcaption>设置根目录</figcaption>
 </figure>
 <script>
         document.querySelectorAll('.github-emoji')
