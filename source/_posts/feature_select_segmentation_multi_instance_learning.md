@@ -31,14 +31,27 @@ toc: true
 
 ## 模型结构
 
+![处理流程](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20210101100825.png)
+
 ### VAE-GAN
 
+![VAE-GAN](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20210101100900.png)
+
 ### 特征选取
+
+![特征选取](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20210101100937.png)
 
 ### 基于图神经网络的多示例学习
 
 ## 实验
 
+### 数据示例
+
+![数据示例](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20210101101004.png)
+
+### 实验结果
+
+![实验结果](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20210101101039.png)
 ## 后记
 
 通篇读下来，感觉文章可圈可点，但是还是有很多我个人觉得有问题的地方，例如，部分论述没有严格的引文，部分文字等描述也有点模糊。这篇文章的所使用的多示例学习实际上也在医学影像分割领域有了很多应用，文章虽然强调了他的方法是集中在 MIL 中，但是技术路线与 2016 年 CVPR 的 Patch-based convolutional neural network for whole slide tissue image classification 相近，大部分 VAE-GAN 方法都是类似的方式进行实现的，主要还是集成了 GCN 做了一些工作。
