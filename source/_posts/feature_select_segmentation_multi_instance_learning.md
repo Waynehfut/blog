@@ -71,13 +71,13 @@ $$
 其中$\tilde{x}\thicksim Decoder(h)$表示解码器自数据输入$x$所得到的样本。则 GAN 的判别器的重构误差可以表示为：
 
 $$
-\mathscr{L}_{L_{like}}^{{Dis}_{l}}=-E_{q(h\mid x)}[\log p(Dis_{l}(x)\mid h)]
+\mathscr{L}_{L_{like}}^{Dis_l}=- E_{q(h \mid x)}[\log p(Dis_{l}(x) \mid h)]
 $$
 
-使用$\mathscr{L}_{L_{like}}^{{Dis}_{l}}$来替换$\mathscr{L}_{L Like}^{\text {pixel}}$，即可得到 VAE-GAN 的损失：
+使用$\mathscr{L}_{L_{like}}^{Dis_l}$来替换$\mathscr{L}_{L Like}^{\text {pixel}}$，即可得到 VAE-GAN 的损失：
 
 $$
-\mathscr{L}=\lambda_{Dis}*\mathscr{L}_{L_{like}}^{{Dis}_{l}}+\lambda_{KL}*\mathscr{L}_{K L}+\lambda_{GAN}*\mathscr{L}_{GAN}
+\mathscr{L}=\lambda_{Dis}*\mathscr{L}_{L_{like}}^{Dis_l}+\lambda_{KL}*\mathscr{L}_{K L}+\lambda_{GAN}*\mathscr{L}_{GAN}
 $$
 
 其中$\lambda_{Dis}$、$\lambda_{KL}$和$\lambda_{GAN}$均为 VAE-GAN 损失的超参数。但需要注意的是，该部分的内容并不是特别创新的点，早在 2015 年就有相关文章提出了相同概念^[Larsen, Anders Boesen Lindbo, et al. "Autoencoding beyond pixels using a learned similarity metric." International conference on machine learning. PMLR, 2016.]
