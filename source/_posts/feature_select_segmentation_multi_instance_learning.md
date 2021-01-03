@@ -31,17 +31,104 @@ toc: true
 
 ## 模型结构
 
+模型的处理流程如下图所示，分别是图像的切片（Patch）、基于示例层的特征获取和选择以及基于包层级的分类。在本文的问题中，基于包层级的分类即是有无淋巴结转移。
+
 ![处理流程](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20210101100825.png)
+
+### 图像预处理
+
+在图像预处理阶段，肿瘤区域首先会有人为进行标定为感兴趣区域。之后 ROI 会分到多个非重叠的 512$\times$512 的小切片中。
 
 ### VAE-GAN
 
 ![VAE-GAN](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20210101100900.png)
 
+紧接着每个切片都将进行 VAE-GAN 的处理，文中作者所使用的 VAE 部分与传统的 VAE 并没有特殊的部分，同样使用了高斯分布对编码器部分进行了正则化。
+
+传统的 VAE 损失函数可以由如下公式进行表示：
+
+$$
+\begin{aligned}
+\mathscr{L}_{V A E} &=\mathscr{L}_{L Like}^{\text {pixel}}+\mathscr{L}_{K L} \\
+&=-E_{q(h \mid x)}[\log (p(x \mid h))]+D_{K L}(q(h \mid x) \| p(h))
+\end{aligned}
+$$
+
+其中，$h$是输入$x$的模式表示，前半部分表示的是 VAE 中的逐像素损失，$D_{KL}$是指 KL 距离，关于 VAE 损失函数请参考此处。^[陈雄辉,变分自编码器 VAE (Variational Autoencoder),https://zhuanlan.zhihu.com/p/56773895]
+
+而对于 GAN 来说，损失函数可以表示为：
+
+$$
+\mathscr{L}_{GAN}=\log(D(x))+\log(1-D(G(h)))
+$$
+
+因此对于如图 2 所示的 VAE-GAN 的模型来说，VAE 的解码器和 GAN 的编码器共享了相同的组件，因此可以使用 GAN 的判别器中所表示出的重构损失来表示原始 VAE 的逐像素重构损失（VAE 的第一部分）。具体而言，假设$Dis_{l}(x)$表示 GAN 判别器第$l_{th}$层的隐式表示，那么用于$Dis_{l}(x)$的均值为$Dis_{l}(\tilde{x})$的高斯观测模型模型可以表示为
+
+$$
+p\left(D i s_{l}(x) \| h\right)=N\left(D i s_{l}(x) \mid D i s_{l}(\tilde{x}), I\right)
+$$
+
+其中$\tilde{x}\thicksim Decoder(h)$表示解码器自数据输入$x$所得到的样本。则 GAN 的判别器的重构误差可以表示为：
+
+$$
+\mathscr{L}_{L_{like}}^{{Dis}_{l}}=-E_{q(h\mid x)}[\log p(Dis_{l}(x)\mid h)]
+$$
+
+使用$\mathscr{L}_{L_{like}}^{{Dis}_{l}}$来替换$\mathscr{L}_{L Like}^{\text {pixel}}$，即可得到 VAE-GAN 的损失：
+
+$$
+\mathscr{L}=\lambda_{Dis}*\mathscr{L}_{L_{like}}^{{Dis}_{l}}+\lambda_{KL}*\mathscr{L}_{K L}+\lambda_{GAN}*\mathscr{L}_{GAN}
+$$
+
+其中$\lambda_{Dis}$、$\lambda_{KL}$和$\lambda_{GAN}$均为 VAE-GAN 损失的超参数。但需要注意的是，该部分的内容并不是特别创新的点，早在 2015 年就有相关文章提出了相同概念^[Larsen, Anders Boesen Lindbo, et al. "Autoencoding beyond pixels using a learned similarity metric." International conference on machine learning. PMLR, 2016.]
+文章不同的点在于，作者使用这个结构主要是用来训练用以进行示例级特征提取的编码器，文中使用的是基于 ResNet-18 的网络结构。
+
 ### 特征选取
+
+特征选取在文中的流程可以参考下图所示。文章的特征选择的输入是一系列示例要素，而结果则与示例要素没有直接关系。为此文章通过重要性直方图和特征差异性来剔除冗余的特征标签，并简化学习任务难度。
 
 ![特征选取](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20210101100937.png)
 
+假设现有$N$个包级标签对$\{X_1,X_2,X_3,...，X_N\}$和$\{Y_1,Y_2,Y_3,...，Y_N\}$，其中第$i$包包含$K_i$个示例特征可表示为$\{x_1^i,x_2^i,...,x_K^i\}$，在文中，每个$x_j^i$的维度为$\mathbb{R}^D$，$x_j^i$表示自第$i$个包中选取的第$j^{th}$个示例特征，其对应标签为$Y_i\in\{0,1\}$。为了简化表示，$F$可以表示为$[f_1,f_2,...,f_D]$，而$x_j^i$可以视作$F$的特例。作者的目标就是提取出每个特征在不同包中的重要性$f_k=F[k]$。为此，文章首先为每个包中的每个特征都生成了长度为$N_b$的直方图向量，接着生成的直方图作为包级表示来计算正负标签的差值，进一步获取判别值以进行分类。
+
+#### 直方图生成
+
+对于每个特征向量$f_k$而言，作者计算了所有特征的极大值和极小值：
+
+$$
+\begin{aligned}
+f_{k}^{\max } &=\max \left\{x_{j}^{i}[k]\right\},\left(i=1, \ldots, N, j=1, \ldots, K_{i}\right) \\
+f_{k}^{\min } &=\min \left\{x_{j}^{i}[k]\right\},\left(i=1, \ldots, N, j=1, \ldots, K_{i}\right)
+\end{aligned}
+$$
+
+接着将区间$[f_{k}^{\min },f_{k}^{\max }]$划分到长度为$N_b$的空间中，并将每个包$X_i$置于直方图$H_k^i=(h_1^{(i,k)},...,h_{N_b}^{(i,k)})$中，其中$h_o^i$表示具有特征$f_k$的示例$X_i$置于第$o^{th}$个直方图区域的百分比，其计算公式如下：
+
+$$
+h_{o}^{i, k}=\frac{1}{K_{i}} \sum_{x_{j}^{i} \in \mathbf{X}_{1}} f_{o}\left(x_{j}^{i}[k]\right)
+$$
+
+其中，$o=1,...,N_b$，$j=1,...,K_i$,当$x_j^i[k]$落在第$o^{th}$个区间时，$ f*{o}\left(x*{j}^{i}[k]\right)$为 1，否则为 0。
+
+这个生成方式并没有太多特别的部分，主要是要分清$x_j^i$与$F$实际上是一个东西即可。
+
+#### 特征验证
+在获取到了特征$f_k$在所有包$\{H_k^1,...,H_k^N\}$的直方图后，作者使用了最大平均偏差（Maximum mean discrepancy，MMD）距离来衡量特征的重要性,
+
+$$
+D\left(f_{k}\right)=\left\|\frac{1}{\left|G_{P}\right|} \sum_{X_{i} \in G_{P}} \phi\left(H_{k}^{i}\right)-\frac{1}{\left|G_{N}\right|} \sum_{X_{j} \in G_{N}} \phi\left(H_{k}^{j}\right)\right\|
+$$
+
+其中$G_P$和$G_N$表示正包和负包，$\phi$表示映射函数，距离值越大表示判别器更容易区分正负的包集合。
+
 ### 基于图神经网络的多示例学习
+
+#### 图的构建
+
+#### 谱卷积
+
+#### 网络结构
+#### 
 
 ## 实验
 
@@ -52,6 +139,7 @@ toc: true
 ### 实验结果
 
 ![实验结果](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20210101101039.png)
+
 ## 后记
 
 通篇读下来，感觉文章可圈可点，但是还是有很多我个人觉得有问题的地方，例如，部分论述没有严格的引文，部分文字等描述也有点模糊。这篇文章的所使用的多示例学习实际上也在医学影像分割领域有了很多应用，文章虽然强调了他的方法是集中在 MIL 中，但是技术路线与 2016 年 CVPR 的 Patch-based convolutional neural network for whole slide tissue image classification 相近，大部分 VAE-GAN 方法都是类似的方式进行实现的，主要还是集成了 GCN 做了一些工作。
