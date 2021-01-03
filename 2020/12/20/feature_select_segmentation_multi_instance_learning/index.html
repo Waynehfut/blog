@@ -20,7 +20,7 @@ ga('create','UA-116559759-1','auto');ga('send','pageview');
 <img src="https://raw.githubusercontent.com/Waynehfut/blog/img/img/20210101100825.png" alt=""><figcaption>处理流程</figcaption>
 </figure>
 <h3 id="图像预处理">图像预处理</h3>
-<p>在图像预处理阶段，肿瘤区域首先会有人为进行标定为感兴趣区域。之后 ROI 会分到多个非重叠的 512$$512 的小切片中。</p>
+<p>在图像预处理阶段，肿瘤区域首先会有人为进行标定为感兴趣区域。之后 ROI 会分到多个非重叠的 512*512 的小切片中。</p>
 <h3 id="vae-gan">VAE-GAN</h3>
 <figure>
 <img src="https://raw.githubusercontent.com/Waynehfut/blog/img/img/20210101100900.png" alt=""><figcaption>VAE-GAN</figcaption>
@@ -69,7 +69,7 @@ f_{k}^{\min } &amp;=\min \left\{x_{j}^{i}[k]\right\},\left(i=1, \ldots, N, j=1, 
 <p><span class="math display">\[
 h_{o}^{i, k}=\frac{1}{K_{i}} \sum_{x_{j}^{i} \in \mathbf{X}_{1}} f_{o}\left(x_{j}^{i}[k]\right)
 \]</span></p>
-<p>其中，<span class="math inline">\(o=1,...,N_b\)</span>，<span class="math inline">\(j=1,...,K_i\)</span>,当<span class="math inline">\(x_j^i[k]\)</span>落在第<span class="math inline">\(o^{th}\)</span>个区间时，$ f<em>{o}(x</em>{j}^{i}[k])$为 1，否则为 0。</p>
+<p>其中，<span class="math inline">\(o=1,...,N_b\)</span>，<span class="math inline">\(j=1,...,K_i\)</span>,当<span class="math inline">\(x_j^i[k]\)</span>落在第<span class="math inline">\(o^{th}\)</span>个区间时，$ f{o}(x{j}^{i}[k])$为 1，否则为 0。</p>
 <p>这个生成方式并没有太多特别的部分，主要是要分清<span class="math inline">\(x_j^i\)</span>与<span class="math inline">\(F\)</span>实际上是一个东西即可。</p>
 <h4 id="特征验证">特征验证</h4>
 <p>在获取到了特征<span class="math inline">\(f_k\)</span>在所有包<span class="math inline">\(\{H_k^1,...,H_k^N\}\)</span>的直方图后，作者使用了最大平均偏差（Maximum mean discrepancy，MMD）距离来衡量特征的重要性,</p>
