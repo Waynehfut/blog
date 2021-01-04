@@ -7,7 +7,7 @@ mathjax: true
 toc: true
 ---
 
-本文是 2020 年 CVPR 的 Oral 展示的论文，来自于腾讯的 AI 实验室，主要说的是医学影像中的分割问题，使用的方法是多实例学习（Multiple Instance Learning）来做病理学图片的分割。其中多实例学习对我而言是一个没有接触过的领域，它与一般的标签不一样的在于 MIL 所给出的是一系列被称之为词袋（Bag of Instances）的标签，而 MIL 的目标就是从词袋中找出相关的标签。文章使用了基于变分自动编码器和生成对抗网络的组合模型(VAE-GAN)构建了一个特征提取器，并使用了图卷积神经网络实现了结肠癌病理学切片的区域分割，性能有些许优势。文章的创新点主要在于使用了这些技术首次利用病理图片来预测淋巴结的转移。
+本文是 2020 年 CVPR 的 Oral 展示的论文，来自于腾讯的 AI 实验室，主要说的是医学影像中的分割问题，使用的方法是多实例学习（Multiple Instance Learning）来做病理学图片的分割。其中多实例学习对我而言是一个没有接触过的领域，它与一般的标签不一样的在于 MIL 所给出的是一系列被称之为词袋（Bag of Instances）的标签，而 MIL 的目标就是从词袋中找出相关的标签。文章使用了基于变分自动编码器和生成对抗网络的组合模型(VAE-GAN)构建了一个特征提取器，并使用了图卷积神经网络实现了结肠癌病理学切片的区域分割，性能有些许优势。文章的创新点主要在于使用了这些技术首次利用病理图片来预测淋巴结的转移。但是整体的创新性还是有待商榷，理论贡献可能不是太大。
 
 <!-- more -->
 
@@ -37,7 +37,7 @@ toc: true
 
 ### 图像预处理
 
-在图像预处理阶段，肿瘤区域首先会有人为进行标定为感兴趣区域。之后 ROI 会分到多个非重叠的 512*512 的小切片中。
+在图像预处理阶段，肿瘤区域首先会有人为进行标定为感兴趣区域。之后 ROI 会分到多个非重叠的 512\*512 的小切片中。
 
 ### VAE-GAN
 
@@ -54,7 +54,7 @@ $$
 \end{aligned}
 $$
 
-其中，$h$是输入$x$的模式表示，前半部分表示的是 VAE 中的逐像素损失，$D_{KL}$是指 KL 距离，关于 VAE 损失函数请参考此处。^[陈雄辉,变分自编码器 VAE (Variational Autoencoder),https://zhuanlan.zhihu.com/p/56773895]
+其中，$h$是输入$x$的模式表示，前半部分表示的是 VAE 中的逐像素损失，$D_{KL}$是指 KL 距离，关于 VAE 损失函数请参考此处^[陈雄辉,变分自编码器 VAE (Variational Autoencoder),[https://zhuanlan.zhihu.com/p/56773895](https://zhuanlan.zhihu.com/p/56773895)]。
 
 而对于 GAN 来说，损失函数可以表示为：
 
@@ -80,7 +80,7 @@ $$
 \mathscr{L}=\lambda_{Dis}*\mathscr{L}_{L_{like}}^{Dis_l}+\lambda_{KL}*\mathscr{L}_{K L}+\lambda_{GAN}*\mathscr{L}_{GAN}
 $$
 
-其中$\lambda_{Dis}$、$\lambda_{KL}$和$\lambda_{GAN}$均为 VAE-GAN 损失的超参数。但需要注意的是，该部分的内容并不是特别创新的点，早在 2015 年就有相关文章提出了相同概念^[Larsen, Anders Boesen Lindbo, et al. "Autoencoding beyond pixels using a learned similarity metric." International conference on machine learning. PMLR, 2016.]
+其中$\lambda_{Dis}$、$\lambda_{KL}$和$\lambda_{GAN}$均为 VAE-GAN 损失的超参数。但需要注意的是，该部分的内容并不是特别创新的点，早在 2015 年就有相关文章提出了相同概念^[Larsen, Anders Boesen Lindbo, et al. "Autoencoding beyond pixels using a learned similarity metric." International conference on machine learning. PMLR, 2016.]。
 文章不同的点在于，作者使用这个结构主要是用来训练用以进行示例级特征提取的编码器，文中使用的是基于 ResNet-18 的网络结构。
 
 ### 特征选取
@@ -113,26 +113,71 @@ $$
 这个生成方式并没有太多特别的部分，主要是要分清$x_j^i$与$F$实际上是一个东西即可。
 
 #### 特征验证
+
 在获取到了特征$f_k$在所有包$\{H_k^1,...,H_k^N\}$的直方图后，作者使用了最大平均偏差（Maximum mean discrepancy，MMD）距离来衡量特征的重要性,
 
 $$
 D\left(f_{k}\right)=\left\|\frac{1}{\left|G_{P}\right|} \sum_{X_{i} \in G_{P}} \phi\left(H_{k}^{i}\right)-\frac{1}{\left|G_{N}\right|} \sum_{X_{j} \in G_{N}} \phi\left(H_{k}^{j}\right)\right\|
 $$
 
-其中$G_P$和$G_N$表示正包和负包，$\phi$表示映射函数，距离值越大表示判别器更容易区分正负的包集合。
+其中$G_P$和$G_N$表示正包和负包，$\phi$表示映射函数，距离值越大表示判别器更容易区分正负的包集合。这个函数本身并没有太多的新意，所使用的内容也较为常见，至此，文章关于多示例学习的内容已经全部介绍完成，可以得出的是，截止目前的内容都是一种融合创新，在理论本身的创新上并没有太多新的内容。对文章可以入选 CVPR 的 Oral 还是有值得推敲的。
 
 ### 基于图神经网络的多示例学习
 
+接下来作者接着介绍了获取得到的包级特征如何在图神经网络下进行淋巴结转移的分类，让我比较无语的是，这部分在阅读之后作者似乎还是照着前人的内容进行了集成。
+
 #### 图的构建
+
+作者首先使用了启发式算法从一个包的示例特征集合$[x_1^i,x_2^i,...,x_K^i]$中构建了初始图，其中邻接矩阵可以通过下述函数获得：
+
+$$
+    A_{mn}=
+    \begin{cases}
+    1,  & \textit{if   dist}(x_p^i,x_q^i) \leq \gamma\\
+    0,  & \textit{otherwise}
+    \end{cases}
+$$
+
+其中$dist(x_p^i,x_q^i)$表示了第$p^{th}$和$q^{th}$两个示例在包$i$中的距离，文章使用的是欧氏距离来计算，而$\gamma$则是决定两个示例直接是否存在链接，当$\gamma = 0$时表示$x_p^i$和$x_q^i$之间没有直接的链接，当$\gamma = +\infty$则表示两者之间全连接，与此同时包$i$的示例特征$[x_1^i,x_2^i,...,x_K^i]$将成为所构建图神经网络的节点，因此包$i$所构建的网络可以表示为：
+
+$$
+G_i=G(A_i,E_i)
+$$
+
+其中$A_i\in\{0,1\}^{K\times K}$表示邻接矩阵，$E_i\in \mathbb{R}^{K\times D}$表示了从包$X_i$中构建的节点特征矩阵。
+
+综合整个文章，还是这部分可能具有一定的原创性。
 
 #### 谱卷积
 
-#### 网络结构
-#### 
+接下来就是图神经网络较为常见的谱卷积操作了，对于给定的图$G=(V,E)$，它所对应的正则化图拉普拉斯算子可以使用下述公式表示 ^[关于图神经网络为什么使用拉普拉斯算子可以参阅此处，[https://zhuanlan.zhihu.com/p/56568843](https://zhuanlan.zhihu.com/p/56568843)] ：$L=I-D^{-1/2}AD^{-1/2}$ ^[此处原文公式有错误] ，将核函数定义为对角矩阵$\Lambda$的$M$阶多项式，近似获得拉普拉斯矩阵$L$的谱卷积为：^[再次提醒，这部分的内容还是已有的工作]
+
+$$
+g\theta(\Lambda^{M})=\sum_{m=0}^{M-1}\theta_{m}\Lambda^{m}
+$$
+
+后面在进行谱卷积后，可以和顶点特征$X\in \mathbb{R}^{N\times F}$进一步的可以获得最终结果$Y\in \mathbb{R}^{N\times F}$：
+
+$$
+Y=\textit{ReLU}(g_\theta(L^M)X)
+$$
+
+#### 最终损失
+
+最终获得损失函数可以表示如下：
+
+$$
+L=-\frac{1}{N}\sum_{i=1}^{N}\sum_{c=1}^{C}\delta(y_i=c)\log(P(y_i=c))
+$$
+
+其中 N 为数据总量，C 表示类别，$\delta(y_i=c)$为判别函数。$\log(P(y_i=c)$为概率函数。
+^[同样的，这部分还是比较常用的方法。]
 
 ## 实验
 
 ### 数据示例
+
+使用了 TCGA 的 COAD 数据
 
 ![数据示例](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20210101101004.png)
 
