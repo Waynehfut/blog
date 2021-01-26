@@ -37,10 +37,6 @@
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2020/11/02/prototypical_network_for_few_shot_learning/</loc>
-    <lastmod>2021-01-26</lastmod>
-  </url>
-  <url>
     <loc>https://blog.waynehfut.com/2018/05/03/tensorflow-lite/</loc>
     <lastmod>2021-01-26</lastmod>
   </url>
@@ -61,6 +57,10 @@
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
+    <loc>https://blog.waynehfut.com/2019/11/25/pycharm-import-error/</loc>
+    <lastmod>2021-01-26</lastmod>
+  </url>
+  <url>
     <loc>https://blog.waynehfut.com/2018/02/28/mnist-cnn/</loc>
     <lastmod>2021-01-26</lastmod>
   </url>
@@ -77,7 +77,7 @@
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2019/11/25/pycharm-import-error/</loc>
+    <loc>https://blog.waynehfut.com/2020/11/02/prototypical_network_for_few_shot_learning/</loc>
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
@@ -85,7 +85,7 @@
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2020/07/09/flutter-learn-p1/</loc>
+    <loc>https://blog.waynehfut.com/2020/10/15/interpretable_recognition_with_group/</loc>
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
@@ -93,7 +93,7 @@
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2020/10/15/interpretable_recognition_with_group/</loc>
+    <loc>https://blog.waynehfut.com/2020/07/09/flutter-learn-p1/</loc>
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
@@ -101,11 +101,7 @@
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2018/12/27/conda/</loc>
-    <lastmod>2021-01-26</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.waynehfut.com/2018/03/04/cifar10-cnn/</loc>
+    <loc>https://blog.waynehfut.com/2019/04/10/dlenvwithconda/</loc>
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
@@ -113,7 +109,11 @@
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2019/04/10/dlenvwithconda/</loc>
+    <loc>https://blog.waynehfut.com/2018/03/04/cifar10-cnn/</loc>
+    <lastmod>2021-01-26</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.waynehfut.com/2019/02/25/challengefoMl/</loc>
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
@@ -121,7 +121,7 @@
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2019/03/18/XML%E8%A7%A3%E6%9E%90%E7%AE%80%E4%BB%8B/</loc>
+    <loc>https://blog.waynehfut.com/2018/12/27/conda/</loc>
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
@@ -141,11 +141,11 @@
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2018/11/22/Video-and-Language-ECCV-MM-2016-Tao-Mei-Pub/</loc>
+    <loc>https://blog.waynehfut.com/2019/03/18/XML%E8%A7%A3%E6%9E%90%E7%AE%80%E4%BB%8B/</loc>
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2019/02/25/challengefoMl/</loc>
+    <loc>https://blog.waynehfut.com/2018/11/22/Video-and-Language-ECCV-MM-2016-Tao-Mei-Pub/</loc>
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
@@ -157,11 +157,11 @@
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2019/03/10/MLExplainbility-2/</loc>
+    <loc>https://blog.waynehfut.com/2019/03/23/MLExplainbility-4/</loc>
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.waynehfut.com/2019/03/23/MLExplainbility-4/</loc>
+    <loc>https://blog.waynehfut.com/2019/03/10/MLExplainbility-2/</loc>
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>
