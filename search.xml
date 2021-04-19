@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Zsh与oh-My-Zsh的配置与使用</title>
+      <link href="2021/04/18/zsh_configure/"/>
+      <url>2021/04/18/zsh_configure/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>ZSH 是一个流行的 Shell 客户端，相比 Bash 等传统 Shell，ZSH 不论在易用性和显示效果上都更为优秀，但是 ZSH 本身的配置比较复杂，为此开源项目<a href="https://ohmyz.sh/">Oh My Zsh</a>诞生了，其中涉及到一些配置信息，在此做个记录。</p><span id="more"></span><h2 id="安装">安装</h2><p>在支持的终端中先安装 Zsh 后安装 ohmyzsh，注意此时还要安装 Git，Wget 等必要的组件</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install zsh git wget</span><br></pre></td></tr></tbody></table></figure><p>接着就可以从 Oh My Zsh 官方安装最新的包了</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="subst">$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></tbody></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>论文阅读之 Predicting Lymph Node Metastasis Using Histopathological Images Based on Multiple Instance Learning With Deep Graph Convolution</title>
       <link href="2020/12/20/feature_select_segmentation_multi_instance_learning/"/>
       <url>2020/12/20/feature_select_segmentation_multi_instance_learning/</url>
