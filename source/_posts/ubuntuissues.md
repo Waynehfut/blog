@@ -6,7 +6,8 @@ categories: 教程
 toc: true
 ---
 
-这里记录了常见的Ubuntu系统安装和操作的问题，现在做个记录以备查。
+这里记录了我自己平时常见的 Ubuntu 系统安装和操作的问题，现在做个记录以备查。
+
 <!-- more -->
 
 # 系统安装
@@ -20,14 +21,15 @@ tar -xjvf ***.tar.bz2
 unzip text.zip
 ```
 
-
 ## Ubuntu 无法挂载 NTFS 磁盘
 
 可能因为在挂载 wimdows 盘后，强制关机造成的，可使用
+
 ```shell
 sudo ntfsfix /dev/**_
 ```
-来修复。其中，_**为具体哪个盘，例如 sudo ntfsfix /dev/sda4
+
+来修复。其中，\_\*\*为具体哪个盘，例如 sudo ntfsfix /dev/sda4
 
 ## 安装 Nvidia 显卡驱动后， 重启依然卡死。
 
@@ -76,6 +78,7 @@ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 # 环境配置
 
 ## GIT
+
 ```shell
 ssh-keygen -t rsa -b 4096 -C "waynehfut@outlook.com"
 git config --global user.name "Hao Wang"
@@ -90,14 +93,27 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 ## TMUX
 
-安装Tmux后，终端输入`tmux`，之后可以使用`Ctrl+B`的快捷键进入命令模式；
+安装 Tmux 后，终端输入`tmux`，之后可以使用`Ctrl+B`的快捷键进入命令模式；
 命令模式下：
-`Shift+%`表示左右分屏;
-`Shift+"`表示上下分屏；
-`↑`表示向上切换分屏
-`↓`表示向下切换分屏
-`←`表示向左切换分屏
-`→`表示向右切换分屏
+
+- `Shift+%`表示左右分屏;
+- `Shift+"`表示上下分屏；
+- `↑`表示向上切换分屏
+- `↓`表示向下切换分屏
+- `←`表示向左切换分屏
+- `→`表示向右切换分屏
+- `tmux new -s <session-name>`新建会话
+- `Ctrl+b d`离开会话
+- `tmux ls`列出会话
+- `tmux attach -t <session-name>`重新打开会话
+- `tmux kill-session -t <session-name>`杀死会话
+
+一个最简单的实践：
+
+1. 新建会话`tmux new -s my_session`
+2. 在 Tmux 窗口运行所需的程序。
+3. 按下快捷键`Ctrl+b d`将会话分离。
+4. 下次使用时，重新连接到会话`tmux attach -t my_session`。
 
 ## Miniconda
 
@@ -211,20 +227,24 @@ sudo dpkg -i deepin.com.wechat_2.6.8.65deepin0_i386.deb
 sudo apt install fonts-wqy-microhei fonts-wqy-zenhei # 解决中文字体变方块的问题
 ```
 
-### 修复Wechat中文输入
+### 修复 Wechat 中文输入
+
 ```shell
 cd /opt/deepinwine/tools
 sudo gedit run.sh
 sudo gedit run_v2.sh
 ```
+
 修改`run.sh`和`run_v2.sh`如下：
+
 ```shell
 #WINE_CMD="deepin-wine"
 WINE_CMD="LC_ALL=zh_CN.UTF-8 deepin-wine"
- 
+
 #added by user
 export GTK_IM_MODULE="ibus"
-export QT_IM_MODULE="ibus" 
+export QT_IM_MODULE="ibus"
 export XMODIFIERS="@im=ibus
 ```
+
 之后切换一下输入法就可以激活中文输入了。
