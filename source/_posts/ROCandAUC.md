@@ -2,7 +2,7 @@
 title: ROC和AUC的理解
 date: 2018-08-23 17:13:37
 tags: [基本概念]
-categories: 记录
+categories: 技术
 toc: true
 ---
 本篇主要解释了ROC和AUC的定义来源，希望能让自己更清楚这些指标。
