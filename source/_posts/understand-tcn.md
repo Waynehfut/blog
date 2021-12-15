@@ -7,7 +7,7 @@ categories: 论文
 mathjax2: true
 ---
 
-TCN 和 WaveNet 在时序数据处理中具有一定的优势，在过去的阅读中也偶尔可以看到这类技术的应用，但对于技术细节了解程度还是不够。谨以此文，以做记录。
+时序卷积网络（Temporal Convolutional Networks，TCN） 和 WaveNet 在时序数据处理中具有一定的优势，在过去的阅读中也偶尔可以看到这类技术的应用，但对于技术细节了解程度还是不够。谨以此文，以做记录。
 
 <!-- more -->
 
@@ -28,19 +28,19 @@ TCN 和 WaveNet 在时序数据处理中具有一定的优势，在过去的阅�
 膨胀因果卷积，包含两个部分，一是之前提及的因果卷积；其次是膨胀卷积，这种卷积方法最早是出现在语义分割的场景中^[Yu, F., & Koltun, V. (2015). Multi-scale context aggregation by dilated convolutions. ArXiv Preprint ArXiv:1511.07122. <https://arxiv.org/abs/1511.07122>]，如下图所示，便是原始的膨胀卷积的示意，
 ![膨胀卷积在图像处理中的示意](https://raw.githubusercontent.com/Waynehfut/blog/img/img20211215171533.png)
 
-其中，图 a 的膨胀值为 1，实际上等效于普通卷积，图 b 的膨胀值为 2，则在处理相同像素点的情况下其感知野膨胀为 7 $\times$ 7，图 c 的膨胀值为 4，同理感知野膨胀为 15 $\times$ 15，这就意味着随着膨胀值的增大，在相同计算复杂度的情况下，采集的视野区域更大，获得的信息也更多。
-![膨胀卷积示意](https://github.com/vdumoulin/conv_arithmetic/raw/master/gif/dilation.gif)
+其中，图 a 的膨胀值为 1，实际上等效于普通卷积，图 b 的膨胀值为 2，则在处理相同像素点的情况下其感知野膨胀为 7 $\times$ 7，图 c 的膨胀值为 4，同理感知野膨胀为 15 $\times$ 15，这就意味着随着膨胀值的增大，在相同计算复杂度的情况下，采集的视野区域更大，获得的信息也更多^[vdumoulin Convolution arithmetic <https://github.com/vdumoulin/conv_arithmetic>]。
+![膨胀卷积示意(图源：vdumoulin)](https://github.com/vdumoulin/conv_arithmetic/raw/master/gif/dilation.gif)
 
-如上图所示，是一个膨胀系数为 2 的膨胀卷积具体卷积的过程，实际上是将一个 3$\times$3的卷积核中间插入0，使其变为5$\times$5 的卷积核，这一设计的目的是替代原有图像处理中的 Pooling 操作，同时通过这样的方式，减少了卷积过程的计算量，使得不同膨胀系数的卷积核组合后，可以在多个尺度上获得图像信息，在对于分割等像素级的影像处理任务时，有较好的性能^[如何理解空洞卷积（dilated convolution）？ - 刘诗昆的回答 - 知乎
+如上图所示，是一个膨胀系数为 2 的膨胀卷积具体卷积的过程，实际上是将一个 3 $\times$ 3 的卷积核中间插入0，使其变为 5 $\times$ 5 的卷积核，这一设计的目的是替代原有图像处理中的 Pooling 操作，同时通过这样的方式，减少了卷积过程的计算量，使得不同膨胀系数的卷积核组合后，可以在多个尺度上获得图像信息，在对于分割等像素级的影像处理任务时，有较好的性能^[如何理解空洞卷积（dilated convolution）？ - 刘诗昆的回答 - 知乎
 <https://www.zhihu.com/question/54149221/answer/323880412>]。在原始的膨胀卷积的文章中，作者提到多尺度的膨胀系数在设置时不能有大于 1 的公约数，同时采用`1; 2; 5; 1; 2; 5;`的循环膨胀系数设置会有较好的效果这些可以在 PSPNet 等网络结构中看到更多的设计技巧^[Zhao, H., Shi, J., Qi, X., Wang, X., & Jia, J. (2017). Pyramid Scene Parsing Network. 2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 6230–6239. <https://doi.org/10.1109/CVPR.2017.660>]。
 
-而到 WaveNet 中，DeepMind 将二维的操作，转移到了一维的音频数据（波形数据）中，而膨胀系数可以直接转换为数据的跳过处理，如下图所示，自下而上分别时膨胀系数为 1，2，4，8 的膨胀因果卷积操作。在原文中，DeepMind 还提及，他们使用了`1; 2; 4; ...; 512; 1; 2; 4; ... ; 512; 1; 2; 4; ... ; 512;`的膨胀系数设置，这一点与图像中处理膨胀卷积的操作类似，但是与图像不同的是，由于不涉及二维的步长，因此无需关注最大公约数的问题。通知每组`1; 2; 4; ...; 512;`均有长度为 1024 的感知野，但实际上计算时，由于膨胀跳过的处理，减少了较多的中间层计算。
+而到 WaveNet 中，DeepMind 将二维的操作，转移到了一维的音频数据（波形数据）中，而膨胀系数可以直接转换为数据的跳过处理，如下图所示，自下而上分别时膨胀系数为 1，2，4，8 的膨胀因果卷积操作。在原文中，DeepMind 还提及，他们使用了多组`1; 2; 4; ...; 512;`的膨胀系数设置，这一点与图像中处理膨胀卷积的操作类似，但是与图像不同的是，由于不涉及二维的步长，因此无需关注最大公约数的问题。通知每组`1; 2; 4; ...; 512;`均有长度为 1024 的感知野，但实际上计算时，由于膨胀跳过的处理，减少了较多的中间层计算。
 ![膨胀因果卷积](https://raw.githubusercontent.com/Waynehfut/blog/img/img20211215170253.png)
 
 在具体实施中，WaveNet 使用了 SoftMax 进行数据归一化，门控激活函数进行激活，以及使用了级联块来加速训练等，在此不表。
 ![具有级联块的WaveNet基本结构](https://raw.githubusercontent.com/Waynehfut/blog/img/img20211215214242.png)
 
-## TCN
+## 时序卷积网络（Temporal Convolutional Networks，TCN）
 
 简单过了一遍 WaveNet 后，我们再来看 TCN 就容易理解的多，现在通行的 TCN 结构是受到 WaveNet 启发的。
 
