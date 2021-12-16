@@ -533,13 +533,14 @@ blockquote,
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     margin: 2.5em 0;
-    padding: 0 0 0 50px;
+    padding: 0 10px 0 40px;
     color: #555;
     border-left: none;
 }
 blockquote,
 .p{
     background-color: rgba(201, 201, 201, 0.178);
+    border-left: 5px solid #333333;
 
 }
 
