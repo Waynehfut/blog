@@ -537,6 +537,11 @@ blockquote,
     color: #555;
     border-left: none;
 }
+blockquote,
+.p{
+    background-color: rgba(201, 201, 201, 0.178);
+
+}
 
 blockquote::before,
 .stressed-quote::before {
@@ -544,11 +549,11 @@ blockquote::before,
     display: block;
     font-family: times;
     font-style: normal;
-    font-size: 48px;
+    font-size: 30px;
     color: #444;
     font-weight: bold;
     line-height: 30px;
-    margin-left: -50px;
+    margin-left: -30px;
     position: absolute;
 }
 
