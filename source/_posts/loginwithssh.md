@@ -12,19 +12,19 @@ categories: 代码
 
 ## 服务端配置
 
-1. Server 端需要安装`openssh-server`，大多数情况下服务器已经集成了这个库，如果没有，请安装：
+Server 端需要安装`openssh-server`，大多数情况下服务器已经集成了这个库，如果没有，请安装：
 
 ```shell
 sudo apt-get install openssh-server
 ```
 
-2. 之后在当前用户的用户目录下新建一个`.ssh`的文件夹
+之后在当前用户的用户目录下新建一个`.ssh`的文件夹
 
 ```shell
 mkdir ~/.ssh
 ```
 
-3. 建立一个授权用户 id 列表以进行授权维护：
+建立一个授权用户 id 列表以进行授权维护：
 
 ```shell
 touch ~/.ssh/authorized_keys
@@ -32,25 +32,25 @@ touch ~/.ssh/authorized_keys
 
 ## 本地端配置
 
-4. 当服务器端配置完毕以后，对于需要授权的机器的 Public Key 上传到 Server 端，而生成 Public Key 的方法，请参见[Git 配置|生成 SSH Key](https://blog.waynehfut.com/2020/06/08/ubuntuissues/#git)中代码的第一行。
+当服务器端配置完毕以后，对于需要授权的机器的 Public Key 上传到 Server 端，而生成 Public Key 的方法，请参见[Git 配置|生成 SSH Key](https://blog.waynehfut.com/2020/06/08/ubuntuissues/#git)中代码的第一行。
 
 ```shell
 ssh-keygen -t rsa -b 4096 -C "id@outlook.com"
 ```
 
-5. 之后会在本地用户目录中生成一个`id_rsa.pub`的文件，将这个文件追加到 Server 端的`authorized_keys`文件即可。
+之后会在本地用户目录中生成一个`id_rsa.pub`的文件，将这个文件追加到 Server 端的`authorized_keys`文件即可。
 
 ![生成的public key](https://raw.githubusercontent.com/Waynehfut/blog/img/img20211227171352.png)
 
 ![追加到Server端的authorized_keys中](https://raw.githubusercontent.com/Waynehfut/blog/img/img20211227171610.png)
 
-6. 而在此之后，本地客户端的只要添加了 SSH Key 的设备都可以基于这个 SSH Key 自动登录而不需要密码。使用 `ssh username@ip`。
+而在此之后，本地客户端的只要添加了 SSH Key 的设备都可以基于这个 SSH Key 自动登录而不需要密码。使用 `ssh username@ip`。
 
 ![使用用户名和ip登录而不需要密码](https://raw.githubusercontent.com/Waynehfut/blog/img/img20211227171832.png)
 
 ## 其他客户端注意事项
 
-7. 需要注意的是，对于部分客户端，需要指定私钥位置，例如 MobaXterm，这时，在类似`Advanced SSH settings`的选项卡下，勾选`Use private key`后，选择`id_rsa.pub`目录下的 id_rsa 即可。
+需要注意的是，对于部分客户端，需要指定私钥位置，例如 MobaXterm，这时，在类似`Advanced SSH settings`的选项卡下，勾选`Use private key`后，选择`id_rsa.pub`目录下的 id_rsa 即可。
 
 ![MobaXterm指定私钥登录SSH](https://raw.githubusercontent.com/Waynehfut/blog/img/img20211227172306.png)
 
