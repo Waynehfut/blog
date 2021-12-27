@@ -8,6 +8,9 @@ categories: 代码
 ---
 
 为了服务器的安全，和避免未经授权的用户登陆服务器，我们一般可以使用 SSH Public Key 的方式来进行权限控制，同时避免密码的泄露。
+
+<!-- more -->
+
 ![原理图，来源https://www.cnblogs.com/xz816111/p/9479139.html](https://raw.githubusercontent.com/Waynehfut/blog/img/img20211227173450.png)
 
 ## 服务端配置
