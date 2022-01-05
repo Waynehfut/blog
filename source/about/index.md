@@ -5,7 +5,7 @@ type: "about"
 comments: false
 ---
 
-我是低调的披风，裹紧我的小被子。
+我是低调的披风，欢迎你的访问，裹紧我的小被子。
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=487587183&auto=0&height=66"></iframe>
 
