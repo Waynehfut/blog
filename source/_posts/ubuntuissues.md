@@ -123,9 +123,12 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 ## NPM & Nodejs
 
-### Resolving EACCES permissions errors when installing packages globally
+强烈推荐在 WSL 等类 Linux 中使用 NVM 管理 npm 版本
+[微软关于 WSL2 安装 NVM 的教程](https://docs.microsoft.com/zh-cn/windows/dev-environment/javascript/nodejs-on-wsl)
 
-https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
+Hexo 需要使用 node 14.x `nvm install 14 && nvm use 14`
+
+如果仅需要一个特定的版本：
 
 ```shell
 mkdir ~/.npm-global
@@ -133,6 +136,8 @@ npm config set prefix '~/.npm-global'
 export PATH=~/.npm-global/bin:$PATH
 source ~/.profile
 ```
+
+[Resolving EACCES permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
 
 ### Hexo
 
