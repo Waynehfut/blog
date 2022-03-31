@@ -121,6 +121,25 @@ SU=(医疗) AND (LY=(管理科学学报) OR LY=(系统工程理论与实践) OR 
 
 ### Web of science（SCIE）
 
+WOS可以说是学术界的**了，大家常说的SCI就是来源于此。但是不可否认，强也是真的强。[新版的WOS](https://www.webofscience.com/wos/alldb/basic-search)比原有的WOS搜索引擎要简约很多，但是要注意的是，如果是检索SCI文献，请选择`核心合集`
+![核心合集选择](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331172403.png)
+![检索SCI](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331173213.png)
+
+#### 基本检索
+
+基本检索是模糊匹配，支持按域进行检索
+![基本检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331172842.png)
+其次，可以对检索结果进行分析，这对于情报发现来说，比较有用
+![情报分析](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331173026.png)
+对于年份、期刊等条目的筛选，在此不表。
+
+#### 高级检索
+
+对于高级检索部分，WOS支持下述字段和逻辑。
+![支持字段](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331173307.png)
+并且支持交互式录入
+![高级检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331173405.png)
+
 ### Nature
 
 ### IEEEXplore
