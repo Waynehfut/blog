@@ -55,17 +55,57 @@ toc: true
 > 专业检索可检索字段包括：SU%=主题,TKA=篇关摘,TI=题名,KY=关键词,AB=摘要,FT=全文,AU=作者,FI=第一责任人,RP=通讯作者,AF=机构,JN=文献来源, RF=参考文献,YE=年,FU=基金,CLC=分类号,SN=ISSN,CN=统一刊号,IB=ISBN,CF=被引频次
 
 例如我想检索管理学部推荐期刊关于`医疗`的相关文献，我就可以编写如下的表达式：
+
 ```
 SU=(医疗) AND (LY=(管理科学学报) OR LY=(系统工程理论与实践) OR LY=(管理世界) OR LY=(数量经济技术经济研究) OR LY=(中国软科学) OR LY=(金融研究) OR LY=(中国管理科学) OR LY=(系统工程学报) OR LY=(会计研究) OR LY=(系统管理学报) OR LY=(管理评论) OR LY=(管理工程学报) OR LY=(南开管理评论) OR LY=(科研管理) OR LY=(情报学报) OR LY=(公共管理学报) OR LY=(管理科学) OR LY=(预测) OR LY=(运筹与管理) OR LY=(科学学研究) OR LY=(中国工业经济) OR LY=(农业经济问题) OR LY=(管理学报) OR LY=(工业工程与管理) OR LY=(系统工程) OR LY=(科学学与科学技术管理) OR LY=(研究与发展管理) OR LY=(中国人口、资源与环境) OR LY=(数理统计与管理) OR LY=(中国农村经济))
 ```
+
+![专业检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331162952.png)
 当然包括年份、排序等工作，都可以在搜索框中进行额外选择，更多信息可以访问[官方的文档](https://piccache.cnki.net/2022/kdn/index/helper/manual.html#frame2-1-5)。
+
 ### 万方数据
 
+#### 基本检索
+
+[万方数据](https://www.wanfangdata.com.cn/index.html?index=true)也是一个常用的平台，内容上与知网大同小异，也分基本检索、高级检索和专业检索，只是部分规则有所不同。其中基本检索部分在此不表，参考知网即可。
+![万方](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331163715.png)
+
+#### 高级检索
+
+高级检索点击搜索框右侧即可进入，万方的高级检索与知网略有不同，但是也都是从标题、作者、发表时间等维度进行搜索的，这里需要注意的是，万方**并不支持运算符（\*/+/\^）的检索，请用大小写（and/or/not）代替，（\*/+/\^）将会被视为普通检索词。**
+
+![万方高级检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331163824.png)
+而如果进行更复杂的检索，则可以转到专业检索中，万方提供了更加便捷的可视化规则编写工具，点击即可生成对应的专业搜索结果。例如：`题名或关键词: (("协同过滤" and "推荐算法") or ("协同过滤" and "推荐系统" and "算法") or ("协同过滤算法")) `
+![专业检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331164335.png)
+
 ### 维普期刊
+[维普期刊](https://qikan.cqvip.com/)在部分高校可能比较冷门，但是它绝对可以称得上是中文检索领域的佼佼者。它同样支持基本检索、高级检索和专业检索。
 
-### 中国社会科学引文索引
+#### 基本检索
+![基本检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331164701.png)
+由于维普仅收集了期刊文献，因此在检索时范围也更准确。
+![维普](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331164755.png)
 
+#### 高级检索
+
+高级检索方面，维普的界面则更为直观，同样可以用逻辑语句，对文献特定的域进行搜索。
+![高级检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331164958.png)
+而对于表达式检索，也就是知网和万方的专业检索方面，维普的规则也是大同小异。
+> 支持逻辑运算符 AND（逻辑“与”）、OR（逻辑“或”）、NOT（逻辑“非”）；可检索字段标识符 U=任意字段、M=题名或关键词、K=关键词、A=作者、C=分类号、S=机构、J=刊名、F=第一作者、T=题名、R=摘要；
+
+例如：`(K=(深度学习 OR 神经网络) OR T=医学) AND R=影像 NOT K=视频`即检索了关键词包括深度学习或神经网络，或题目包括医学并且摘要中有影像但关键词没有视频的文献。当然你可以编辑更复杂的规则。 
+### 查收查引
+
+中文文献搜索的另一个重要目标就是查收查引，一般来说，上述的搜索引擎都会在显著位置标识出来收录和引用的情况。
+![一个收录标识范例](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331165611.png)
+
+如果需要更加专业的检索，还是建议去我校的[图书馆申请文献检索报告](http://lib.hfut.edu.cn/bencandy.php?fid=145&id=83)，作为教育部下属的科技查新站，学校图书馆出具的检索报告是被广泛认可的。
 ### 中文专利检索
+由于专利的时效性较强，专利检索则不能完全依赖上述平台。这里还是推荐前往[国家知识产权局](http://pss-system.cnipa.gov.cn/sipopublicsearch/portal/uiIndex-pubservice.shtml)进行搜索，这里检索国内外的专利文件，并进一步的对专利的元素进行筛选。
+![](https://raw.githubusercontent.com/Waynehfut/blog/img/img/%E5%8A%A8%E7%94%BB.gif)
+
+在注册登录后，还可以进一步解锁新页面，获得更为简单的支持全文模糊检索的工具，并进一步下载。
+![](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220331170555.png)
 
 ## 3. 英文检索
 
