@@ -11,6 +11,7 @@ comments: false
 
 点此[waynehfut@outlook.com](mailto:waynehfut@outlook.com)邮件联系，邮件主题注明“博客”
 
+本站的图片托管与Github，如果无法查看图片请检查与Github的链接。
 If you cannot see the following image, please check your connection to GitHub.
 
 ![Should have a image](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124202808.png)

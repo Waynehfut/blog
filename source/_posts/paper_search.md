@@ -142,23 +142,68 @@ WOS可以说是学术界的**了，大家常说的SCI就是来源于此。但是
 
 ### Nature
 
+Nature及其子刊可以在[Nature主站](https://www.nature.com/)直接进行搜索，
+![基本检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414150233.png)
+或者点击Advanced search进入高级检索，这里可以进一步选择条目、作者、标题、时间、出版期刊、卷期号、页码等等。
+![高级检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414150555.png)
+
 ### IEEEXplore
+
+主页为[IEEEXplore](https://ieeexplore.ieee.org/Xplore/home.jsp)，在基本检索中，可以对IEEE上不同的类别进行筛选检索，以关键词模糊检索整个数据库。
+![简单检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414150816.png)
+抑或是选择高级检索，进行更为精准的检索，IEEE同样提供了高级检索和专业检索，其中高级检索可以对文章的特定字段进行更为精确的检索，通过组合规则以实现对文章的定位。
+![高级检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414150941.png)
+专业检索则是可以进一步的编辑出表达式，这提供了更加灵活的规则组合，具体可以参考[Command search examples](https://ieeexplore.ieee.org/Xplorehelp/searching-ieee-xplore/search-examples#command-search-examples)
+![专业检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414151210.png)
 
 ### ACM
 
+主页为[Digital Library](https://dl.acm.org/)，同样可以进行简单的检索。
+![简单检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414151604.png)
+抑或是进行高级检索，同样可以选择字段、时间、出版期刊、卷期号等等。
+![高级检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414151748.png)
+
 ### INFORMS
+
+Informs的主页可以在[PubsOnLine](https://pubsonline.informs.org/)看到，同样可以进行简单检索。
+![简单检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414152319.png)
+或者点击高级检索
+![高级检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414152425.png)
+在此不做赘述
 
 ### ScienceDirect
 
+主页为[ScienceDirect](https://www.sciencedirect.com/)，可以进行简单的搜索，如关键词、作者、期刊名、卷期页码等
+![简单搜索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414153032.png)
+也可以进一步选择高级检索
+![高级检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414153125.png)
+具体的检索规则可以参考[此处](https://service.elsevier.com/app/answers/detail/a_id/25974/supporthub/sciencedirect/)。
+
 ### Taylor & Francis ST
 
-### Engineering Village（Ei）
+全文托管于[Taylor & Francis Online](https://www.tandfonline.com/)，同样有简单检索
+![简单检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414153330.png)
+或是选择更为复杂的高级检索，具体规则可以参考右侧的说明。
+![高级检索](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414153409.png)
 
 ### 英文专利检索
 
+英文专利首选[谷歌专利](https://patents.google.com/)，可以直接进行题目、专利号等的检索
+![谷歌专利](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414153534.png)
+![规则约束](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414153634.png)
+
 ## 4. 维护自己的文献库
 
+搜索文献实际上只是开始研究的第一步，需要注意把收集到的文章进行有效的管理归档，好记性不如烂笔头，整理好记下了才是真正有价值的，这里建议以文献管理工具的方式进行归档，例如Zotero、Endnote等等。
+
 ### Zotero
+
+例如可以在Zotero中按文件或标签的维度对文献进行编辑。
+![布局](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414170651.png)
+进一步的可以在利用Zotero内建的编辑器进行PDF标注。
+![标注](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414170756.png)
+特别注意Zotero6.0及以上版本才支持，且PDF标注需要Store Annotations in File
+![](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220414170921.png)
 
 ## 5. 后记
 
