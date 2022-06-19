@@ -64,9 +64,9 @@ donate:
   btc_key: ## Bitcoin key, e.g. 1KuK5eK2BLsqpsFVXXSBG5wbSAwZVadt6L
   paypal_url: ## Paypal URL, e.g. https://www.paypal.me/tufu9441
 post_copyright:
-  enable: false ## If you want to display the copyright info after each post, please set the value to true and fill the following items on your need.
-  author: ## Your author name, e.g. tufu9441
-  copyright_text: ## Your copyright text, e.g. The author owns the copyright, please indicate the source reproduced.
+  enable: true ## If you want to display the copyright info after each post, please set the value to true and fill the following items on your need.
+  author: Hao Wang ## Your author name, e.g. tufu9441
+  copyright_text: Copyright (C) 2022 ## Your copyright text, e.g. The author owns the copyright, please indicate the source reproduced.
 love: false ## If you want the love to appear when you click anywhere, set the value to true.
 plantuml: ## Using PlantUML to generate UML diagram, must install hexo-filter-plantuml (https://github.com/miao1007/hexo-filter-plantuml).
     render: "PlantUMLServer" ## Local or PlantUMLServer.
@@ -80,13 +80,16 @@ menu:
     icon: fa-home
   - page: 项目
     directory: projects/
-    icon: fa-github-alt  
+    icon: fa-github-alt
   - page: 归档
     directory: archives/
     icon: fa-archive
   - page: 标签
     directory: tags/
     icon: fa-tags
+  - page: Memo
+    directory: memo/
+    icon: fa-book
   - page: 关于
     directory: about
     icon: fa-user
@@ -113,13 +116,10 @@ links:
 
 timeline:
   - num: 1
-    word: 2014/06/12-Start
+    word: 2022/05/19-父母的伟大是无法度量的。
   - num: 2
-    word: 2014/11/29-XXX
-  - num: 3
-    word: 2015/02/18-DDD
-  - num: 4
-    word: More
+    word: 2022/06/12-师者，传道受业解惑者也。
+
 
 # Static files
 js: js
