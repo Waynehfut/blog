@@ -116,10 +116,15 @@ links:
 
 timeline:
   - num: 1
-    word: 2022/05/19-父母的伟大是无法度量的。
+    word: 2015/05/19-博客正式上线。
   - num: 2
-    word: 2022/06/12-师者，传道受业解惑者也。
-
+    word: 2016/06/12-迁移博客至Hexo。
+  - num: 3
+    word: 2017/07/21-主题更改hexo-theme-melody。
+  - num: 4
+    word: 2018/12/21-主题更改maupassant。
+  - num: 5
+    word: 2019/01/05-启用Travis CI自动部署
 
 # Static files
 js: js
