@@ -8,7 +8,7 @@ layout: timeline
 
 欢迎访问，所有文字著作权所有，未经许可不得以任何形式转载
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1353163404&auto=1&height=66"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1353163404&auto=0&height=66"></iframe>
 
 如有本站侵犯您权益的行为，请点此[waynehfut@outlook.com](mailto:waynehfut@outlook.com)邮件联系，邮件主题注明“博客”
 
