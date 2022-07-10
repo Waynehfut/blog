@@ -1,6 +1,6 @@
 ---
 title: 初步学习图模型
-tags: [机器学习，深度学习, 基本概念]
+tags: [机器学习, 深度学习, 基本概念]
 mathjax: true
 toc: true
 date: 2022-07-01 10:26:30
