@@ -1,9 +1,9 @@
 ---
 title: 初步学习图模型
-tags: [机器学习，深度学习, 基本概念]
+tags: [机器学习, 深度学习, 基本概念]
 mathjax: true
 toc: true
-date: 2021-12-18 10:26:30
+date: 2022-07-01 10:26:30
 categories:
     - [算法]
     - [学习]
@@ -66,3 +66,4 @@ categories:
 可以在此基础上进一步定义出节点的复杂程度，称之为度，根据有向图和无向图的区别，则有不同的计算方式，对于无向图，是指连接点连接的边的个数，而有向图则需要明确指向和指出的区别，A点的度数为4，而C点的入度为2，出度为1
 ![无向图](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220715172643.png)
 ![有向图](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220715173356.png)
+
