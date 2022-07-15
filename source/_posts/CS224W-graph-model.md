@@ -49,3 +49,20 @@ categories:
 ![AlphaFold](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220707212038.png)
 
 在推荐系统中，可以使用用户和物体的关系来进行商品销售的推荐，这个在亚马逊、阿里巴巴等电商网站上用的尤为多。或是进行药物并发症的研究等等。
+
+### Choice of Graph Representation
+
+如何表示网络会直接影响到上述应用的效果。因此，如何构建网络就显得尤为重要了，这里可以看一个简单的网络的抽象组成。包括对象（节点，顶点）、交叉（链接，边）、系统整体（网络，图结构）三个层次形式化表示。
+![网络的一般结构](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220715163357.png)
+在结合真实场景后，就可以赋予具体的含义，例如人际关系等等。
+
+那如何定义一个网络呢？具体来说是现实中我们需要哪些是节点哪些是边。这直接决定了我们能否用这个网络来去解决我们的问题。有些例子很明显可以进行定义，但有些情况下合适的抽象表示往往是没有实际含义的。
+同时图本身也并非是有向的，例如协作关系，朋友关系等等网络。但通话记录，和互粉干系等等则是有向的网络。
+
+![有向图和无向图](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220715164752.png)
+
+因此可以定义一个图的机构为 $G=(V,E,R,T)$, 其中$V$中包含不同的节点$v_i\in V$，边关系可以表示为$(v_i,r,v_j)\in E$，节点类型可以表示为$T(v_i)$，节点关系既可以进一步表示为$r\in R$。
+
+可以在此基础上进一步定义出节点的复杂程度，称之为度，根据有向图和无向图的区别，则有不同的计算方式，对于无向图，是指连接点连接的边的个数，而有向图则需要明确指向和指出的区别，A点的度数为4，而C点的入度为2，出度为1
+![无向图](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220715172643.png)
+![有向图](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220715173356.png)
