@@ -63,7 +63,30 @@ categories:
 
 因此可以定义一个图的机构为 $G=(V,E,R,T)$, 其中$V$中包含不同的节点$v_i\in V$，边关系可以表示为$(v_i,r,v_j)\in E$，节点类型可以表示为$T(v_i)$，节点关系既可以进一步表示为$r\in R$。
 
-可以在此基础上进一步定义出节点的复杂程度，称之为度，根据有向图和无向图的区别，则有不同的计算方式，对于无向图，是指连接点连接的边的个数，而有向图则需要明确指向和指出的区别，A点的度数为4，而C点的入度为2，出度为1
+可以在此基础上进一步定义出节点的复杂程度，称之为度，根据有向图和无向图的区别，则有不同的计算方式，对于无向图，是指连接点连接的边的个数，而有向图则需要明确指向和指出的区别，A点的度数为4，而C点的入度为2，出度为1。同样，可以在此基础上，再进行节点的平均，从而得到平均度数。
 ![无向图](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220715172643.png)
 ![有向图](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220715173356.png)
 
+另一类常见的图称之为二分图（Bipartite Graph），这类图的节点可以被划分为两个集合$U$和$V$，其中每个$U$中的节点都和$V$中的某个节点相连，而内部不曾相连。
+![二分图](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220718163918.png)
+
+那图怎么表示呢？一个很简单的办法就是通过邻接矩阵来表示图结构，节点可以用矩阵的维度来表示，而节点链接情况可以用矩阵赋值0-1来表示。
+![邻接矩阵](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220718165140.png)
+
+需要注意的是，实际的情况下这种矩阵是十分稀疏的，这时，可以使用链接列表来表示：
+![连接列表](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220718165901.png)
+
+对于特别大且较稀疏的网络而言，还可以进一步考虑使用邻接列表。
+![邻接列表](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220718170023.png)
+
+此外还可以对节点和链接赋予权值权重，给予更为丰富的含义表示。
+![节点权重](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220718170931.png)
+
+同时每个节点还可以增加循环或多个链接等方式来增强图结构的表示能力。
+
+在此基础上，可以依据节点的链接情况来定义强连接和弱连接。其中，强连接是指这部分的节点都有相互连接的通路（如：A-B，B-A），相应的没有这个通路的称之为弱连接。
+
+![连接性](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220718172051.png)
+
+而具有强连接的部分就可以称之为强连通分量（Strongly connected components）。
+![](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220718172205.png)
