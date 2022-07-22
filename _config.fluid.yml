@@ -535,7 +535,7 @@ index:
 # Post Page
 #---------------------------
 post:
-  banner_img: /img/default.png
+  banner_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722162728.png
   banner_img_height: 70
   banner_mask_alpha: 0.3
 
