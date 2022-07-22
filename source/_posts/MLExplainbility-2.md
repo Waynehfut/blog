@@ -3,6 +3,7 @@ title: 机器学习可解释性之排列重要性 Permutation Importance
 date: 2019-03-10 10:46:02
 tags: [机器学习]
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722173741.png
 ---
 
 

@@ -3,6 +3,7 @@ title: 从Keras的第一个Sample说起
 date: 2018-02-27 23:32:15
 tags: Keras
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722175914.png
 ---
 
 看了一些视频和论文，自己也动手做了一些，但是说积累了多少，真的很惭愧，与其手忙脚乱。不如好好做做自己的笔记，也算是对得起自己的时间。虽然开始的几个都很低级，但是低级就是低级，没什么大不了的，总有一天会高级起来。categories: 技术

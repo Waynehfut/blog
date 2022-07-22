@@ -4,6 +4,7 @@ date: 2016-03-29 14:35:00
 tags: [日记]
 categories: 记录
 comments: true
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722180119.png
 ---
 
 这是一篇本科毕业时写的文字，正值考研结束，研究生即将开始，一切的生活都还没确定。在经历了短暂的迷茫后似乎又找到了新的立足点。

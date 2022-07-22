@@ -3,6 +3,7 @@ title: 利用Mask对数据进行处理
 date: 2018-12-26 18:40:26
 tags: [基本概念,数据扩充]
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722174304.png
 ---
 
 Mask,最早看到这个名词是在Mask R-CNN中，当时对这个Mask特别的朝圣，以为又有新的技术提出，实际上，Mask早在图像处理的最早阶段就已经开始有这方面的技术，而那个时候大家普遍将其称之为，掩膜。

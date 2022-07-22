@@ -3,6 +3,7 @@ title: 机器学习可解释性之部分依赖图 Partial Dependence Plots
 date: 2019-03-19 17:50:02
 tags: [机器学习]
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722173741.png
 ---
 本篇翻译自Kaggle机器学习可解释性微公开课🎓，本篇时第三课时，主讲利用部分依赖发现数据如何影响预测
 

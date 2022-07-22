@@ -3,6 +3,7 @@ title: VQA视频语义理解
 date: 2018-11-22 21:35:01
 tags: [组会分享,行为识别]
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722174752.png
 ---
 Video-and-Language-ECCV-MM-2016-Tao-Mei-Pub
 微软著名行为识别科学家梅涛在ECCV2016上做的视频语义理解的报告

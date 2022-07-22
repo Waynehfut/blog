@@ -3,6 +3,7 @@ title: XML解析简介
 date: 2019-03-18 17:24:27
 tags: [基本概念]
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722173835.png
 ---
 XML作为一种常见的数据交换格式，在数据交换中扮演了重要的角色，但是开放的数据格式定义也为XML的解析带来了一定的不确定性，我在实际的工作里遇到了一定的小困难，在此记录以备查阅。
 <!-- more -->

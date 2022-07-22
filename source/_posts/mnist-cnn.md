@@ -3,6 +3,7 @@ title: 在Mnist中使用CNN
 date: 2018-02-28 23:12:13
 tags: Keras
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722175914.png
 ---
 
 在[上篇](https://waynehfut.github.io/2018/02/27/mnist-mlp/)中，说了Keras中的Hello World,说到了一些神经网络的基本概念，这篇将以keras的卷积神经网络为切入点，介绍卷积神经网络。[相关Link](https://github.com/keras-team/keras/blob/master/examples/mnist_cnn.py)

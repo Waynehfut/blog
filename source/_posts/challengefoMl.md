@@ -2,7 +2,8 @@
 title: 深度学习的下一步
 date: 2019-02-25 21:16:46
 tags: [深度学习,神经网络]
-categories: 技术
+categories:  
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/Image1.png
 ---
 来源台大李宏毅课程，The next Step for Mechine Learning.
 Youtube: https://www.youtube.com/watch?v=XnyM3-xtxHs

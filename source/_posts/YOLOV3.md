@@ -3,6 +3,7 @@ title: 利用YOLOV3训练自己的网络
 date: 2018-03-26 18:51:17
 tags: [论文阅读,神经网络,目标检测]
 categories: 算法
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722175304.png
 ---
 最近，著名的目标检测方法，来自华盛顿大学Joseph团队的YOLO迎来了V3版本的更新，诸如国内的“海燕”等系统都能看到这个方法的影子，相较于上个版本的YOLO V2，其网络结构愈加复杂，令人惊叹的是，精度和检测速度都有了较大的提升。自己对目标检测方面并不如其他同学那么熟练，写此篇仅为记录用法：[Git repo](https://github.com/pjreddie/darknet)|[论文](https://pjreddie.com/media/files/papers/YOLOv3.pdf)|[官网](https://pjreddie.com/darknet/yolo/).
 

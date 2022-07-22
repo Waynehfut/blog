@@ -2,6 +2,7 @@
 title: 写在爷爷仙逝之后
 date: 2018-09-10 15:23:57
 tags:
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/489270adde7823eb4a7cb710d5c0d00.jpg
 ---
 
 如果一个人无所畏惧，那他可能没有见证真正的死亡。

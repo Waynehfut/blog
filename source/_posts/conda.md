@@ -3,6 +3,7 @@ title: Conda的新激活方式
 date: 2018-12-27 11:04:30
 tags: [基本概念]
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722173429.png
 ---
 
 Conda今天在更新后，使用的过程中遇到了一个小问题，记录备查、

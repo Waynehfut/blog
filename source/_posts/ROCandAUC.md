@@ -4,6 +4,7 @@ date: 2018-08-23 17:13:37
 tags: [基本概念]
 categories: 技术
 toc: true
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722175007.png
 ---
 本篇主要解释了ROC和AUC的定义来源，希望能让自己更清楚这些指标。
 

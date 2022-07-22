@@ -3,6 +3,7 @@ title: 轻量级神经网络处理框架TensorFlow Lite
 date: 2018-05-03 20:58:43
 tags: [神经网络,Android,TensorFlow]
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722175213.png
 ---
 
 作为目前最为流行的神经网络框架，TensorFlow已经在各个神经网络的论文，实验平台等被广泛运用，caffe等安装复杂的网络框架也渐渐的被以TensorFlow为基础的Keras等取代。随着时间的推移，2017年11月基于移动平台的TensorFlow：TensorFlow Lite正式release。

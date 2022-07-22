@@ -3,6 +3,7 @@ title: 机器学习可解释性之SHAP值 SHAP Values
 date: 2019-03-23 09:04:00
 tags: [机器学习]
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722173741.png
 ---
 
 本篇翻译自Kaggle机器学习可解释性微公开课🎓，本篇时第四课时，主讲利用SHAP(SHapley Additive exPlanations)值用以在一次独立预测中分解模型。

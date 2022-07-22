@@ -3,6 +3,7 @@ title: 在小数据集中使用CNN
 date: 2018-03-04 21:05:31
 tags: [Keras,数据扩充]
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722175914.png
 ---
 
 
