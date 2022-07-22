@@ -4,6 +4,7 @@ toc: true
 date: 2020-07-09 21:39:33
 tags: [Flutter, Android]
 categories: 代码
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722170219.png
 ---
 
 最近看了一些代码上的东西，偶然看到了 Flutter，感觉他的代码很高级，而且调试起来很简单，所以想来尝试一下。我计划以一个图片浏览器为出发点来开始这个语言的学习，希望能继续下去。

@@ -3,6 +3,7 @@ title: zsh与oh-my-zsh的配置与使用
 date: 2021-04-19T09:26:35+08:00
 categories: 技术
 tags: [工具, 代码记录]
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722165625.png
 toc: true
 ---
 

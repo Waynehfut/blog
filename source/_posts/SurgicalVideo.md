@@ -3,6 +3,7 @@ title: 手术视频数据集整理
 date: 2019-04-08 19:45:31
 tags: [行为识别,数据集]
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722173517.png
 ---
 本篇总结了大多数现有的公开手术数据集。
 <!-- more -->

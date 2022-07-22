@@ -5,6 +5,7 @@ tags: [深度学习, 论文阅读]
 categories: 论文
 mathjax2: true
 toc: true
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201112100249.png
 ---
 
 基于 Few-shot learning 和 Meta-learning 的方法在现实场景中有着较广泛的应用，特别是在对医学等数据标注成本较高的场景中，基于 Few-shot 甚至是 Zero-shot 的方法具有一定的优势。这篇文章来自于 2017 年的 NeurIPS，由加拿大多伦多大学 Vector Institute 的 Jake Snell 完成。这个方法简单且有效，在该领域有一定的影响力。此文基于这篇文章作了一些自己的理解，并简要介绍了部分小样本学习和元学习的内容。

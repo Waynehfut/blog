@@ -3,6 +3,7 @@ title: PyTorch入门五-数据并行
 date: 2019-04-15 11:13:15
 tags: [深度学习,PyTorch]
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722173237.png
 ---
 
 PyTorch的基础使用官方教程，主要描述了数据并行的原理

@@ -4,6 +4,7 @@ date: 2020-06-08 16:16:35
 tags: [Ubuntu, 代码记录]
 categories: 教程
 toc: true
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722170550.png
 ---
 
 这里记录了我自己平时常见的 Ubuntu 系统安装和操作的问题，现在做个记录以备查。

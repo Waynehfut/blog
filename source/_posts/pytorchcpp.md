@@ -4,6 +4,7 @@ date: 2020-10-17T21:21:59+08:00
 categories: 技术
 tags: [PyTorch, C++, 深度学习]
 toc: true
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722165948.png
 ---
 
 最近所里有一个 GUI 项目需要调用 PyTorch 的模型，虽然之前做过一些，但是大部分用的是 Python 接口，这次对实效性有要求，因此做一个 C++的接口，现在把一些配置事项做个记录。

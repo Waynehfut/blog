@@ -4,6 +4,7 @@ date: 2020-11-12 17:20:43
 tags: [深度学习, 论文阅读]
 categories: 论文
 mathjax2: true
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201117150836.png
 toc: true
 ---
 

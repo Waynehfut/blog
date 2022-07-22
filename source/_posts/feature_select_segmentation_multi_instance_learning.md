@@ -4,6 +4,7 @@ date: 2020-12-20 20:03:15
 tags: [论文阅读, 神经网络]
 categories: 论文
 mathjax: true
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20210101100900.png
 toc: true
 ---
 

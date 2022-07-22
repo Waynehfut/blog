@@ -4,6 +4,7 @@ date: 2019-04-10 22:45:43
 tags: [深度学习,PyTorch]
 categories: 技术
 mathjax: true
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722173237.png
 ---
 
 PyTorch的基础使用官方教程，主要描述了自动微分的原理

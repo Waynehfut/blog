@@ -5,6 +5,7 @@ tags: [日记]
 categories: 记录
 mathjax: true
 toc: true
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722165220.png
 ---
 
 近五年的时间，在今天的答辩结束以后，博士生涯确实要告一段落了，再回头看看过去的种种，心中不免有许多唏嘘。是感慨，是无奈，是遗憾，更是踌躇。聊以此记，记录过去的这一段时光。

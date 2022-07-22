@@ -4,6 +4,7 @@ date: 2020-01-20 15:54:54
 tags: [Latex]
 categories: 技术
 mathjax2: true
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722171127.png
 toc: true
 ---
 

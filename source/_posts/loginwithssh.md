@@ -3,6 +3,7 @@ title: 使用 SSH Public Key 进行远程登录
 tags: [代码记录]
 mathjax: true
 toc: true
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722164620.png
 date: 2021-12-27 17:29:39
 categories: 代码
 ---

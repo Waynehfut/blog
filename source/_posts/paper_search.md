@@ -2,6 +2,7 @@
 title: 文献检索基本技巧
 date: 2022-03-27T15:48:02+08:00
 tags: [论文阅读]
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722164108.png
 categories:
   - [论文]
   - [教程]

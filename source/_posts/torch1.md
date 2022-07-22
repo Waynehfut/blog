@@ -3,6 +3,7 @@ title: PyTorch入门一-PyTorch与numpy
 date: 2019-04-10 16:24:53
 tags: [深度学习,PyTorch]
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722173237.png
 ---
 
 PyTorch的基础使用官方教程，主要描述了PyTorch与Numpy的关系

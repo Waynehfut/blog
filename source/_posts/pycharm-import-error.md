@@ -4,6 +4,7 @@ date: 2019-11-25 17:36:21
 tags: [代码记录]
 categories: 代码
 comments: true
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722171220.png
 ---
 
 在折腾Pycharm时有时候会遇到`Unresolved Reference "XXX"`的问题，而这个问题是由于自定义文件夹没有包括到索引导致的。

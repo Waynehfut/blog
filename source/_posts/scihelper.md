@@ -3,6 +3,7 @@ title: SCI Helper文献获取工具
 date: 2020-06-11 14:53:59
 tags: [工具, 论文阅读]
 categories: 代码
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722170434.png
 ---
 
 

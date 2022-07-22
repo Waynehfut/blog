@@ -3,6 +3,7 @@ title: 论文阅读之Interpretable and Accurate Fine-grained Recognition via Re
 date: 2020-10-15T20:53:47+08:00
 tags: [深度学习, 论文阅读]
 categories: 论文
+index_img: https://i.loli.net/2020/10/16/OwHCU6KDpbdRhGE.png
 mathjax2: true
 toc: true
 ---

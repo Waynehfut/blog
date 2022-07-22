@@ -3,6 +3,7 @@ title: 使用Anaconda配置机器学习环境
 date: 2019-04-10 11:04:17
 tags: [深度学习]
 categories: 技术
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722173429.png
 ---
 Anaconda是一个python的虚拟环境包管理工具，相对于原本的python独立环境而言，可以自由的修改当前系统默认的运行时，而不需要反复安装，同时自带的conda包管理命令可以自动的匹配和分析包依赖，不需要再去下载whl文件或修改环境变量。
 <!-- more -->

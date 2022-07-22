@@ -3,6 +3,7 @@ title: Python中缩进需要使用Space
 date: 2020-01-28 10:59:56
 tags: [Python, 代码记录]
 categories: 代码
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722171019.png
 ---
 
 Python 使用 Tab 是怎么回事呢？Python 使用相信大家都很熟悉，但是 Python 使用 Tab 是怎么回事呢，下面就让小编带大家一起了解吧。

@@ -3,6 +3,7 @@ title: 20分钟学会使用git
 date: 2020-02-20 11:12:29
 tags: [代码记录]
 categories: 代码
+index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/20220722170645.png
 ---
 
 我将简单的把 Git 常用的过程记录一下，尽量不使用命令行等操作，涉及比较难理解的部分都略过，以供参考。
