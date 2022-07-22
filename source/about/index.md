@@ -3,7 +3,7 @@ title: 关于
 date: 2019-03-21 15:50:16
 type: "about"
 comments: false
-layout: timeline
+layout: about
 ---
 
 欢迎访问，所有文字著作权所有，未经许可不得以任何形式转载
