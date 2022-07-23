@@ -1,3 +1,20 @@
+# 注解配置颜色
+# {% note primary %}
+
+# {% note secondary %}
+
+# {% note success %}
+
+# {% note danger %}
+
+# {% note warning %}
+
+# {% note info %}
+
+# {% note light %}
+
+# https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231732503.png
+
 #---------------------------
 # Hexo Theme Fluid
 # Author: Fluid-dev
