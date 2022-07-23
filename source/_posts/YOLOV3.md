@@ -142,15 +142,15 @@ for year, image_set in sets:
 ```
 
 此时数据准备才实际完成，示意如下:
-![Tree](tree1.png)
-![overview](overview.png)
+![Tree](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231615843.png)
+![overview](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231615865.png)
 
-4. 修改相关配置和权重
+1. 修改相关配置和权重
 
 修改配置文件voc.data(位于darknet/script文件夹下，到对应的文件中)，如图：
-![Voc](vocname.png)
+![Voc](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231615293.png)
 可以在找到voc.data文件夹下再次寻找相应的权重配置文件依据你的分类数量不同，需进行修改，如图：
-![cfg](cfg.png)
+![cfg](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231615317.png)
 注意:有三个相同的位置需要修改，classes是对应的输出类别，而filter是你的卷积核数量，计算公式为`n = 3 * (classes + 5)`
 
 # 三、训练

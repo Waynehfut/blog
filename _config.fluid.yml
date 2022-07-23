@@ -91,7 +91,7 @@ fun_features:
 
     # 游标字符
     # Cursor character
-    cursorChar: "_"
+    cursorChar: "<"
 
     # 是否循环播放效果
     # If true, loop animation
@@ -946,7 +946,7 @@ tag:
 #---------------------------
 about:
   enable: true
-  banner_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/2020-07-06_20-49-10_908.jpg
+  banner_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/Concerto01.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   avatar: icon.png
@@ -968,7 +968,7 @@ about:
 # Custom Page through `hexo new page`
 #---------------------------
 page:
-  banner_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/ColoredGlaze03-Light.jpg
+  banner_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/Concerto02.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
 

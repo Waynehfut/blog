@@ -40,12 +40,12 @@ index_img: https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207221759
 
 
 **Activation:** 激活函数，目的是将线性不可分的数据变为线性可分数据。具体可以理解为一个例子，下图中的圈和六角形就是可分的：
-![图一](cifar10-cnn/p1.png)
+![图一](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231606843.png)
 但是下图就是不可分的了
-![图二](cifar10-cnn/p2.png)
+![图二](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231606234.png)
 而图二的情况更容易在实际中出现，为此我们引入激活函数，使得原有坐标系变化为其他维度，从而线性可分，后续有空会细讲，请监督。
 下图展示了一个计算到横轴纵轴最近值得激活函数激活后的表现情况：
-![图三](cifar10-cnn/p3.png)
+![图三](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231606694.png)
 此时再次可分。
 
 其他代码不做细讲，有问题欢迎留言(前提正常访问谷歌的小伙伴才能看到留言。)

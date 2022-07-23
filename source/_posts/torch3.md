@@ -18,7 +18,7 @@ PyTorch的基础使用官方教程，主要描述了PyTorch构建简单神经网
 
 例如，对于数字图像的分类网络
 
-![mnist](torch3/mnist.png)
+![mnist](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231613546.png)
 
     convnet
 

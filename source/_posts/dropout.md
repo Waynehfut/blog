@@ -40,8 +40,8 @@ $$\mathcal{W}\left(\theta\right)=\left\{ \underset { 1\le i\le { N }_{ row\left(
 
 ## 2.3 方法细节
 假设有一个神经网络参数集合为$\theta$，并且文章的剪枝策略由上述公式(1)和(2)中定义。文章的目的是找到最优的$\theta^\ast$使得文章最终的损失函数$\mathcal{E}\left(\mathcal{W}\left({\theta^\ast}\right)\right)$降到最低，同时${|\mathcal{W}\left({\theta^\ast}\right)|} \le k$,也就是说即希望保留$k$个权值最大的权重。然而也希望低权值的元素能够保留其在训练时的价值，因此文章引入了随机性处理过程，即选取$\gamma$占比的目标在$\alpha$概率下进行dropout,这也意味着每一次训练的过程都是选取$\gamma|\theta|$组权重用以做dropout,这部分的dropout采用的比率为$\alpha$, 因而最终的dropout目标即可计做:$\left(1-\gamma\cdot\alpha\right)|\theta|$，如论文所揭示的一样，结果减少了重要的子网络对不重要子网络的依赖，从而减少了训练过程中因剪枝导致的性能下降。
-![table1.png](dropout/table1.png)
-![table2.png](dropout/table2.png)
+![table1.png](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231607184.png)
+![table2.png](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231607015.png)
 
 # 3.结论
 文章提出`Targeted Dropout`作为一种简单和非常有效的正则化工具，将后自适应剪枝策略合并到神经网络的训练过程中，而不会对特定架构的底层任务性能产生重大影响。`Targeted Dropout`的主要优点之一是实现简单和直观、灵活的超参数

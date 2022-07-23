@@ -87,7 +87,7 @@ FPR:[1,0.5,0.5,0]
 TPR:[1,1,0.5,0.5]
 则我们新的ROC图可以画出为：
 
-![clipboard.png](ROCandAUC/clipboard.png)
+![clipboard.png](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231612921.png)
 
 **意义**：分析ROC曲线的主要从两个方面来解释：1）曲线本身的平滑程度，当一条曲线足够平滑的时候，这个预测模型的过拟合可能就会越小，可以理解为模型在预测的过程中受到特殊数据的影响较小。2）曲线本身接近([0,0],[0,1])和([0,1],[1,1])这两条线的程度，越接近说明方法本身预测的效果越好，可以理解为TP值很小的时候，FP值很小，从而不被错误数据误导，TP值很大的时候，FP值仍很小，从而证明模型可以正确的分类，而这一效果本身已经被量化，请参阅下节AUC;
 
@@ -111,7 +111,7 @@ plt.show()
 ```
 
 可以得到：
-![figure_1-1.png](ROCandAUC/figure_1-1.png)
+![figure_1-1.png](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231612137.png)
 
 ## 三、多类分类的ROC曲线绘制
 
@@ -119,7 +119,7 @@ plt.show()
 
 > 假设存在一个四分类问题，其分类的标签目标分别记为：[A,B,C,D],则对于标签A的分类进行ROC曲线绘制时，将B,C,D三个类别的分类全部置为0，将A标签的分类置为1，则将其转换为了二分类问题。对于B,C,D标签同理，而同样的在sklearn中也提供了对应的代码方式实现这样的ROC曲线绘制,可以绘制出类似下述图像的ROC曲线([来源](http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html)):
 
-![myplot.png](ROCandAUC/myplot.png)
+![myplot.png](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231612495.png)
 ```python
 
 # -*- coding: utf-8 -*-

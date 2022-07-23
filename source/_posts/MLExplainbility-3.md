@@ -64,7 +64,7 @@ import graphviz
 tree_graph = tree.export_graphviz(tree_model, out_file=None, feature_names=feature_names)
 graphviz.Source(tree_graph)
 ```
-![p1](p1.png)
+![p1](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231610374.png)
 
 理解这棵树：
 
@@ -84,7 +84,7 @@ pdp_goals = pdp.pdp_isolate(model=tree_model, dataset=val_X, model_features=feat
 pdp.pdp_plot(pdp_goals, 'Goal Scored')
 plt.show()
 ```
-![p2](p2.png)
+![p2](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231610251.png)
 
 在解释这个图时，有一些值得注意的点。
 
@@ -102,7 +102,7 @@ pdp_dist = pdp.pdp_isolate(model=tree_model, dataset=val_X, model_features=featu
 pdp.pdp_plot(pdp_dist, feature_to_plot)
 plt.show()
 ```
-![p3](p3.png)
+![p3](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231610440.png)
 
 这个图似乎过于简单而无法表现出真实现象。实质上是模型太过简单了，你应该可以从上面的决策树发现这个实际上代表了模型的结构（waynehfut注：101.5km为节点）
 
@@ -118,7 +118,7 @@ pdp.pdp_plot(pdp_dist, feature_to_plot)
 plt.show()
 ```
 
-![p4](p4.png)
+![p4](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231610466.png)
 
 这个模型认为你如果跑动超过100km的话，更有可能获得最佳球员。虽然跑的更多导致了更低的预测结果。
 
@@ -139,7 +139,7 @@ pdp.pdp_interact_plot(pdp_interact_out=inter1, feature_names=features_to_plot, p
 plt.show()
 ```
 结果如下：
-![p5](p5.png)
+![p5](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231611350.png)
 
 这个图展示了任意进得分和覆盖距离组合可能的预测结果
 

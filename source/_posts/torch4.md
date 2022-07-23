@@ -28,7 +28,7 @@ PyTorch的基础使用官方教程，主要描述了构建卷积神经网络
 这样为使用过程提供了巨大的便利，并避免了重复编写样板代码的问题
 
 在这篇入门教程中，主要是使用**CIFAR10**数据集，它有:`飞机`，`轿车`，`鸟`，`猫`，`鹿`，`狗`，`青蛙`，`马`，`船只`，`卡车`共计十个类别。**CIFAR-10**数据集的尺寸都是3x32x32，也就是说3-通道的彩图，并且每个图片尺寸为32x32
-![CIFAR1](torch4/cifar10.png)
+![CIFAR1](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231614513.png)
 
 cifar10
 
@@ -100,7 +100,7 @@ imshow(torchvision.utils.make_grid(images))
 ```
 
 
-![png](torch4/output_17_0.png)
+![png](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231614214.png)
 
 
 ### 定义一个卷积神经网络
@@ -208,7 +208,7 @@ print('GroundTruth: ', ' '.join('%5s' % classes[labels[j]] for j in range(4)))
 ```
 
 
-![png](torch4/output_31_0.png)
+![png](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231614494.png)
 
 
     GroundTruth:    cat  ship  ship plane

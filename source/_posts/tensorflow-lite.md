@@ -28,7 +28,7 @@ TFLite支持大部分的神经网络计算，包括数据量化和浮点运算�
 
 而它的实现思想如下图所示：
 
-![tflite-architecture.jpg](tensorflow-lite/tflite-architecture.jpg)
+![tflite-architecture.jpg](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231612482.jpg)
 
 可以看出，训练的过程仍然还是放在大型设备上的，TFLite提供的只是一个转换器，将训练好的Model文件转换为体积更小的`.tflite`文件，而TFLite在Android和IOS设备上的实施则是依赖于Interpreter提供的各种kernels加载`.tflite`中的权重，从而在系统中实现相关的计算，TFLite向上提供了model参数加载的能力，向下实现了浮点运算和数据量化运算的接口，是一个介于`C++`/`JAVA API`和`ANNAPI`/`CoreML`等系统接口之间的计算层。
 
@@ -60,7 +60,7 @@ android_ndk_repository(
 
 下图展示了一些示例程序的演示结果：
 
-![sample.jpg](tensorflow-lite/sample.jpg)
+![sample.jpg](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231613987.jpg)
 
 效率还可以
 > 题外话：近来忙于一些杂事，心态有些浮躁，论文进度也一般，在此反思。想来8号合肥GDG的Google I/O Extend，希望今年能有机会现场去听一波。

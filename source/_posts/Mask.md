@@ -99,7 +99,7 @@ sample_img = img_to_array(load_img("sample.jpg"))
 
 ```
 
-![sample](Mask/sample.jpg)
+![sample](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231609622.jpg)
 
 我们尝试仅保存上半[0:30]像素的部分，设计得到的掩膜如下：
 
@@ -112,7 +112,7 @@ mask_img = array_to_img(mask1)
 mask_img.save("mask.jpg")
 ```
 
-![mask](Mask/mask.jpg)
+![mask](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231609702.jpg)
 
 进行掩膜则有：
 
@@ -125,4 +125,4 @@ rec_img = array_to_img(mask_data)
 rec_img.save("masked.jpg")
 ```
 
-![masked](Mask/masked.jpg)
+![masked](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202207231609395.jpg)
