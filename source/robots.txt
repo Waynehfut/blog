@@ -11,5 +11,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: https://waynehfut.com/sitemap.xml
-Sitemap: https://waynehfut.com/baidusitemap.xml
+Sitemap: https://blog.waynehfut.com/sitemap.xml
+Sitemap: https://blog.waynehfut.com/baidusitemap.xml
