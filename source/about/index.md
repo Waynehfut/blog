@@ -14,4 +14,11 @@ layout: about
 
 本站的图片托管与Github，如果无法查看图片请检查与Github的链接。
 
-![Test Image](https://raw.githubusercontent.com/Waynehfut/blog/img/img/20201124202808.png)
+## 时间线
+
+1. 2015/05/19-博客正式上线。
+2. 2016/06/12-迁移博客至Hexo。
+3. 2017/07/21-主题更改hexo-theme-melody。
+4. 2018/12/21-主题更改maupassant。
+5. 2019/01/05-启用Travis CI自动部署
+6. 2022/07/23-主题更改为 hexo-theme-fluid

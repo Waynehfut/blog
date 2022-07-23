@@ -135,6 +135,3 @@ $$
 
 ![执行效果](https://i.loli.net/2020/10/16/2XjhnWKZ3MtwvPQ.png)
 
-## 文章预览
-
-{% pdf ./manu.pdf %}
