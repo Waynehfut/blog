@@ -748,7 +748,7 @@ post:
     # 指定的插件，需要同时设置对应插件的必要参数
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus
-    type: gitalk
+    type: utterances
 
 
 #---------------------------
@@ -787,20 +787,13 @@ disqus:
 # Based on GitHub Issues
 # See: https://github.com/gitalk/gitalk#options
 gitalk:
-  clientID: 
-  # b698a9a6a0a4d1d5fa44
-  clientSecret: 
-  # 48472dac211244ab7b01182ce1f50305d69521f6
-  repo: 
-  # blog
-  owner: 
-  # Waynehfut
-  admin: 
-  # ['Waynehfut']
-  language: 
-  # zh-CN
-  labels: 
-  # ['Gitalk']
+  clientID: b698a9a6a0a4d1d5fa44
+  clientSecret: 48472dac211244ab7b01182ce1f50305d69521f6
+  repo:  blog
+  owner: Waynehfut
+  admin:  ['Waynehfut']
+  language:  zh-CN
+  labels:  ['Gitalk']
   perPage: 10
   pagerDirection: last
   distractionFreeMode: false
