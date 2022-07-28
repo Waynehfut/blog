@@ -2,7 +2,8 @@
 title: {{ title }}
 date: {{ date }}
 tags: []
-categories:
+categories: 
+index_img: 
 mathjax: true
 toc: true
 ---
