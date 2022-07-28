@@ -2,7 +2,7 @@
 title: 关于
 date: 2019-03-21 15:50:16
 type: "about"
-comments: false
+comments: true
 layout: about
 ---
 
@@ -22,3 +22,4 @@ layout: about
 4. 2018/12/21-主题更改maupassant。
 5. 2019/01/05-启用Travis CI自动部署
 6. 2022/07/23-主题更改为 hexo-theme-fluid
+7. 2022/07/28-启用 Waline 评论系统
