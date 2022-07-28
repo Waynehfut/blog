@@ -2,7 +2,8 @@
 title: 关于
 date: 2019-03-21 15:50:16
 type: "about"
-comments: true
+comment: true
+# comments: true
 layout: about
 ---
 
