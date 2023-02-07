@@ -1,0 +1,84 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">/* Test */
+.protectthecss {
+  padding: 1;
+}
+.admonition {
+  margin: 1.5625em 0;
+  padding: 0.6rem;
+  overflow: hidden;
+  font-size: 1rem;
+  page-break-inside: avoid;
+  border-left: 0.3rem solid #42b983;
+  border-radius: 0.3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.05),
+    0 0 0.05rem rgba(0, 0, 0, 0.1);
+  background-color: #fafafa;
+}
+p.admonition-title {
+  position: relative;
+  margin: -0.6rem -0.6rem 0.8em -0.6rem !important;
+  padding: 0.4rem 0.6rem 0.4rem 2.5rem;
+  font-weight: 800;
+  background-color: rgba(66, 185, 131, 0.1);
+}
+.admonition-title::before {
+  position: absolute;
+  top: 0.9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: " ";
+}
+.info &gt; .admonition-title,
+.todo &gt; .admonition-title {
+  background-color: rgba(0, 184, 212, 0.1);
+}
+.warning &gt; .admonition-title,
+.attention &gt; .admonition-title,
+.caution &gt; .admonition-title {
+  background-color: rgba(255, 145, 0, 0.1);
+}
+.failure &gt; .admonition-title,
+.missing &gt; .admonition-title,
+.fail &gt; .admonition-title,
+.error &gt; .admonition-title {
+  background-color: rgba(255, 82, 82, 0.1);
+}
+.admonition.info,
+.admonition.todo {
+  border-color: #00b8d4;
+}
+.admonition.warning,
+.admonition.attention,
+.admonition.caution {
+  border-color: #ff9100;
+}
+.admonition.failure,
+.admonition.missing,
+.admonition.fail,
+.admonition.error {
+  border-color: #ff5252;
+}
+.info &gt; .admonition-title::before,
+.todo &gt; .admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+.warning &gt; .admonition-title::before,
+.attention &gt; .admonition-title::before,
+.caution &gt; .admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+.failure &gt; .admonition-title::before,
+.missing &gt; .admonition-title::before,
+.fail &gt; .admonition-title::before,
+.error &gt; .admonition-title::before {
+  background-color: #ff5252;
+  border-radius: 50%;
+}
+.admonition &gt; :last-child {
+  margin-bottom: 0 !important;
+}
